@@ -85,9 +85,11 @@ public class VistaLogin extends javax.swing.JFrame {
         });
 
         txtusuario.setBackground(new java.awt.Color(33, 45, 62));
+        txtusuario.setForeground(new java.awt.Color(255, 255, 255));
         txtusuario.setBorder(null);
 
         txtcontraseña.setBackground(new java.awt.Color(33, 45, 62));
+        txtcontraseña.setForeground(new java.awt.Color(255, 255, 255));
         txtcontraseña.setBorder(null);
         txtcontraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
