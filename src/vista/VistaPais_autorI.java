@@ -157,7 +157,7 @@ public class VistaPais_autorI extends javax.swing.JFrame {
                             .addGap(64, 64, 64)
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jlbIdPaisAutor)
+                            .addComponent(jlbIdPaisAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5)
@@ -252,25 +252,23 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         int ncol;
         Object[] fila;
 
-        if (buscar.equals("")) {
-            listaPais_autores = objpn.consultarpaisautor();
+        listaPais_autores = objpn.consultarpaisautor();
 
-            DefaultTableModel modelo = new DefaultTableModel();
-            this.jTable1.setModel(modelo);
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable1.setModel(modelo);
 
-            modelo.addColumn("id Pais Autor");
-            modelo.addColumn("Nombre Pais A");
-            ncol = modelo.getColumnCount();
+        modelo.addColumn("id Pais Autor");
+        modelo.addColumn("Nombre Pais A");
+        ncol = modelo.getColumnCount();
 
-            //Object[] fila = new Object[ncol];
-            for (int i = 0; i < listaPais_autores.size(); i++) {
-                fila = new Object[ncol];
-                fila[0] = listaPais_autores.get(i).getId_paisA();
-                fila[1] = listaPais_autores.get(i).getNombrePaisA();
-                modelo.addRow(fila);
-            }
-
+        //Object[] fila = new Object[ncol];
+        for (int i = 0; i < listaPais_autores.size(); i++) {
+            fila = new Object[ncol];
+            fila[0] = listaPais_autores.get(i).getId_paisA();
+            fila[1] = listaPais_autores.get(i).getNombrePaisA();
+            modelo.addRow(fila);
         }
+
 
     }//GEN-LAST:event_btnbuscarActionPerformed
     //El metodo jTable1MouseClicked es un evento del mouse que se genera para que cuando el usuario
@@ -313,11 +311,11 @@ public class VistaPais_autorI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
-        
+
         VistaMenu vmp = new VistaMenu();
         this.dispose();
         vmp.setVisible(true);
-        
+
     }//GEN-LAST:event_btnmpActionPerformed
 
     /**
