@@ -17,8 +17,6 @@ import modelo.Audiolibro;
 import modelo.Categoria;
 import modelo.Editorial;
 import modelo.Narrador;
-import modelo.Pais_Usuario;
-import modelo.Usuario;
 import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -84,7 +82,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         btnAgregarAudiolibro = new javax.swing.JButton();
         btnEliminarAudiolibro = new javax.swing.JButton();
         btnModificarAudiolibro = new javax.swing.JButton();
-        btnLimpiarAudiolibro = new javax.swing.JButton();
+        btnMostrarAudiolibro = new javax.swing.JButton();
         jTextFieldPortada = new javax.swing.JTextField();
         jTextFieldContrportada = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -178,16 +176,22 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnLimpiarAudiolibro.setText("Mostrar");
-        btnLimpiarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrarAudiolibro.setText("Mostrar");
+        btnMostrarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarAudiolibroActionPerformed(evt);
+                btnMostrarAudiolibroActionPerformed(evt);
             }
         });
 
         jTextFieldPortada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPortadaActionPerformed(evt);
+            }
+        });
+
+        jTextFieldContrportada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldContrportadaActionPerformed(evt);
             }
         });
 
@@ -294,7 +298,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnModificarAudiolibro)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnLimpiarAudiolibro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnMostrarAudiolibro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -411,7 +415,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                             .addComponent(btnAgregarAudiolibro)
                             .addComponent(btnEliminarAudiolibro)
                             .addComponent(btnModificarAudiolibro)
-                            .addComponent(btnLimpiarAudiolibro)))
+                            .addComponent(btnMostrarAudiolibro)))
                     .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -545,7 +549,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        
         JFileChooser archivo=new JFileChooser();
         int ventana= archivo.showOpenDialog(null);
         if(ventana==JFileChooser.APPROVE_OPTION){
@@ -554,6 +557,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             jTextFieldPortada.setText(String.valueOf(file));
             
         }
+        
+        
     }//GEN-LAST:event_btSeleccionarActionPerformed
 
     private void btSeleccionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeleccionar2ActionPerformed
@@ -593,7 +598,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEliminarAudiolibroActionPerformed
 
-    private void btnLimpiarAudiolibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarAudiolibroActionPerformed
+    private void btnMostrarAudiolibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAudiolibroActionPerformed
         // TODO add your handling code here:
         
         ControlAudiolibro obju = new ControlAudiolibro();
@@ -643,7 +648,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         }
                
         
-    }//GEN-LAST:event_btnLimpiarAudiolibroActionPerformed
+    }//GEN-LAST:event_btnMostrarAudiolibroActionPerformed
 
     private void JSinopsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JSinopsisActionPerformed
         // TODO add your handling code here:
@@ -656,6 +661,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
          
          jTextField1.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
          jTextFieldTitulo.setText(String.valueOf(jTable2.getValueAt(selected, 1)));
+         
          
          jTextFieldNPaginas.setText(String.valueOf(jTable2.getValueAt(selected, 3)));
          jTextFieldDuracion.setText(String.valueOf(jTable2.getValueAt(selected, 4)));
@@ -792,6 +798,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnModificarAudiolibroActionPerformed
 
+    private void jTextFieldContrportadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContrportadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldContrportadaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -833,8 +843,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private javax.swing.JButton btSeleccionar2;
     private javax.swing.JButton btnAgregarAudiolibro;
     private javax.swing.JButton btnEliminarAudiolibro;
-    private javax.swing.JButton btnLimpiarAudiolibro;
     private javax.swing.JButton btnModificarAudiolibro;
+    private javax.swing.JButton btnMostrarAudiolibro;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JComboBox<String> jComboBoxClasificacion;
     private javax.swing.JComboBox<String> jComboBoxEditorial;
