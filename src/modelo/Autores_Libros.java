@@ -7,6 +7,7 @@ package modelo;
 
 import com.mysql.cj.protocol.Resultset;
 import control.BaseDatos;
+import java.io.FileInputStream;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,26 +24,21 @@ import java.util.logging.Logger;
 public class Autores_Libros {
 
     private int id_AutorLibro;
-    private String Nombre_Autor;
-    private int id_LibroF;
+    private int id_autorAF;
+    private int id_audiolibroAF;
 
     public Autores_Libros() {
     }
 
-    public Autores_Libros(String Nombre_Autor, int id_LibroF) {
-        this.Nombre_Autor = Nombre_Autor;
-        this.id_LibroF = id_LibroF;
-    }
-
-    public Autores_Libros(int id_AutorLibro, String Nombre_Autor, int id_LibroF) {
+    public Autores_Libros(int id_AutorLibro, int id_autorAF, int id_audiolibroAF) {
         this.id_AutorLibro = id_AutorLibro;
-        this.Nombre_Autor = Nombre_Autor;
-        this.id_LibroF = id_LibroF;
+        this.id_autorAF = id_autorAF;
+        this.id_audiolibroAF = id_audiolibroAF;
     }
 
-    @Override
-    public String toString() {
-        return "Autores_Libros{" + "id_AutorLibro=" + id_AutorLibro + ", Nombre_Autor=" + Nombre_Autor + ", id_LibroF=" + id_LibroF + '}';
+    public Autores_Libros(int id_autorAF, int id_audiolibroAF) {
+        this.id_autorAF = id_autorAF;
+        this.id_audiolibroAF = id_audiolibroAF;
     }
 
     public int getId_AutorLibro() {
@@ -53,58 +49,72 @@ public class Autores_Libros {
         this.id_AutorLibro = id_AutorLibro;
     }
 
-    public String getNombre_Autor() {
-        return Nombre_Autor;
+    public int getId_autorAF() {
+        return id_autorAF;
     }
 
-    public void setNombre_Autor(String Nombre_Autor) {
-        this.Nombre_Autor = Nombre_Autor;
+    public void setId_autorAF(int id_autorAF) {
+        this.id_autorAF = id_autorAF;
     }
 
-    public int getId_LibroF() {
-        return id_LibroF;
+    public int getId_audiolibroAF() {
+        return id_audiolibroAF;
     }
 
-    public void setId_LibroF(int id_LibroF) {
-        this.id_LibroF = id_LibroF;
+    public void setId_audiolibroAF(int id_audiolibroAF) {
+        this.id_audiolibroAF = id_audiolibroAF;
     }
 
-    public boolean insertarAutores_Libros(String sql) {
+    @Override
+    public String toString() {
+        return "Autores_Libros{" + "id_AutorLibro=" + id_AutorLibro + ", id_autorAF=" + id_autorAF + ", id_audiolibroAF=" + id_audiolibroAF + '}';
+    }
 
+    
+   
+    public boolean insertarAutoresLibros(Autores_Libros objAL,String sql) {
         boolean t = false;
-        BaseDatos objCon = new BaseDatos();
-        Resultset rs = null;
+        BaseDatos objb = new BaseDatos();
+        FileInputStream fis = null;
         PreparedStatement ps = null;
-        if (objCon.crearConexion()) {
+        try {
+            if (objb.crearConexion()) {
+                objb.getConexion().setAutoCommit(false);
+                ps = objb.getConexion().prepareStatement(sql);
+                ps.setInt(1, objAL.getId_autorAF());
+                ps.setInt(2, objAL.getId_audiolibroAF());
+                
 
-            try {
-                Statement sentencia = objCon.getConexion().createStatement();
-                sentencia.executeUpdate(sql);
-
+                ps.executeUpdate();
+                objb.getConexion().commit();
                 t = true;
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                t = false;
             }
+        } catch (Exception ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            t = false;
         }
+
         return t;
+
     }
 
-    public LinkedList<Autor> consultarAutor(String sql) {
-        LinkedList<Autor> lp = new LinkedList<>();
+    public LinkedList<Autores_Libros> consultarAutoresLibros(String sql) {
+        LinkedList<Autores_Libros> lp = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
 
-        int id_autorL = 0;
-        String nombre_autor1L = "";
+        int id_autorLF2 = 0;
+        int id_AudioLF2 = 0;
+        String idu;
 
         ResultSet rs = null;
         if (objb.crearConexion()) {
             try {
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
-                    id_autorL = rs.getInt("id_autor");
-                    nombre_autor1L = rs.getString("nombre_autor1");
-                    //lp.add(new Autor(id_autorL, nombre_autor1L));
+                    idu = rs.getString("id_AutorL");
+                    id_autorLF2 = rs.getInt("id_autorAF");
+                    id_AudioLF2 = rs.getInt("id_audiolibroAF");
+                    lp.add(new Autores_Libros(Integer.parseInt(idu),id_autorLF2, id_AudioLF2));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Autor.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,4 +123,45 @@ public class Autores_Libros {
         return lp;
 
     }
+    
+    public boolean modificarAutoresLibros(String sql) {
+
+        boolean t1 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t1 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t1 = false;
+            }
+        }
+        return t1;
+
+    }
+
+    public boolean eliminarAutoresLibros(String sql) {
+
+        boolean t2 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t2 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t2 = false;
+            }
+        }
+        return t2;
+
+    }
+    
 }

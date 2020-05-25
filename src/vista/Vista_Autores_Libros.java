@@ -5,9 +5,13 @@
  */
 package vista;
 
+import control.ControlAudiolibro;
 import control.ControlAutor;
 import control.ControlAutores_Libros;
+import java.text.ParseException;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Audiolibro;
 import modelo.Autor;
 import modelo.Autores_Libros;
@@ -21,6 +25,8 @@ import modelo.Usuario;
 public class Vista_Autores_Libros extends javax.swing.JFrame {
 
     LinkedList<Autor> listaA;
+    LinkedList<Audiolibro> listaAL;
+    LinkedList<Autores_Libros> listaALibros;
 
     /**
      * Creates new form VistaUsuario
@@ -28,6 +34,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
     public Vista_Autores_Libros() {
         initComponents();
         listaA = new LinkedList<>();
+        listaAL = new LinkedList<>();
     }
 
     /**
@@ -43,14 +50,18 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonMostrar = new javax.swing.JButton();
+        jButtonInsertar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnmp = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonEliminaar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,32 +73,30 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Insertar Autor de Libro");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Id Libro:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Id Autor:");
 
-        jButton1.setText("Mostrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMostrar.setText("Mostrar");
+        jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonMostrarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Insertar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInsertar.setText("Insertar");
+        jButtonInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonInsertarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Modificar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonModificar.setText("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonModificarActionPerformed(evt);
             }
         });
 
@@ -104,26 +113,69 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Eliminar");
+        jButtonEliminaar.setText("Eliminar");
+        jButtonEliminaar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminaarActionPerformed(evt);
+            }
+        });
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Id: ");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonInsertar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEliminaar)))
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jButtonModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonMostrar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(73, 73, 73)
+                                .addGap(121, 121, 121)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnmp, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -133,19 +185,20 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
                                             .addComponent(jLabel5))
                                         .addGap(12, 12, 12))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(57, 57, 57))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,56 +206,157 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonInsertar)
+                            .addComponent(jButtonEliminaar)
+                            .addComponent(jButtonModificar)
+                            .addComponent(jButtonMostrar)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(16, 16, 16)
                         .addComponent(btnmp)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addContainerGap())
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
         // TODO add your handling code here:
 
-        int id_AutorLibro = 0;
-        String Nombre_Autor = jComboBox1.getSelectedItem().toString();;
-        int id_LibroF = 0;
+      ControlAutores_Libros obju = new ControlAutores_Libros();
+        int ncolu;
+        Object[] fila2;
 
+        listaALibros = obju.consultarAutores_Libros();
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable1.setModel(modelo);
+        modelo.addColumn("id_AutorL");
+        modelo.addColumn("id_autorAF");
+        modelo.addColumn("id_audiolibroAF");
+
+        ncolu = modelo.getColumnCount();
+
+        for (int i = 0; i < listaALibros.size(); i++) {
+
+            fila2 = new Object[ncolu];
+            fila2[0] = listaALibros.get(i).getId_AutorLibro();
+            fila2[1] = listaALibros.get(i).getId_autorAF();
+            fila2[2] = listaALibros.get(i).getId_audiolibroAF();
+
+            modelo.addRow(fila2);
+        }
+
+
+    }//GEN-LAST:event_jButtonMostrarActionPerformed
+
+    private void jButtonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarActionPerformed
+        // TODO add your handling code here:
+
+        String idAutor = jComboBox1.getSelectedItem().toString();
+        String idAudioL = jComboBox2.getSelectedItem().toString();
+        int idp = 0;
+        int idp2=0;
+ 
+        
         for (int j = 0; j < listaA.size(); j++) {
-            Autor au = listaA.get(j);
-            if (Nombre_Autor.equals(au.getNombre_autor1())) {
-                id_AutorLibro = au.getId_autor();
+            Autor autorsito = listaA.get(j);
+            if (idAutor.equals(autorsito.getNombre_autor1())) {
+                idp = autorsito.getId_autor();
+
             }
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+                for (int j = 0; j < listaAL.size(); j++) {
+            Audiolibro AudioL = listaAL.get(j);
+            if (idAudioL.equals(AudioL.getTitulo())) {
+                idp2 = AudioL.getId_audiolibro();
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+            }
+        }
+        
+        
+        Autores_Libros objAL = new Autores_Libros(idp,idp2);
+        ControlAutores_Libros objcu = new ControlAutores_Libros();
+        boolean t = objcu.insertarAutores_Libros(objAL);
+        if (t == true) {
+            JOptionPane.showMessageDialog(rootPane, "Se inserto el autor-libro con exito");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No se autor-libro el usuario");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButtonInsertarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+        
+        String select = txtID.getText();
+        String IdAutor = jComboBox1.getSelectedItem().toString();
+        String IdAudioL = jComboBox2.getSelectedItem().toString();
+        
+      
+        ControlAutores_Libros objmu = new ControlAutores_Libros();
+        
+         int idAutor2 = 0;
+        
+        for (int i = 0; i < listaA.size(); i++) {
+            Autor paisu = listaA.get(i);
+            if (IdAutor.equals(paisu.getNombre_autor1())) {
+                idAutor2 = paisu.getId_autor();
+
+            }
+        }
+       
+        
+        int IdAudioL2 = 0;
+
+        for (int i = 0; i < listaAL.size(); i++) {
+            Audiolibro paisu2 = listaAL.get(i);
+            if (IdAudioL.equals(paisu2.getTitulo())) {
+                IdAudioL2 = paisu2.getId_audiolibro();
+
+            }
+        }
+        
+
+        boolean t1 = objmu.modificarAutoresLibros(select, idAutor2, IdAudioL2);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se modifico el Autor-Libro con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se modifico el Autor-Libro ");
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -216,6 +370,17 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         }
 
+              
+                ControlAudiolibro obja2 = new ControlAudiolibro();
+
+        listaAL = obja2.consultarAudioLibro();
+
+        for (int i = 0; i < listaAL.size(); i++) {
+            Audiolibro objetoAudioL = listaAL.get(i);
+            jComboBox2.addItem(objetoAudioL.getTitulo());
+
+        }
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
@@ -225,6 +390,40 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         vmp.setVisible(true);
         
     }//GEN-LAST:event_btnmpActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void jButtonEliminaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminaarActionPerformed
+        // TODO add your handling code here:
+        
+        ControlAutores_Libros objeu = new ControlAutores_Libros();
+        String selected = txtID.getText();
+        boolean t1 = objeu.eliminarAutores_Libro(selected);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se elimino el Autor-AudioLibro con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se elimino el Autor-AudioLibro");
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButtonEliminaarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+         int selected = jTable1.rowAtPoint(evt.getPoint());
+         txtID.setText(String.valueOf(jTable1.getValueAt(selected, 0)));
+         jComboBox1.setSelectedItem(jTable1.getValueAt(selected, 1));
+         jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 2));
+
+   
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -263,10 +462,10 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnmp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonEliminaar;
+    private javax.swing.JButton jButtonInsertar;
+    private javax.swing.JButton jButtonModificar;
+    private javax.swing.JButton jButtonMostrar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -274,5 +473,9 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }
