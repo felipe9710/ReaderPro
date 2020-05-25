@@ -178,7 +178,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="btncs">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CERRAR SESION"/>
+        <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncsActionPerformed"/>

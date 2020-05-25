@@ -89,7 +89,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Primer Nombre");
+        jLabel8.setText("Primer Nombre:");
 
         btnEliminarNarrador.setText("Mostrar");
         btnEliminarNarrador.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +99,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Segundo Nombre");
+        jLabel9.setText("Segundo Nombre:");
 
         btnModificarNarrador.setText("Modificar");
         btnModificarNarrador.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("INSERTAR NARRADOR");
+        jLabel1.setText("Insertar Narrador");
 
         btnLimpiarNarrador.setText("Eliminar");
         btnLimpiarNarrador.addActionListener(new java.awt.event.ActionListener() {
@@ -119,18 +119,19 @@ public class VistaNarrador extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Primer Apellido");
+        jLabel2.setText("Primer Apellido:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Segundo Apellido");
+        jLabel3.setText("Segundo Apellido:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Fecha de Nacimiento");
+        jLabel4.setText("Fecha de Nacimiento:");
 
         jDateChooser1.setDateFormatString("dd/mm/yyyy");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("Pais Narrador");
+        jLabel10.setText("Pais Narrador:");
+        jLabel10.setToolTipText("");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
 
@@ -176,12 +177,6 @@ public class VistaNarrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel7))
-                .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -191,7 +186,7 @@ public class VistaNarrador extends javax.swing.JFrame {
                         .addComponent(idn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,22 +204,24 @@ public class VistaNarrador extends javax.swing.JFrame {
                                     .addComponent(nombreNarrador2, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nombreNarrador1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnmp)
-                                .addGap(10, 10, 10))))
+                                .addGap(25, 25, 25))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addContainerGap()
                         .addComponent(btnAgregarNarrador)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarNarrador)
-                        .addGap(18, 18, 18)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnLimpiarNarrador)
+                        .addGap(57, 57, 57)
                         .addComponent(btnModificarNarrador)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiarNarrador))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnmp)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel7)
+                            .addComponent(btnEliminarNarrador)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addGap(161, 161, 161)
                         .addComponent(jLabel1)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,27 +237,27 @@ public class VistaNarrador extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(nombreNarrador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(nombreNarrador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel7)
-                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(nombreNarrador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(apellidoNarrador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(apellidoNarrador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(apellidoNarrador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel12)
+                        .addGap(9, 9, 9)
                         .addComponent(btnmp)
-                        .addGap(28, 28, 28)))
+                        .addGap(3, 3, 3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(apellidoNarrador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -274,8 +271,9 @@ public class VistaNarrador extends javax.swing.JFrame {
                     .addComponent(btnEliminarNarrador)
                     .addComponent(btnModificarNarrador)
                     .addComponent(btnLimpiarNarrador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();

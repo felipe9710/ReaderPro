@@ -110,7 +110,7 @@ public class VistaUmenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("BIBLIOTECA", jPanel2);
 
-        btncs.setText("CERRAR SESION");
+        btncs.setText("Cerrar Sesión");
         btncs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncsActionPerformed(evt);

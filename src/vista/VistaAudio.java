@@ -60,7 +60,7 @@ public class VistaAudio extends javax.swing.JFrame {
         btnModificarAudio.setText("Modificar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Insertar Audios");
+        jLabel1.setText("Insertar Audio");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,10 +76,10 @@ public class VistaAudio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Archivo");
+        jLabel2.setText("Archivo:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Audiolibro");
+        jLabel3.setText("Audiolibro:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
