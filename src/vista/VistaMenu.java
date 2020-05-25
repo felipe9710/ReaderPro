@@ -27,6 +27,7 @@ public class VistaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Btnusuario = new javax.swing.JButton();
         btnaudio = new javax.swing.JButton();
@@ -39,150 +40,222 @@ public class VistaMenu extends javax.swing.JFrame {
         btnPaisNa = new javax.swing.JButton();
         btnAutLi = new javax.swing.JButton();
         btnEditorial = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Menu Principal Administrador");
+        jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
-        Btnusuario.setText("Usuario");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
+        jLabel1.setText("Menu principal administrador");
+
+        Btnusuario.setBackground(new java.awt.Color(33, 45, 62));
+        Btnusuario.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Btnusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnUsuario.png"))); // NOI18N
+        Btnusuario.setBorderPainted(false);
+        Btnusuario.setContentAreaFilled(false);
         Btnusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnusuarioActionPerformed(evt);
             }
         });
 
-        btnaudio.setText("Audio");
+        btnaudio.setBackground(new java.awt.Color(33, 45, 62));
+        btnaudio.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnaudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnAudio.png"))); // NOI18N
+        btnaudio.setBorderPainted(false);
+        btnaudio.setContentAreaFilled(false);
         btnaudio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaudioActionPerformed(evt);
             }
         });
 
-        btnAL.setText("Audiolibro");
+        btnAL.setBackground(new java.awt.Color(33, 45, 62));
+        btnAL.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnAL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnAudiolibro.png"))); // NOI18N
+        btnAL.setBorderPainted(false);
+        btnAL.setContentAreaFilled(false);
         btnAL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnALActionPerformed(evt);
             }
         });
 
-        btnAutor.setText("Autor");
+        btnAutor.setBackground(new java.awt.Color(51, 0, 255));
+        btnAutor.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnAutor.png"))); // NOI18N
+        btnAutor.setBorderPainted(false);
+        btnAutor.setContentAreaFilled(false);
         btnAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAutorActionPerformed(evt);
             }
         });
 
-        btncategoria.setText("Categoria");
+        btncategoria.setBackground(new java.awt.Color(33, 45, 62));
+        btncategoria.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btncategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnCategoria.png"))); // NOI18N
+        btncategoria.setBorderPainted(false);
+        btncategoria.setContentAreaFilled(false);
         btncategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncategoriaActionPerformed(evt);
             }
         });
 
-        btnNarrador.setText("Narrador");
+        btnNarrador.setBackground(new java.awt.Color(33, 45, 62));
+        btnNarrador.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnNarrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNarrador.png"))); // NOI18N
+        btnNarrador.setBorderPainted(false);
+        btnNarrador.setContentAreaFilled(false);
         btnNarrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNarradorActionPerformed(evt);
             }
         });
 
-        btnpaisu.setText("Pais Usuario");
+        btnpaisu.setBackground(new java.awt.Color(33, 45, 62));
+        btnpaisu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnpaisu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisUsuario.png"))); // NOI18N
+        btnpaisu.setBorderPainted(false);
+        btnpaisu.setContentAreaFilled(false);
         btnpaisu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpaisuActionPerformed(evt);
             }
         });
 
-        btnpaisAutor.setText("Pais Autor");
+        btnpaisAutor.setBackground(new java.awt.Color(33, 45, 62));
+        btnpaisAutor.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnpaisAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisAutor.png"))); // NOI18N
+        btnpaisAutor.setBorderPainted(false);
+        btnpaisAutor.setContentAreaFilled(false);
         btnpaisAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpaisAutorActionPerformed(evt);
             }
         });
 
-        btnPaisNa.setText("Pais Narrador");
+        btnPaisNa.setBackground(new java.awt.Color(33, 45, 62));
+        btnPaisNa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnPaisNa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisNarrador.png"))); // NOI18N
+        btnPaisNa.setBorderPainted(false);
+        btnPaisNa.setContentAreaFilled(false);
         btnPaisNa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPaisNaActionPerformed(evt);
             }
         });
 
-        btnAutLi.setText("Autores de Libros");
+        btnAutLi.setBackground(new java.awt.Color(33, 45, 62));
+        btnAutLi.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnAutLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnAutoresDeLibros.png"))); // NOI18N
+        btnAutLi.setBorderPainted(false);
+        btnAutLi.setContentAreaFilled(false);
         btnAutLi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAutLiActionPerformed(evt);
             }
         });
 
-        btnEditorial.setText("Editorial");
+        btnEditorial.setBackground(new java.awt.Color(33, 45, 62));
+        btnEditorial.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnEditorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEditorial.png"))); // NOI18N
+        btnEditorial.setBorderPainted(false);
+        btnEditorial.setContentAreaFilled(false);
         btnEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditorialActionPerformed(evt);
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoReaderPro.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnAL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnaudio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAutor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(btnAutLi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnpaisAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btncategoria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(btnEditorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnNarrador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnPaisNa, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(btnpaisu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Btnusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(52, 52, 52))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPaisNa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btncategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnpaisu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Btnusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnaudio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnpaisAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAutLi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnAutor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAutLi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnaudio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btncategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNarrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnpaisAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPaisNa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnpaisu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Btnusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnaudio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnPaisNa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnpaisu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btnusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAutLi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btncategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnpaisAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -326,5 +399,8 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnpaisAutor;
     private javax.swing.JButton btnpaisu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
