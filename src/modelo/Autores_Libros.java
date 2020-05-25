@@ -75,7 +75,6 @@ public class Autores_Libros {
     public boolean insertarAutoresLibros(Autores_Libros objAL,String sql) {
         boolean t = false;
         BaseDatos objb = new BaseDatos();
-        FileInputStream fis = null;
         PreparedStatement ps = null;
         try {
             if (objb.crearConexion()) {

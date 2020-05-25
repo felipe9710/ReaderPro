@@ -16,7 +16,7 @@ public class ControlAutores_Libros {
         boolean t = false;
         Autores_Libros objpU = new Autores_Libros();
 
-        String sql = "insert into autores_libros(id_autorAF,id_audiolibroAF) value (?,?)";
+        String sql = "insert into autores_libros(id_autorAF,id_audiolibroAF) VALUES (?,?)";
 
         t = objpU.insertarAutoresLibros(objAL,sql);
 

@@ -242,7 +242,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
         // TODO add your handling code here:
 
-      ControlAutores_Libros obju = new ControlAutores_Libros();
+        ControlAutores_Libros obju = new ControlAutores_Libros();
         int ncolu;
         Object[] fila2;
 
@@ -274,57 +274,47 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         String idAutor = jComboBox1.getSelectedItem().toString();
         String idAudioL = jComboBox2.getSelectedItem().toString();
         int idp = 0;
-        int idp2=0;
- 
-        
+        int idp2 = 0;
+
         for (int j = 0; j < listaA.size(); j++) {
             Autor autorsito = listaA.get(j);
-            if (idAutor.equals(autorsito.getNombre_autor1())) {
+            if (idAutor.equals(autorsito.getNombre_autor1()+" "+ autorsito.getApellido_autor1())) {
                 idp = autorsito.getId_autor();
 
             }
         }
 
-                for (int j = 0; j < listaAL.size(); j++) {
-            Audiolibro AudioL = listaAL.get(j);
+        for (int i = 0; i < listaAL.size(); i++) {
+            Audiolibro AudioL = listaAL.get(i);
             if (idAudioL.equals(AudioL.getTitulo())) {
                 idp2 = AudioL.getId_audiolibro();
 
             }
         }
-        
-        
-        Autores_Libros objAL = new Autores_Libros(idp,idp2);
+
+        Autores_Libros objAL = new Autores_Libros(idp, idp2);
         ControlAutores_Libros objcu = new ControlAutores_Libros();
         boolean t = objcu.insertarAutores_Libros(objAL);
         if (t == true) {
-            JOptionPane.showMessageDialog(rootPane, "Se inserto el autor-libro con exito");
+            JOptionPane.showMessageDialog(rootPane, "Se inserto el autor del libro con exito");
         } else {
-            JOptionPane.showMessageDialog(rootPane, "No se autor-libro el usuario");
+            JOptionPane.showMessageDialog(rootPane, "No se inserto el autor del libro");
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButtonInsertarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-        
-        
+
         String select = txtID.getText();
         String IdAutor = jComboBox1.getSelectedItem().toString();
         String IdAudioL = jComboBox2.getSelectedItem().toString();
-        
-      
+
         ControlAutores_Libros objmu = new ControlAutores_Libros();
-        
-         int idAutor2 = 0;
-        
+
+        int idAutor2 = 0;
+
         for (int i = 0; i < listaA.size(); i++) {
             Autor paisu = listaA.get(i);
             if (IdAutor.equals(paisu.getNombre_autor1())) {
@@ -332,8 +322,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
             }
         }
-       
-        
+
         int IdAudioL2 = 0;
 
         for (int i = 0; i < listaAL.size(); i++) {
@@ -343,19 +332,16 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
             }
         }
-        
 
         boolean t1 = objmu.modificarAutoresLibros(select, idAutor2, IdAudioL2);
 
         if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se modifico el Autor-Libro con exito");
+            JOptionPane.showMessageDialog(this, "Se modifico el Autor del libro con exito");
         } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el Autor-Libro ");
+            JOptionPane.showMessageDialog(this, "No se modifico el Autor del libro ");
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -366,12 +352,11 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         for (int i = 0; i < listaA.size(); i++) {
             Autor objetoAutor = listaA.get(i);
-            jComboBox1.addItem(objetoAutor.getNombre_autor1()+" "+objetoAutor.getApellido_autor1());
+            jComboBox1.addItem(objetoAutor.getNombre_autor1() + " " + objetoAutor.getApellido_autor1());
 
         }
 
-              
-                ControlAudiolibro obja2 = new ControlAudiolibro();
+        ControlAudiolibro obja2 = new ControlAudiolibro();
 
         listaAL = obja2.consultarAudioLibro();
 
@@ -380,15 +365,15 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             jComboBox2.addItem(objetoAudioL.getTitulo());
 
         }
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
-        
+
         VistaMenu vmp = new VistaMenu();
         this.dispose();
         vmp.setVisible(true);
-        
+
     }//GEN-LAST:event_btnmpActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
@@ -397,7 +382,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
     private void jButtonEliminaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminaarActionPerformed
         // TODO add your handling code here:
-        
+
         ControlAutores_Libros objeu = new ControlAutores_Libros();
         String selected = txtID.getText();
         boolean t1 = objeu.eliminarAutores_Libro(selected);
@@ -407,22 +392,19 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se elimino el Autor-AudioLibro");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jButtonEliminaarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        
-         int selected = jTable1.rowAtPoint(evt.getPoint());
-         txtID.setText(String.valueOf(jTable1.getValueAt(selected, 0)));
-         jComboBox1.setSelectedItem(jTable1.getValueAt(selected, 1));
-         jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 2));
 
-   
-        
-        
+        int selected = jTable1.rowAtPoint(evt.getPoint());
+        txtID.setText(String.valueOf(jTable1.getValueAt(selected, 0)));
+        jComboBox1.setSelectedItem(jTable1.getValueAt(selected, 1));
+        jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 2));
+
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
