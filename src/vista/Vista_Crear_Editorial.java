@@ -339,19 +339,17 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     
     long d=Fecha_Creacion_Editorial2.getTime();
     
-    java.sql.Date Fecha_Creacion_Editorial= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
-    
-        boolean t = objcE.insertar_Editorial(nombre_editorial,telefono_E,direccion_E,correo_E, Fecha_Creacion_Editorial );
-        boolean valido = false;
+    java.sql.Date Fecha_Creacion_Editorial= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time   
+        
         if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
-            JOptionPane.showMessageDialog(this, "No deben haber espacios en blanco","ERROR",JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-
-        if (t == true && valido == false) {
-            JOptionPane.showMessageDialog(this, "Se inserto la Editorial con exito");
-        } else {
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(this, "No se inserto la Editorial");
+        } else {
+            boolean t = objcE.insertar_Editorial(nombre_editorial,telefono_E,direccion_E,correo_E, Fecha_Creacion_Editorial );
+
+        if (t == true) {
+            JOptionPane.showMessageDialog(this, "Se inserto la Editorial con exito");
+         }
         }
     }//GEN-LAST:event_jButtonInsertEditorialActionPerformed
 
@@ -390,7 +388,6 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
          
         Control_Editorial objmpn = new Control_Editorial();
         String selected = idE.getText();
-        
         
          if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
             JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE); 

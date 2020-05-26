@@ -9,6 +9,7 @@ import control.ControlAutor;
 import control.ControlPais_autor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Pais_autor;
@@ -33,6 +34,7 @@ public class VistaAutor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         listapu = new LinkedList<>();
         listaAU = new LinkedList<>();
+        jDateChooser1.getDateEditor().setEnabled(false);
     }
 
     /**
@@ -162,6 +164,8 @@ public class VistaAutor extends javax.swing.JFrame {
                 btnMostrarActionPerformed(evt);
             }
         });
+
+        jDateChooser1.setDateFormatString("yyyy/MM/dd");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel11.setText("Pais autor:");
@@ -340,6 +344,7 @@ public class VistaAutor extends javax.swing.JFrame {
 
     private void btnAgregarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAutorActionPerformed
 
+        jDateChooser1.setCalendar(Calendar.getInstance());
         String nombre_autor1 = nombreAutor1.getText();
         String nombre_autor2 = nombreAutor2.getText();
         String apellido_autor1 = apellidoAutor1.getText();
@@ -360,20 +365,17 @@ public class VistaAutor extends javax.swing.JFrame {
 
             }
         }
-        Autor objAutor = new Autor(nombre_autor1, nombre_autor2, apellido_autor1, apellido_autor2, fecha_nacimiento_Autor, idp);
-        ControlAutor objcu = new ControlAutor();
-        boolean t = objcu.insertar_Autor(objAutor);
-
-        boolean valido = false;
-        
-        if (nombre_autor1.isEmpty() || nombre_autor2.isEmpty() || apellido_autor1.isEmpty() || apellido_autor2.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco","Error",JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-        if (t == true && valido == false) {
-            JOptionPane.showMessageDialog(this, "Se inserto el autor");
-        } else {
+        if (nombre_autor1.isEmpty() || apellido_autor1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(this, "No se inserto el autor");
+        } else {
+            Autor objAutor = new Autor(nombre_autor1, nombre_autor2, apellido_autor1, apellido_autor2, fecha_nacimiento_Autor, idp);
+            ControlAutor objcu = new ControlAutor();
+            boolean t = objcu.insertar_Autor(objAutor);
+            if (t == true) {
+                JOptionPane.showMessageDialog(this, "Se inserto el autor");
+            }
+
         }
 
     }//GEN-LAST:event_btnAgregarAutorActionPerformed
@@ -503,12 +505,16 @@ public class VistaAutor extends javax.swing.JFrame {
 
         ControlAutor objmu = new ControlAutor();
 
-        boolean t1 = objmu.modificarAutor(select, nombre1, nombre2, apellido, apellido2, fecha_nacimiento, idpais);
-
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");
+        if (nombre1.isEmpty() || apellido.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se modifico el usuario");
         } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el usuario con exito");
+            boolean t1 = objmu.modificarAutor(select, nombre1, nombre2, apellido, apellido2, fecha_nacimiento, idpais);
+
+            if (t1 == true) {
+                JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");
+            }
+
         }
 
 

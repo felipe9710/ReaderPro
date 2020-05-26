@@ -192,6 +192,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="apellidoNarrador2">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="apellidoNarrador2KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAgregarNarrador">
           <Properties>
@@ -274,6 +277,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nombreNarrador1">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombreNarrador1KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -284,6 +290,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nombreNarrador2">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombreNarrador2KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -294,10 +303,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="apellidoNarrador1">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="apellidoNarrador1KeyTyped"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
           <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="dd/mm/yyyy"/>
+            <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
