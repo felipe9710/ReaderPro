@@ -5,7 +5,14 @@
  */
 package vista;
 
+import control.ControlAudio;
+import control.ControlAudiolibro;
+import java.io.File;
 import java.util.LinkedList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Audio;
 import modelo.Audiolibro;
 
 /**
@@ -14,11 +21,18 @@ import modelo.Audiolibro;
  */
 public class VistaAudio extends javax.swing.JFrame {
 
+    LinkedList<Audiolibro> listaAL;
+    LinkedList<Audio> listaAud;
+
     /**
      * Creates new form VistaAudio
      */
     public VistaAudio() {
         initComponents();
+
+        setLocationRelativeTo(null);
+        listaAL = new LinkedList<>();
+        listaAud = new LinkedList<>();
     }
 
     /**
@@ -31,7 +45,7 @@ public class VistaAudio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnLimpiarAudio = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
         btnAgregarAudio = new javax.swing.JButton();
         btnEliminarAudio = new javax.swing.JButton();
         btnModificarAudio = new javax.swing.JButton();
@@ -45,6 +59,10 @@ public class VistaAudio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        txtachivo = new javax.swing.JTextField();
+        btnseleccionar = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -55,21 +73,41 @@ public class VistaAudio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
-        btnLimpiarAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
-        btnLimpiarAudio.setBorderPainted(false);
-        btnLimpiarAudio.setContentAreaFilled(false);
+        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        btnMostrar.setBorderPainted(false);
+        btnMostrar.setContentAreaFilled(false);
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnAgregarAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
         btnAgregarAudio.setBorderPainted(false);
         btnAgregarAudio.setContentAreaFilled(false);
+        btnAgregarAudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarAudioActionPerformed(evt);
+            }
+        });
 
         btnEliminarAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
         btnEliminarAudio.setBorderPainted(false);
         btnEliminarAudio.setContentAreaFilled(false);
+        btnEliminarAudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarAudioActionPerformed(evt);
+            }
+        });
 
         btnModificarAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
         btnModificarAudio.setBorderPainted(false);
         btnModificarAudio.setContentAreaFilled(false);
+        btnModificarAudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarAudioActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel1.setText("Insertar audio");
@@ -85,6 +123,11 @@ public class VistaAudio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -92,8 +135,6 @@ public class VistaAudio extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Audiolibro:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         mp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
         mp.setBorderPainted(false);
@@ -110,6 +151,18 @@ public class VistaAudio extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("principal");
 
+        btnseleccionar.setText("Seleccionar");
+        btnseleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnseleccionarActionPerformed(evt);
+            }
+        });
+
+        txtId.setEditable(false);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Id :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,18 +172,6 @@ public class VistaAudio extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(94, 94, 94)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(155, 155, 155)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel2)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAgregarAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,8 +180,34 @@ public class VistaAudio extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnModificarAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnLimpiarAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator1)))
+                                .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel6)))
+                                .addGap(94, 94, 94)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBox1, 0, 114, Short.MAX_VALUE)
+                                            .addComponent(txtachivo))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(155, 155, 155)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel5)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGap(10, 10, 10)
+                                                        .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(28, 28, 28)
+                                                .addComponent(btnseleccionar))))
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(231, 231, 231)
                         .addComponent(jLabel1)))
@@ -153,8 +220,15 @@ public class VistaAudio extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtachivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnseleccionar))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -170,9 +244,9 @@ public class VistaAudio extends javax.swing.JFrame {
                 .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLimpiarAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnModificarAudio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnEliminarAudio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnAgregarAudio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,18 +268,138 @@ public class VistaAudio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        //LinkedList<Audiolibro> = listaAul;
-        
+
+        ControlAudiolibro objcal = new ControlAudiolibro();
+        listaAL = objcal.consultarAudioLibro();
+        for (int i = 0; i < listaAL.size(); i++) {
+
+            Audiolibro objA = listaAL.get(i);
+            jComboBox1.addItem(objA.getTitulo());
+        }
+
     }//GEN-LAST:event_formWindowOpened
 
     private void mpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpActionPerformed
-        
+
         VistaMenu vmp = new VistaMenu();
         this.dispose();
         vmp.setVisible(true);
-        
+
     }//GEN-LAST:event_mpActionPerformed
+
+    private void btnAgregarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAudioActionPerformed
+
+        String archivo = txtachivo.getText();
+        String idAL = jComboBox1.getSelectedItem().toString();
+        int idAl = 0;
+
+        for (int i = 0; i < listaAL.size(); i++) {
+
+            Audiolibro audL = listaAL.get(i);
+            if (idAL.equals(audL.getTitulo())) {
+                idAl = audL.getId_audiolibro();
+            }
+
+        }
+
+        Audio objau = new Audio(archivo, idAl);
+        ControlAudio objca = new ControlAudio();
+        boolean t = objca.insertarAudio(objau);
+        if (t == true) {
+            JOptionPane.showMessageDialog(rootPane, "Se inserto el Audio con exito");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No se Inserto el Audio");
+        }
+
+    }//GEN-LAST:event_btnAgregarAudioActionPerformed
+
+    private void btnEliminarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAudioActionPerformed
+
+        ControlAudio objca = new ControlAudio();
+        String select = txtId.getText();
+        boolean t1 = objca.eliminarAudio(select);
+        
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se elimino el Audiio");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se elimino el Audio");
+        }
+
+    }//GEN-LAST:event_btnEliminarAudioActionPerformed
+
+    private void btnModificarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAudioActionPerformed
+
+        String select = txtId.getText();
+        String archivo = txtachivo.getText();
+        String id_audiolibro = jComboBox1.getSelectedItem().toString();
+        int idAL = 0;
+        ControlAudio objca = new ControlAudio();
+        
+        for (int x = 0; x < listaAL.size(); x++) {
+            Audiolibro audiolibro = listaAL.get(x);
+            if (id_audiolibro.equals(audiolibro.getTitulo())) {
+                idAL = audiolibro.getId_audiolibro();
+
+            }
+        }
+        
+        boolean t1 = objca.modificarAudio(select,archivo,idAL);
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se modifico el Audio con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se modifico el Audio");
+        }
+        
+    }//GEN-LAST:event_btnModificarAudioActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+
+        ControlAudio objcaud = new ControlAudio();
+        int ncolu;
+        Object[] fila2;
+        
+        listaAud = objcaud.consultarAudio();
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable1.setModel(modelo);
+        modelo.addColumn("Id audio");
+        modelo.addColumn("archivo");
+        modelo.addColumn("id audiolibroF");
+        ncolu = modelo.getColumnCount();
+        
+        for (int j = 0; j<listaAud.size();j++){
+            
+            fila2 = new Object[ncolu];
+            fila2[0] = listaAud.get(j).getId_Audio();
+            fila2[1] = listaAud.get(j).getArchivo_Audio();
+            fila2[2] = listaAud.get(j).getId_audiolibroF();
+            modelo.addRow(fila2);
+            
+        }
+
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseleccionarActionPerformed
+
+        JFileChooser archivo = new JFileChooser();
+        int ventana = archivo.showOpenDialog(null);
+        if (ventana == JFileChooser.APPROVE_OPTION) {
+
+            File file = archivo.getSelectedFile();
+            txtachivo.setText(String.valueOf(file));
+
+        }
+
+    }//GEN-LAST:event_btnseleccionarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        int selected = jTable1.rowAtPoint(evt.getPoint());
+        
+        txtId.setText(String.valueOf(jTable1.getValueAt(selected, 0)));
+        txtachivo.setText(String.valueOf(jTable1.getValueAt(selected, 1)));
+        jComboBox1.setSelectedItem(String.valueOf(jTable1.getValueAt(selected, 2)));
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -245,18 +439,22 @@ public class VistaAudio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarAudio;
     private javax.swing.JButton btnEliminarAudio;
-    private javax.swing.JButton btnLimpiarAudio;
     private javax.swing.JButton btnModificarAudio;
+    private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton btnseleccionar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton mp;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtachivo;
     // End of variables declaration//GEN-END:variables
 }
