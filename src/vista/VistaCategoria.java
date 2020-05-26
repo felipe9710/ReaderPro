@@ -23,17 +23,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaCategoria extends javax.swing.JFrame {
 
+    LinkedList<Categoria> listaCategorias;
 
-     
-     LinkedList<Categoria> listaCategorias;
-     
     public VistaCategoria() {
         initComponents();
-       
+
         listaCategorias = new LinkedList<>();
     }
 
- 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,27 +250,19 @@ public class VistaCategoria extends javax.swing.JFrame {
 
     private void jButtoiNSERTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoiNSERTARActionPerformed
         String nombreCategoria = jTextField1.getText();
-        
-             
-        
 
-        
-        
-      
-        if(nombreCategoria.isEmpty()){
-            
-            JOptionPane.showMessageDialog(this, "No deben haber espacios en blanco","ERROR",JOptionPane.ERROR_MESSAGE);
-                       
-        }else{
-              Categoria objC = new Categoria(nombreCategoria);
-              ControlCategoria objcu = new ControlCategoria();
-              boolean t = objcu.insertarCategoria(objC);
-
-        if (t == true ) {
-            JOptionPane.showMessageDialog(this, "Se inserto la categoria del audiolibro");
-        } else {
+        if (nombreCategoria.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(this, "No se inserto la categoria del audiolibro");
-        }
+
+        } else {
+            Categoria objC = new Categoria(nombreCategoria);
+            ControlCategoria objcu = new ControlCategoria();
+            boolean t = objcu.insertarCategoria(objC);
+
+            if (t == true) {
+                JOptionPane.showMessageDialog(this, "Se inserto la categoria del audiolibro");
+            }
         }
     }//GEN-LAST:event_jButtoiNSERTARActionPerformed
 
@@ -287,7 +276,7 @@ public class VistaCategoria extends javax.swing.JFrame {
         this.jTable2.setModel(modelo);
         modelo.addColumn("id_categoria");
         modelo.addColumn("categoria");
-        
+
         ncolu = modelo.getColumnCount();
 
         for (int i = 0; i < listaCategorias.size(); i++) {
@@ -295,13 +284,13 @@ public class VistaCategoria extends javax.swing.JFrame {
             fila2 = new Object[ncolu];
             fila2[0] = listaCategorias.get(i).getId_categoria();
             fila2[1] = listaCategorias.get(i).getCategoria();
-            
+
             modelo.addRow(fila2);
         }
     }//GEN-LAST:event_jButtonMostrarActionPerformed
-    
+
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
-        
+
         ControlCategoria objeu = new ControlCategoria();
         String selected = idcg.getText();
         boolean t1 = objeu.eliminarCategoria(selected);
@@ -310,8 +299,8 @@ public class VistaCategoria extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Se elimino la Categoria");
         } else {
             JOptionPane.showMessageDialog(this, "No se la Categoria");
-        }        
-        
+        }
+
 
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
@@ -319,29 +308,25 @@ public class VistaCategoria extends javax.swing.JFrame {
         String categoria = jTextField1.getText();
         ControlCategoria objmpn = new ControlCategoria();
         String selected = idcg.getText();
-        
-         if(jTextField1.getText().isEmpty()){
-            
-            JOptionPane.showMessageDialog(this, "No deben haber espacios en blanco","ERROR",JOptionPane.ERROR_MESSAGE);
-                       
-        }else{
-        
-        boolean t1 = objmpn.modificarCategoria(selected, categoria);
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se modifico la categoria");
-        } else {
+        if (jTextField1.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(this, "No se modifico la categoria");
+        } else {
+            boolean t1 = objmpn.modificarCategoria(selected, categoria);
+            if (t1 == true) {
+                JOptionPane.showMessageDialog(this, "Se modifico la categoria");
+            }
         }
-         }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
-        
+
         VistaMenu vmp = new VistaMenu();
         this.dispose();
         vmp.setVisible(true);
-        
+
     }//GEN-LAST:event_btnmpActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -349,8 +334,8 @@ public class VistaCategoria extends javax.swing.JFrame {
         int selected = jTable2.rowAtPoint(evt.getPoint());
         idcg.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
         jTextField1.setText(String.valueOf(jTable2.getValueAt(selected, 1)));
-       
-                       
+
+
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void idcgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idcgActionPerformed
@@ -358,15 +343,15 @@ public class VistaCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_idcgActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        
+
         char validar = evt.getKeyChar();
-        if(Character.isDigit(validar)){
-            
+        if (Character.isDigit(validar)) {
+
             getToolkit().beep();
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
         }
-        
+
     }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
@@ -427,6 +412,5 @@ public class VistaCategoria extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-
 
 }
