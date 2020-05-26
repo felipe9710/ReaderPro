@@ -41,20 +41,31 @@ public class ControlUsuario {
 
         boolean t1 = false;
         Usuario objmpa = new Usuario();
-        String sql = "update usuarios set nombre1 = '" + nombre1 + "',nombre2 = '"+nombre2+ "',apellido1 = '"+apellido+ "',apellido2 = '"+apellido2+ "',genero = '"+genero+ "',nombre_usuario = '"+nombre_usuario+ "',correo_usuario = '"+correo+ "',contraseña_usuario = '"+contraseña+"',fecha_nacimiento = '"+fecha_nac+"',fecha_incripcion = '"+fecha_insc+"',id_PaisUF = '"+ idpais +"'where id_usuario =" + select;
+        String sql = "update usuarios set nombre1 = '" + nombre1 + "',nombre2 = '" + nombre2 + "',apellido1 = '" + apellido + "',apellido2 = '" + apellido2 + "',genero = '" + genero + "',nombre_usuario = '" + nombre_usuario + "',correo_usuario = '" + correo + "',contraseña_usuario = '" + contraseña + "',fecha_nacimiento = '" + fecha_nac + "',fecha_incripcion = '" + fecha_insc + "',id_PaisUF = '" + idpais + "'where id_usuario =" + select;
         t1 = objmpa.modificarUsuario(sql);
         return t1;
 
     }
 
     public boolean eliminarPais_narrador(String selected) {
-        
+
         boolean t2 = false;
         Usuario objepa = new Usuario();
         String sql = "delete from usuarios where id_usuario =" + selected;
         t2 = objepa.eliminarUsuario(sql);
         return t2;
-        
+
+    }
+
+    public boolean consultarCorreo(Usuario objUsuarioo) {
+
+        boolean t1 = false;
+        Usuario obju = new Usuario();
+        String sql = "";
+        sql = "select correo_usuario from usuarios where correo_usuario ='" + objUsuarioo.getCorreo_usuario() + "';";
+        t1 = obju.consultarCorreo(objUsuarioo, sql);
+        return t1;
+
     }
 
 }

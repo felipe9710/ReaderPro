@@ -68,6 +68,10 @@ public class Usuario {
         this.id_PaisUF = id_PaisUF;
     }
 
+    public Usuario(String correo_usuario) {
+        this.correo_usuario = correo_usuario;
+    }
+
     public int getId_usuario() {
         return id_usuario;
     }
@@ -168,8 +172,6 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "id_usuario=" + id_usuario + ", nombre1=" + nombre1 + ", nombre2=" + nombre2 + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", genero=" + genero + ", nombre_usuario=" + nombre_usuario + ", correo_usuario=" + correo_usuario + ", contrase\u00f1a_usuario=" + contraseña_usuario + ", fecha_nacimiento=" + fecha_nacimiento + ", fecha_inscripicion=" + fecha_inscripicion + ", id_PaisUF=" + id_PaisUF + '}';
     }
-
-   
 
     public boolean insertarUsuario(Usuario objUsuario, String sql) {
 
@@ -290,6 +292,33 @@ public class Usuario {
             }
         }
         return t2;
+
+    }
+
+    public boolean consultarCorreo(Usuario objUsuario, String sql) {
+
+        boolean t1 = false;
+        BaseDatos objCon = new BaseDatos();
+        String correo_usuario = "";
+        ResultSet rs = null;
+        if (objCon.crearConexion()) {
+            try {
+                rs = objCon.getSt().executeQuery(sql);
+                while (rs.next()) {
+
+                    correo_usuario = rs.getString("correo_usuario");
+
+                    if (objUsuario.getCorreo_usuario().equals(correo_usuario)) {
+
+                        t1 = true;
+
+                    }
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return t1;
 
     }
 
