@@ -258,7 +258,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         
         if(nombrePaisN.isEmpty()){
             
-            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco");
+            JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
             valido = true;
             
         }
@@ -313,8 +313,16 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         ControlPais_Narrador objmpn = new ControlPais_Narrador();
         String selected = idpn.getText();
         boolean t1 = objmpn.modificarPais_narrador(selected, nombrePaisNa);
+        boolean valido = false;
+        
+        if(nombrePaisNa.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
+            valido = true;
+            
+        }
 
-        if (t1 == true) {
+        if (t1 == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se modifico el pais del narrador");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el pais del narrador");
