@@ -9,6 +9,7 @@ import control.ControlUsuario;
 import control.Control_Paises_Usuario;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
@@ -33,6 +34,10 @@ public class VistaUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         listapu = new LinkedList<>();
         listau = new LinkedList<>();
+        jDateInscripcion.getDateEditor().setEnabled(false);
+        jDateNacimiento.getDateEditor().setEnabled(false);
+
+
 
     }
 
@@ -450,6 +455,8 @@ public class VistaUsuario extends javax.swing.JFrame {
 
     private void btninsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninsertarActionPerformed
 
+        jDateInscripcion.setCalendar(Calendar.getInstance());
+        jDateNacimiento.setCalendar(Calendar.getInstance());
         String nombre1 = jTextField1.getText();
         String nombre2 = jTextField2.getText();
         String apellido1 = jTextField3.getText();
@@ -459,6 +466,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         String correo_usuario = jTextField7.getText();
         String contraseña_usuario = jPasswordField1.getText();
         String nombrePais = jComboBox1.getSelectedItem().toString();
+
         int idp = 0;
 
         Date Fecha_Nacimiento2 = jDateNacimiento.getDate();
@@ -481,21 +489,18 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         }
 
-        Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);
-        ControlUsuario objcu = new ControlUsuario();
-        boolean t = objcu.insertarUsuario(objUsuario);
-        boolean valido = false;
-
-        if (nombre1.isEmpty()  || apellido1.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
+        if (nombre1.isEmpty() || apellido1.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Por ingrese los campos obligatorios", "ERROR", JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-
-        if (t == true && valido == false) {
-            JOptionPane.showMessageDialog(rootPane, "Se inserto el usuario con exito");
-        } else {
             JOptionPane.showMessageDialog(rootPane, "No se Inserto el usuario");
+        } else {
+            Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);
+            ControlUsuario objcu = new ControlUsuario();
+            boolean t = objcu.insertarUsuario(objUsuario);
+
+            if (t == true) {
+                JOptionPane.showMessageDialog(rootPane, "Se inserto el usuario con exito");
+            }
         }
 
 
@@ -637,19 +642,17 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         }
 
-        boolean t1 = objmu.modificarUsuario(select, nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, idpais);
-        boolean valido = false;
-
-        if (nombre1.isEmpty() || nombre2.isEmpty() || apellido.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo.isEmpty() || contraseña.isEmpty()) {
+        if (nombre1.isEmpty() || apellido.isEmpty() || nombre_usuario.isEmpty() || correo.isEmpty() || contraseña.isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *", "ERROR", JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-
-        if (t1 == true && valido == false) {
-            JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");
-        } else {
             JOptionPane.showMessageDialog(this, "No se modifico el usuario");
+
+        } else {
+            boolean t1 = objmu.modificarUsuario(select, nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, idpais);
+
+            if (t1 == true) {
+                JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");
+            }
         }
 
     }//GEN-LAST:event_btnmodificarActionPerformed
@@ -709,24 +712,23 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         }
 
-        Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);
-        ControlUsuario objcu = new ControlUsuario();
-        boolean t = objcu.insertarUsuario(objUsuario);
-        boolean valido = false;
-
         if (nombre1.isEmpty() || apellido1.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios", "ERROR", JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-        if (t == true && valido == false) {
-            JOptionPane.showMessageDialog(rootPane, "Registro exitoso");
-            JOptionPane.showMessageDialog(this, "Por favor inicia sesion");
-            VistaLogin vl = new VistaLogin();
-            this.dispose();
-            vl.setVisible(true);
-        } else {
             JOptionPane.showMessageDialog(rootPane, "Registro no completado");
+
+        } else {
+            Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);
+            ControlUsuario objcu = new ControlUsuario();
+            boolean t = objcu.insertarUsuario(objUsuario);
+
+            if (t == true) {
+                JOptionPane.showMessageDialog(rootPane, "Registro exitoso");
+                JOptionPane.showMessageDialog(this, "Por favor inicia sesion");
+                VistaLogin vl = new VistaLogin();
+                this.dispose();
+                vl.setVisible(true);
+            }
         }
 
     }//GEN-LAST:event_btnregistActionPerformed
