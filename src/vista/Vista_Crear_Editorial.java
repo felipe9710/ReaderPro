@@ -9,6 +9,7 @@ package vista;
 import control.Control_Editorial;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 import modelo.Editorial;
@@ -27,6 +28,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         listaE = new LinkedList<>();
+        jDateChooser1.getDateEditor().setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -325,7 +327,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     private void jButtonInsertEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertEditorialActionPerformed
       
         //------------BOTON-------------------
-        
+    jDateChooser1.setCalendar(Calendar.getInstance());
     Control_Editorial objcE=new Control_Editorial();
         
     String nombre_editorial=jTextNombreE.getText();
@@ -389,19 +391,19 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         Control_Editorial objmpn = new Control_Editorial();
         String selected = idE.getText();
         
+        
+         if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE); 
+        }else{
+        
         boolean t1 = objmpn.modificarEditorial( selected,nombre_editorial,telefono_E,direccion_E,correo_E,Fecha_Creacion_Editoria4);
-        boolean valido = false;
-        if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
-            JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-
-        if (t1 == true && valido == false) {
+       
+        if (t1 == true ) {
             JOptionPane.showMessageDialog(this, "Se modifico la editorial");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico la editorial");
         }
-        
+        }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed

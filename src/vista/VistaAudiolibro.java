@@ -12,6 +12,7 @@ import control.Control_Editorial;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 import modelo.Audiolibro;
 import modelo.Categoria;
@@ -48,6 +49,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         listN = new LinkedList<>();
         listaE = new LinkedList<>();
         listaC = new LinkedList<>();
+        jDateChooser1.getDateEditor().setEnabled(false);
     }
 
     /**
@@ -532,24 +534,25 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnAgregarAudiolibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAudiolibroActionPerformed
-        
-        String titulo = jTextFieldTitulo.getText();
+     String titulo = jTextFieldTitulo.getText();
         //String fecha_creacion = jDateChooser1.getText();
+         jDateChooser1.setCalendar(Calendar.getInstance());
          Date fecha_creacion2 = jDateChooser1.getDate();
     
+        
+         
          long d=fecha_creacion2.getTime();
     
          java.sql.Date fecha_creacion= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
             
+         
+         
         String num_paginas = jTextFieldNPaginas.getText();
-            int num = Integer.parseInt (num_paginas);
             
-            
-            
+          
             
         String duracion_total = jTextFieldDuracion.getText();
-            double dur= Double.parseDouble(duracion_total);
-        
+                  
             
         String portada = jTextFieldPortada.getText();
         String contraportada = jTextFieldContrportada.getText();
@@ -561,7 +564,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String numCapitulos = jTextFieldnumCap.getText();
         String idioma = jTextFieldIDIOMA.getText();
         String reproducciones = jTextFieldReproducciones.getText();
-            int repr=Integer.parseInt (reproducciones);
         String id_narradorAF = jComboBoxNarrador.getSelectedItem().toString();
         String id_editorialAF = jComboBoxEditorial.getSelectedItem().toString();
         String id_categoriaAF = jComboBoxCategoria.getSelectedItem().toString();
@@ -604,13 +606,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
               boolean Fechavacio;
             //----VALIDAR (VACIO)---------
             
-            
-            
-
-             
-             
-             
-             
+                         
                     
              //----VALIDAR (VACIO)---------
              
@@ -625,29 +621,28 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String idiomaV = jTextFieldIDIOMA.getText().trim();
         String reproduccionesV = jTextFieldReproducciones.getText().trim();
         String fecha=jDateChooser1.getDate().toString().trim();
+              
         
          
        //Si no ha escrito nada
-        if( (titulo.isEmpty()) || (num_paginas.isEmpty())  || (duracion_total.isEmpty()) || (portada.length()== 0) || (contraportada.length()== 0) || (sipnosis.length()== 0) || (numCapitulos.length()== 0) || (idioma.length()== 0) || (reproducciones.length()==0) || (fecha.length()==0)) {
-        JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
-        vacio=true;
-        }else{
-        vacio=false;
+        if( (TituloV.isEmpty()) || (num_paginasV.isEmpty())  || (duracion_totalV.isEmpty()) || (portadaV.length()== 0) || (contraportadaV.length()== 0) || (sipnosisV.length()== 0) || (numCapitulosV.length()== 0) || (idiomaV.length()== 0) || (reproduccionesV.length()==0) ) {
         
-        }
+        JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
+      
+        }else{
              
         
-        Audiolibro objAL = new Audiolibro(titulo,fecha_creacion,num,dur,portada,contraportada,calificacion,sipnosis,numCapitulos,idioma,repr,idN,idE,idC);
+        Audiolibro objAL = new Audiolibro(titulo,fecha_creacion,Integer.parseInt(num_paginas),Double.parseDouble(duracion_total),portada,contraportada,calificacion,sipnosis,numCapitulos,idioma,Integer.parseInt (reproducciones),idN,idE,idC);
         
         ControlAudiolibro objcu = new ControlAudiolibro();
         boolean t = objcu.insertar_Audiolibro(objAL);
         
-        if (t == true && vacio==false  ) {
+        if (t == true   ) {
             JOptionPane.showMessageDialog(rootPane, "Se inserto el AudioLibro con exito");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se Inserto el AudioLibro");
         }  
-           
+        }
     }//GEN-LAST:event_btnAgregarAudiolibroActionPerformed
 
     private void jComboBoxClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClasificacionActionPerformed
