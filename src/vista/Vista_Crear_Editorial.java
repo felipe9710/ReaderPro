@@ -85,6 +85,12 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Direccion de la editorial:");
 
+        jTextTelefonoE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextTelefonoEKeyTyped(evt);
+            }
+        });
+
         jTextCorreoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCorreoEActionPerformed(evt);
@@ -94,6 +100,11 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jTextNombreE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNombreEActionPerformed(evt);
+            }
+        });
+        jTextNombreE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNombreEKeyTyped(evt);
             }
         });
 
@@ -241,20 +252,13 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addGap(5, 5, 5))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -265,20 +269,38 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                                         .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(idE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextDireccionE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                            .addComponent(idE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(jLabel5))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jTextNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel8)
+                                                        .addGap(10, 10, 10)))
+                                                .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addGap(7, 7, 7)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(jTextDireccionE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(4, 4, 4)))))
                                 .addGap(8, 8, 8)
                                 .addComponent(jTextCorreoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(39, 39, 39)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonInsertEditorial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtoNBorrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,9 +340,14 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     java.sql.Date Fecha_Creacion_Editorial= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
     
         boolean t = objcE.insertar_Editorial(nombre_editorial,telefono_E,direccion_E,correo_E, Fecha_Creacion_Editorial );
+        boolean valido = false;
+        if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No deben haber espacios en blanco","ERROR",JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
 
-        if (t == true) {
-            JOptionPane.showMessageDialog(this, "Se inserto la Editorial");
+        if (t == true && valido == false) {
+            JOptionPane.showMessageDialog(this, "Se inserto la Editorial con exito");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto la Editorial");
         }
@@ -464,6 +491,29 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         vmp.setVisible(true);
         
     }//GEN-LAST:event_btnmpActionPerformed
+
+    private void jTextTelefonoEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextTelefonoEKeyTyped
+        
+        char validar=evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor ingresa solo numeros");
+        }
+        
+    }//GEN-LAST:event_jTextTelefonoEKeyTyped
+
+    private void jTextNombreEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombreEKeyTyped
+        
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+        
+    }//GEN-LAST:event_jTextNombreEKeyTyped
                                     
 
 

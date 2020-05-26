@@ -136,6 +136,18 @@ public class VistaUsuario extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel12.setText("Fecha de inscripción:");
 
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
+
         btninsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
         btninsertar.setBorderPainted(false);
         btninsertar.setContentAreaFilled(false);
@@ -146,6 +158,18 @@ public class VistaUsuario extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -277,43 +301,37 @@ public class VistaUsuario extends javax.swing.JFrame {
                                 .addGap(52, 52, 52)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
-                                            .addComponent(jLabel12))
-                                        .addGap(29, 29, 29))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel9))
-                                        .addGap(39, 39, 39)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10))
+                                        .addGap(29, 29, 29)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jDateNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(39, 39, 39)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(btninsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                                    .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(96, 96, 96)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblmenu)
-                                                    .addComponent(lblprincip)
-                                                    .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(jDateInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jDateInscripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btninsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))))
                 .addContainerGap(47, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnregist, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
+                .addGap(88, 88, 88)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblmenu)
+                    .addComponent(lblprincip)
+                    .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,15 +343,14 @@ public class VistaUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblid)
+                    .addComponent(idu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblid)
-                            .addComponent(idu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,47 +371,52 @@ public class VistaUsuario extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(20, 20, 20)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(jLabel10)
+                                    .addGap(97, 97, 97))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel9))
+                                    .addGap(24, 24, 24)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel9)
-                                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(btninsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(23, 23, 23)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jLabel10)
-                                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(24, 24, 24)
                                                     .addComponent(jLabel11))
-                                                .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(jDateNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(29, 29, 29)
-                                    .addComponent(jLabel12))
-                                .addComponent(jDateInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(165, 165, 165)
-                                .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jDateNacimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(29, 29, 29)
+                                            .addComponent(jLabel12))
+                                        .addComponent(jDateInscripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btninsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnregist, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblmenu)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblprincip)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnregist, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
@@ -462,7 +484,15 @@ public class VistaUsuario extends javax.swing.JFrame {
         Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);
         ControlUsuario objcu = new ControlUsuario();
         boolean t = objcu.insertarUsuario(objUsuario);
-        if (t == true) {
+        boolean valido = false;
+
+        if (nombre1.isEmpty() || nombre2.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Por favor diligencia todos los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
+
+        if (t == true && valido == false) {
             JOptionPane.showMessageDialog(rootPane, "Se inserto el usuario con exito");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se Inserto el usuario");
@@ -675,26 +705,80 @@ public class VistaUsuario extends javax.swing.JFrame {
         Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);
         ControlUsuario objcu = new ControlUsuario();
         boolean t = objcu.insertarUsuario(objUsuario);
-        if (t == true) {
+        boolean valido = false;
+
+        if (nombre1.isEmpty() || nombre2.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Por favor diligencia todos los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
+        if (t == true && valido == false) {
             JOptionPane.showMessageDialog(rootPane, "Registro exitoso");
+            JOptionPane.showMessageDialog(this, "Por favor inicia sesion");
+            VistaLogin vl = new VistaLogin();
+            this.dispose();
+            vl.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Registro no completado");
         }
-        
-        JOptionPane.showMessageDialog(this, "Por favor inicia sesion");
-        VistaLogin vl = new VistaLogin();
-        this.dispose();
-        vl.setVisible(true);
 
     }//GEN-LAST:event_btnregistActionPerformed
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
-        
+
         VistaLogin vl = new VistaLogin();
         this.dispose();
         vl.setVisible(true);
-        
+
     }//GEN-LAST:event_btnregresarActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments

@@ -265,6 +265,15 @@ public class VistaLogin extends javax.swing.JFrame {
       VistaUsuario vu = new VistaUsuario();
         this.dispose();//CERAR VENTANA ACTUAL
         vu.setVisible(true);
+        vu.btninsertar.setVisible(false);
+        vu.btnmodificar.setVisible(false);
+        vu.btnbuscar.setVisible(false);
+        vu.btneliminar.setVisible(false);
+        vu.btnmp.setVisible(false);
+        vu.lblmenu.setVisible(false);
+        vu.lblprincip.setVisible(false);
+        vu.lblid.setVisible(false);
+        vu.idu.setVisible(false);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
