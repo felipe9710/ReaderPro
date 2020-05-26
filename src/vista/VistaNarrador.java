@@ -9,6 +9,7 @@ import control.ControlNarrador;
 import control.ControlPais_Narrador;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Pais_Narrador;
@@ -31,6 +32,8 @@ public class VistaNarrador extends javax.swing.JFrame {
         initComponents();
         listapu = new LinkedList<>();
         listaN = new LinkedList<>();
+        jDateChooser1.getDateEditor().setEnabled(false);
+
     }
 
     /**
@@ -321,6 +324,8 @@ public class VistaNarrador extends javax.swing.JFrame {
        
     private void btnAgregarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNarradorActionPerformed
         ControlNarrador objcE=new ControlNarrador();
+    
+    jDateChooser1.setCalendar(Calendar.getInstance());//Setiar tiempo si es que no se selecciona nada
         
     String nombre_Narrador1=nombreNarrador1.getText();
     String nombre_Narrado2=nombreNarrador2.getText();
@@ -343,6 +348,11 @@ public class VistaNarrador extends javax.swing.JFrame {
     
     java.sql.Date fecha_nacimiento_narrador= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time    
 
+    
+    if(nombreNarrador1.getText().isEmpty() || nombreNarrador2.getText().isEmpty() ||apellidoNarrador1.getText().isEmpty() || apellidoNarrador2.getText().isEmpty()  ){
+    JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
+    }else{
+        
     Narrador objNarrador = new Narrador(nombre_Narrador1, nombre_Narrado2, apellido_Narrado1, apellido_Narrado2, fecha_nacimiento_narrador, idn);
         ControlNarrador objcu = new ControlNarrador();
         boolean t = objcu.insertar_Narrador(objNarrador);
@@ -352,6 +362,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto el narrador");
         }
+    }
     }//GEN-LAST:event_btnAgregarNarradorActionPerformed
 
     private void btnLimpiarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarNarradorActionPerformed
@@ -378,6 +389,10 @@ public class VistaNarrador extends javax.swing.JFrame {
     
          java.sql.Date fecha_nacimiento_narrador= new java.sql.Date(f);
          
+         
+         if(nombreNarrador1.getText().isEmpty() || nombreNarrador2.getText().isEmpty() ||apellidoNarrador1.getText().isEmpty() || apellidoNarrador2.getText().isEmpty()  ){
+    JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
+    }else{        
         ControlNarrador objmpn = new ControlNarrador();
         String selected = idn.getText();
         
@@ -388,6 +403,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el narrador");
         }
+         }
     }//GEN-LAST:event_btnModificarNarradorActionPerformed
 
     private void btnEliminarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarNarradorActionPerformed
