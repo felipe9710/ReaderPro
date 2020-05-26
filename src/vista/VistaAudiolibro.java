@@ -127,6 +127,17 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Número de páginas:");
 
+        jTextFieldnumCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldnumCapActionPerformed(evt);
+            }
+        });
+        jTextFieldnumCap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldnumCapKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Portada:");
 
@@ -178,6 +189,12 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jTextFieldNPaginas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldNPaginasKeyTyped(evt);
+            }
+        });
+
+        jTextFieldDuracion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDuracionKeyTyped(evt);
             }
         });
 
@@ -245,6 +262,12 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel15.setText("Reproducciones:");
         jLabel15.setToolTipText("");
+
+        jTextFieldReproducciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldReproduccionesKeyTyped(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel16.setText("Calificación:");
@@ -362,7 +385,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel13)
-                                    .addComponent(jLabel10))
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel6))
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldIDIOMA, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,11 +400,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6)
-                                .addGap(208, 208, 208))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -398,7 +418,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -603,10 +622,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         }
             
-             boolean vacio;
-              boolean Fechavacio;
-            //----VALIDAR (VACIO)---------
-            
+         
                          
                     
              //----VALIDAR (VACIO)---------
@@ -621,8 +637,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String numCapitulosV = jTextFieldnumCap.getText().trim();
         String idiomaV = jTextFieldIDIOMA.getText().trim();
         String reproduccionesV = jTextFieldReproducciones.getText().trim();
-        String fecha=jDateChooser1.getDate().toString().trim();
-              
+                    
         
          
        //Si no ha escrito nada
@@ -858,9 +873,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         
         
         String num_paginas = jTextFieldNPaginas.getText();
-                int num = Integer.parseInt (num_paginas);
         String duracion_total = jTextFieldDuracion.getText();
-                double dur= Double.parseDouble(duracion_total);
         String portada = jTextFieldPortada.getText();
         String contraportada = jTextFieldContrportada.getText();
         String calificacion = jComboBoxClasificacion.getSelectedItem().toString();
@@ -868,7 +881,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String numCapitulos = jTextFieldnumCap.getText();
         String idioma = jTextFieldIDIOMA.getText();
         String reproducciones = jTextFieldReproducciones.getText();
-                int repr=Integer.parseInt (reproducciones);
         String id_narradorAF = jComboBoxNarrador.getSelectedItem().toString();
         String id_editorialAF = jComboBoxEditorial.getSelectedItem().toString();
         String id_categoriaAF = jComboBoxCategoria.getSelectedItem().toString();
@@ -914,18 +926,21 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         
         
         
+        if( (jTextFieldTitulo.getText().isEmpty()) || (jTextFieldNPaginas.getText().isEmpty())  || (jTextFieldDuracion.getText().isEmpty()) || (jTextFieldPortada.getText().isEmpty()) || (jTextFieldContrportada.getText().isEmpty()) || (JSinopsis.getText().isEmpty()) || (jTextFieldnumCap.getText().isEmpty()) || (jTextFieldIDIOMA.getText().isEmpty()) || (jTextFieldReproducciones.getText().isEmpty()) ) {
         
+        JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
+      
+        }else{
 
-        boolean t1 = objmu.modificarAudioLibro(select,titulo,fecha_creacion,num,dur,portada,contraportada,calificacion,sipnosis,numCapitulos,idioma,repr,idN,idE,idC);
+        boolean t1 = objmu.modificarAudioLibro(select,titulo,fecha_creacion,Integer.parseInt (num_paginas),Double.parseDouble(duracion_total),portada,contraportada,calificacion,sipnosis,numCapitulos,idioma,Integer.parseInt (reproducciones),idN,idE,idC);
 
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se modifico el Audio Libro con exito");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el Audio Libro con exito");
         }
-        
-        
-        
+        }
+  
     }//GEN-LAST:event_btnModificarAudiolibroActionPerformed
 
     private void jTextFieldContrportadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContrportadaActionPerformed
@@ -967,6 +982,60 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
+
+    private void jTextFieldDuracionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDuracionKeyTyped
+        // TODO add your handling code here:
+        
+           //VALIDAAAA QUE SOLO NUMEROS!!!!
+        char validar=evt.getKeyChar();
+
+        if(Character.isLetter(validar)){
+
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane,"Ingrese un valor valido");
+        }
+        
+    }//GEN-LAST:event_jTextFieldDuracionKeyTyped
+
+    private void jTextFieldnumCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldnumCapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldnumCapActionPerformed
+
+    private void jTextFieldnumCapKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldnumCapKeyTyped
+        // TODO add your handling code here:
+        
+           //VALIDAAAA QUE SOLO NUMEROS!!!!
+        char validar=evt.getKeyChar();
+
+        if(Character.isLetter(validar)){
+
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane,"Ingrese un valor valido");
+        }
+        
+        
+    }//GEN-LAST:event_jTextFieldnumCapKeyTyped
+
+    private void jTextFieldReproduccionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldReproduccionesKeyTyped
+        // TODO add your handling code here:
+        
+           //VALIDAAAA QUE SOLO NUMEROS!!!!
+        char validar=evt.getKeyChar();
+
+        if(Character.isLetter(validar)){
+
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane,"Ingrese un valor valido");
+        }
+        
+        
+    }//GEN-LAST:event_jTextFieldReproduccionesKeyTyped
 
     /**
      * @param args the command line arguments

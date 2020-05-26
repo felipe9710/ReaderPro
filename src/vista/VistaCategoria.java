@@ -255,21 +255,25 @@ public class VistaCategoria extends javax.swing.JFrame {
         String nombreCategoria = jTextField1.getText();
         
              
-        Categoria objC = new Categoria(nombreCategoria);
-        ControlCategoria objcu = new ControlCategoria();
+        
 
-        boolean t = objcu.insertarCategoria(objC);
-        boolean valido = false;
+        
+        
+      
         if(nombreCategoria.isEmpty()){
             
-            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco");
-            valido = true;
-        }
+            JOptionPane.showMessageDialog(this, "No deben haber espacios en blanco","ERROR",JOptionPane.ERROR_MESSAGE);
+                       
+        }else{
+              Categoria objC = new Categoria(nombreCategoria);
+              ControlCategoria objcu = new ControlCategoria();
+              boolean t = objcu.insertarCategoria(objC);
 
-        if (t == true && valido == false) {
+        if (t == true ) {
             JOptionPane.showMessageDialog(this, "Se inserto la categoria del audiolibro");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto la categoria del audiolibro");
+        }
         }
     }//GEN-LAST:event_jButtoiNSERTARActionPerformed
 
@@ -315,6 +319,13 @@ public class VistaCategoria extends javax.swing.JFrame {
         String categoria = jTextField1.getText();
         ControlCategoria objmpn = new ControlCategoria();
         String selected = idcg.getText();
+        
+         if(jTextField1.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "No deben haber espacios en blanco","ERROR",JOptionPane.ERROR_MESSAGE);
+                       
+        }else{
+        
         boolean t1 = objmpn.modificarCategoria(selected, categoria);
 
         if (t1 == true) {
@@ -322,6 +333,7 @@ public class VistaCategoria extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico la categoria");
         }
+         }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
