@@ -44,6 +44,10 @@ public class Audiolibro {
     public Audiolibro() {
     }
 
+    public Audiolibro(String titulo) {
+        this.titulo = titulo;
+    }
+
     public Audiolibro(int id_audiolibro, String titulo, Date fecha_creacion, int num_paginas, double duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
         this.id_audiolibro = id_audiolibro;
         this.titulo = titulo;
@@ -345,6 +349,32 @@ public class Audiolibro {
         }
         return t2;
 
+    }
+
+    public boolean consultarTitulo(Audiolibro objaudiol, String sql) {
+        
+        boolean t3 = false;
+        BaseDatos objCon = new BaseDatos();
+        String titulo = "";
+        ResultSet rs = null;
+        if (objCon.crearConexion()) {
+            try {
+                rs = objCon.getSt().executeQuery(sql);
+                while (rs.next()) {
+
+                    titulo = rs.getString("titulo");
+                    if(objaudiol.getTitulo().equals(titulo)){
+                    
+                        t3 = true;
+                        
+                    }
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return t3;
+        
     }
         
 }

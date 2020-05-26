@@ -577,6 +577,9 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String id_narradorAF = jComboBoxNarrador.getSelectedItem().toString();
         String id_editorialAF = jComboBoxEditorial.getSelectedItem().toString();
         String id_categoriaAF = jComboBoxCategoria.getSelectedItem().toString();
+        Audiolibro objaudiol = new Audiolibro(titulo);
+        ControlAudiolibro objcaul = new ControlAudiolibro();
+        boolean t3 = objcaul.consultarTitulo(objaudiol);
 
         int idN = 0;
         int idE = 0;
@@ -627,12 +630,16 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(rootPane, "No se Inserto el AudioLibro");
         } else {
-            Audiolibro objAL = new Audiolibro(titulo, fecha_creacion, Integer.parseInt(num_paginas), Double.parseDouble(duracion_total), portada, contraportada, calificacion, sipnosis, numCapitulos, idioma, Integer.parseInt(reproducciones), idN, idE, idC);
-            ControlAudiolibro objcu = new ControlAudiolibro();
-            boolean t = objcu.insertar_Audiolibro(objAL);
-            if (t == true) {
-                JOptionPane.showMessageDialog(rootPane, "Se inserto el AudioLibro con exito");
-            } 
+            if (t3 == true) {
+                JOptionPane.showMessageDialog(this, "titulo ya registrado, por favor usa otro", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Audiolibro objAL = new Audiolibro(titulo, fecha_creacion, Integer.parseInt(num_paginas), Double.parseDouble(duracion_total), portada, contraportada, calificacion, sipnosis, numCapitulos, idioma, Integer.parseInt(reproducciones), idN, idE, idC);
+                ControlAudiolibro objcu = new ControlAudiolibro();
+                boolean t = objcu.insertar_Audiolibro(objAL);
+                if (t == true) {
+                    JOptionPane.showMessageDialog(rootPane, "Se inserto el AudioLibro con exito");
+                }
+            }
         }
     }//GEN-LAST:event_btnAgregarAudiolibroActionPerformed
 
@@ -646,7 +653,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         //Creamos nuestra variable archivo en la cual podremos usar todos los metodos de la clase jFileChooser
         JFileChooser archivo = new JFileChooser();
         //Si deseamos crear filtros para la selecion de archivos
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG*.PNG)", "jpg", "jpeg","png");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG*.PNG)", "jpg", "jpeg", "png");
         //Si deseas que se muestre primero los filtros usa la linea q esta abajo de esta.
         archivo.setFileFilter(filtro);
         // Agregamos el Filtro pero cuidado se mostrara despues de todos los archivos
@@ -675,7 +682,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         //Creamos nuestra variable archivo en la cual podremos usar todos los metodos de la clase jFileChooser
         JFileChooser archivo2 = new JFileChooser();
         //Si deseamos crear filtros para la selecion de archivos
-        FileNameExtensionFilter filtro2 = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG,*.PNG)", "jpg", "jpeg","png");
+        FileNameExtensionFilter filtro2 = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG,*.PNG)", "jpg", "jpeg", "png");
         //Si deseas que se muestre primero los filtros usa la linea q esta abajo de esta.
         archivo2.setFileFilter(filtro2);
         // Agregamos el Filtro pero cuidado se mostrara despues de todos los archivos
@@ -841,6 +848,9 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String id_narradorAF = jComboBoxNarrador.getSelectedItem().toString();
         String id_editorialAF = jComboBoxEditorial.getSelectedItem().toString();
         String id_categoriaAF = jComboBoxCategoria.getSelectedItem().toString();
+        Audiolibro objaudiol = new Audiolibro(titulo);
+        ControlAudiolibro objcaul = new ControlAudiolibro();
+        boolean t3 = objcaul.consultarTitulo(objaudiol);
 
         int idN = 0;
         int idE = 0;
@@ -878,10 +888,14 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(this, "No se modifico el Audiolibro");
         } else {
-            boolean t1 = objmu.modificarAudioLibro(select, titulo, fecha_creacion, Integer.parseInt(num_paginas), Double.parseDouble(duracion_total), portada, contraportada, calificacion, sipnosis, numCapitulos, idioma, Integer.parseInt(reproducciones), idN, idE, idC);
-            if (t1 == true) {
-                JOptionPane.showMessageDialog(this, "Se modifico el Audiolibro con exito");
-            } 
+            if (t3 == true) {
+                JOptionPane.showMessageDialog(this, "titulo ya registrado, por favor usa otro", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                boolean t1 = objmu.modificarAudioLibro(select, titulo, fecha_creacion, Integer.parseInt(num_paginas), Double.parseDouble(duracion_total), portada, contraportada, calificacion, sipnosis, numCapitulos, idioma, Integer.parseInt(reproducciones), idN, idE, idC);
+                if (t1 == true) {
+                    JOptionPane.showMessageDialog(this, "Se modifico el Audiolibro con exito");
+                }
+            }
         }
 
     }//GEN-LAST:event_btnModificarAudiolibroActionPerformed
@@ -978,7 +992,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldReproduccionesKeyTyped
 
     private void jTextFieldIDIOMAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIDIOMAKeyTyped
-        
+
         char validar = evt.getKeyChar();
         if (Character.isDigit(validar)) {
 
@@ -986,7 +1000,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
         }
-        
+
     }//GEN-LAST:event_jTextFieldIDIOMAKeyTyped
 
     /**

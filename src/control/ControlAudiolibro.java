@@ -58,6 +58,17 @@ public class ControlAudiolibro {
         return t2;
         
     }
+
+    public boolean consultarTitulo(Audiolibro objaudiol) {
+        
+        boolean t3 = false;
+        Audiolibro objaudioLibro = new Audiolibro();
+        String sql = "";
+        sql = "select titulo from audiolibros where titulo ='" +objaudiol.getTitulo()+"';";
+        t3 = objaudioLibro.consultarTitulo(objaudiol,sql);
+        return t3;
+        
+    }
     
     
     
