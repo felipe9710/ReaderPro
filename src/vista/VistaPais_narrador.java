@@ -5,10 +5,13 @@
  */
 package vista;
 
+import control.ControlNarrador;
 import control.ControlPais_Narrador;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Narrador;
 import modelo.Pais_Narrador;
 
 /**
@@ -18,7 +21,7 @@ import modelo.Pais_Narrador;
 public class VistaPais_narrador extends javax.swing.JFrame {
 
     LinkedList<Pais_Narrador> listaPais_narradores;
-
+    LinkedList<Narrador> listaN;
     /**
      * Creates new form VistaPaise_narrador
      */
@@ -28,6 +31,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         listaPais_narradores = new LinkedList<>();
+        listaN = new LinkedList<>();
     }
 
     /**
@@ -332,15 +336,36 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     //de tomar los valores del txtNombrePaisNarrador para posteriormente eliminarlos
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
-        ControlPais_Narrador objepn = new ControlPais_Narrador();
-        String select = idpn.getText();
-        boolean t1 = objepn.eliminarPais_narrador(select);
+        ControlNarrador obju = new ControlNarrador();
+         listaN = obju.consultarNarrador();
+        boolean oj = false;
+        Object[] fila2=null;
+        boolean t1=false;
+         String select = idpn.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el pais del narrador");
+        ControlPais_Narrador objepn = new ControlPais_Narrador();
+           for (int i = 0; i < listaN.size(); i++) {
+         r=listaN.get(i).getId_PaisNF();
+         if(r==select2){
+        
+         oj=true;
+         break;
+         }else{
+          oj=false;
+         }
+           }
+           if(oj==false){
+             t1 = objepn.eliminarPais_narrador(select);
+           }
+                  
+        if (t1 == true && oj==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el pais del narrador");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el pais del narrador");
-        }
+            JOptionPane.showMessageDialog(this, "No se eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
