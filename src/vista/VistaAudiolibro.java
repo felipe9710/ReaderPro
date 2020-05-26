@@ -201,6 +201,11 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 jTextFieldIDIOMAActionPerformed(evt);
             }
         });
+        jTextFieldIDIOMA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldIDIOMAKeyTyped(evt);
+            }
+        });
 
         btnAgregarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
         btnAgregarAudiolibro.setBorderPainted(false);
@@ -971,6 +976,18 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTextFieldReproduccionesKeyTyped
+
+    private void jTextFieldIDIOMAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIDIOMAKeyTyped
+        
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+        
+    }//GEN-LAST:event_jTextFieldIDIOMAKeyTyped
 
     /**
      * @param args the command line arguments
