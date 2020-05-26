@@ -486,9 +486,9 @@ public class VistaUsuario extends javax.swing.JFrame {
         boolean t = objcu.insertarUsuario(objUsuario);
         boolean valido = false;
 
-        if (nombre1.isEmpty() || nombre2.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
+        if (nombre1.isEmpty()  || apellido1.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "Por favor diligencia todos los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por ingrese los campos obligatorios", "ERROR", JOptionPane.ERROR_MESSAGE);
             valido = true;
         }
 
@@ -642,7 +642,7 @@ public class VistaUsuario extends javax.swing.JFrame {
 
         if (nombre1.isEmpty() || nombre2.isEmpty() || apellido.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo.isEmpty() || contraseña.isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "Por favor diligencia todos los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *", "ERROR", JOptionPane.ERROR_MESSAGE);
             valido = true;
         }
 
@@ -714,9 +714,9 @@ public class VistaUsuario extends javax.swing.JFrame {
         boolean t = objcu.insertarUsuario(objUsuario);
         boolean valido = false;
 
-        if (nombre1.isEmpty() || nombre2.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
+        if (nombre1.isEmpty() || apellido1.isEmpty() || nombre_usuario.isEmpty() || correo_usuario.isEmpty() || contraseña_usuario.isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "Por favor diligencia todos los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios", "ERROR", JOptionPane.ERROR_MESSAGE);
             valido = true;
         }
         if (t == true && valido == false) {
