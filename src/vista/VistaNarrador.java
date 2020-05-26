@@ -167,7 +167,7 @@ public class VistaNarrador extends javax.swing.JFrame {
             }
         });
 
-        jDateChooser1.setDateFormatString("dd/mm/yyyy");
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Pais Narrador:");
@@ -373,7 +373,7 @@ public class VistaNarrador extends javax.swing.JFrame {
             boolean t = objcu.insertar_Narrador(objNarrador);
 
             if (t == true) {
-                JOptionPane.showMessageDialog(this, "Se inserto el narrador");
+                JOptionPane.showMessageDialog(this, "Se inserto el narrador con exito");
             }
         }
     }//GEN-LAST:event_btnAgregarNarradorActionPerformed
