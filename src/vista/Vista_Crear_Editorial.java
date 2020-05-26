@@ -390,8 +390,13 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         String selected = idE.getText();
         
         boolean t1 = objmpn.modificarEditorial( selected,nombre_editorial,telefono_E,direccion_E,correo_E,Fecha_Creacion_Editoria4);
+        boolean valido = false;
+        if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
 
-        if (t1 == true) {
+        if (t1 == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se modifico la editorial");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico la editorial");

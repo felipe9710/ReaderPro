@@ -638,11 +638,18 @@ public class VistaUsuario extends javax.swing.JFrame {
         }
 
         boolean t1 = objmu.modificarUsuario(select, nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, idpais);
+        boolean valido = false;
 
-        if (t1 == true) {
+        if (nombre1.isEmpty() || nombre2.isEmpty() || apellido.isEmpty() || apellido2.isEmpty() || nombre_usuario.isEmpty() || correo.isEmpty() || contraseña.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Por favor diligencia todos los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
+
+        if (t1 == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");
         } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el usuario con exito");
+            JOptionPane.showMessageDialog(this, "No se modifico el usuario");
         }
 
     }//GEN-LAST:event_btnmodificarActionPerformed

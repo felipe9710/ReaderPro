@@ -66,6 +66,12 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Nombre pais autor:");
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -236,8 +242,14 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         ControlPais_autor objcpa = new ControlPais_autor();
 
         boolean t = objcpa.insertarPaises_autor(nombrePais_autor);
+        boolean valido = false;
+        
+        if(nombrePais_autor.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No deben haber campos en vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
 
-        if (t == true) {
+        if (t == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se inserto el pais del autor");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto el pais del autor");
@@ -301,8 +313,14 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         ControlPais_autor objmpa = new ControlPais_autor();
         String selected = jlbIdPaisAutor.getText();
         boolean t1 = objmpa.modificarPais_autor(selected, nombrePaisA);
+        boolean valido = false;
+        
+        if(nombrePaisA.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
 
-        if (t1 == true) {
+        if (t1 == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se modifico el pais del autor");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el pais del autor");
@@ -317,6 +335,18 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         vmp.setVisible(true);
 
     }//GEN-LAST:event_btnmpActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+        
+    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments
