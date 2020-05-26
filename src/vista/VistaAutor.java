@@ -15,6 +15,7 @@ import modelo.Pais_autor;
 import modelo.Autor;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author usuario
@@ -23,7 +24,7 @@ public class VistaAutor extends javax.swing.JFrame {
 
     LinkedList<Pais_autor> listapu;
     LinkedList<Autor> listaAU;
-    
+
     /**
      * Creates new form VistaAutor
      */
@@ -32,7 +33,7 @@ public class VistaAutor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         listapu = new LinkedList<>();
         listaAU = new LinkedList<>();
-           }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,11 +92,40 @@ public class VistaAutor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Primer apellido:");
 
+        nombreAutor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreAutor1ActionPerformed(evt);
+            }
+        });
+        nombreAutor1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreAutor1KeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Segundo apellido:");
 
+        nombreAutor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreAutor2KeyTyped(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Fecha de nacimiento:");
+
+        apellidoAutor1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellidoAutor1KeyTyped(evt);
+            }
+        });
+
+        apellidoAutor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellidoAutor2KeyTyped(evt);
+            }
+        });
 
         btnAgregarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
         btnAgregarAutor.setBorderPainted(false);
@@ -307,22 +337,21 @@ public class VistaAutor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
- 
+
     private void btnAgregarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAutorActionPerformed
-       
-        
-    String nombre_autor1=nombreAutor1.getText();
-    String nombre_autor2=nombreAutor2.getText();
-    String apellido_autor1=apellidoAutor1.getText();
-    String apellido_autor2=apellidoAutor2.getText();
-    String nombrePais = jComboBox2.getSelectedItem().toString();
-     Date fecha_nacimiento_Autor2 = jDateChooser1.getDate();
-    
-    long d=fecha_nacimiento_Autor2.getTime();
-    
-    java.sql.Date fecha_nacimiento_Autor= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
-       
-    int idp = 0;
+
+        String nombre_autor1 = nombreAutor1.getText();
+        String nombre_autor2 = nombreAutor2.getText();
+        String apellido_autor1 = apellidoAutor1.getText();
+        String apellido_autor2 = apellidoAutor2.getText();
+        String nombrePais = jComboBox2.getSelectedItem().toString();
+        Date fecha_nacimiento_Autor2 = jDateChooser1.getDate();
+
+        long d = fecha_nacimiento_Autor2.getTime();
+
+        java.sql.Date fecha_nacimiento_Autor = new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
+
+        int idp = 0;
 
         for (int j = 0; j < listapu.size(); j++) {
             Pais_autor pais = listapu.get(j);
@@ -331,21 +360,27 @@ public class VistaAutor extends javax.swing.JFrame {
 
             }
         }
-    
         Autor objAutor = new Autor(nombre_autor1, nombre_autor2, apellido_autor1, apellido_autor2, fecha_nacimiento_Autor, idp);
         ControlAutor objcu = new ControlAutor();
         boolean t = objcu.insertar_Autor(objAutor);
-        if (t == true) {
+
+        boolean valido = false;
+        
+        if (nombre_autor1.isEmpty() || nombre_autor2.isEmpty() || apellido_autor1.isEmpty() || apellido_autor2.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco","Error",JOptionPane.ERROR_MESSAGE);
+            valido = true;
+        }
+        if (t == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se inserto el autor");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto el autor");
         }
-        
+
     }//GEN-LAST:event_btnAgregarAutorActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+
         ControlPais_autor objpu = new ControlPais_autor();
         listapu = objpu.consultarpaisautor();
         for (int i = 0; i < listapu.size(); i++) {
@@ -354,19 +389,19 @@ public class VistaAutor extends javax.swing.JFrame {
             jComboBox2.addItem(objetoPaisA.getNombrePaisA());
 
         }
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         // TODO add your handling code here:
-         ControlAutor obju = new ControlAutor();
+        ControlAutor obju = new ControlAutor();
         int ncolu;
         Object[] fila2;
 
         listaAU = obju.consultarAutor();
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable1.setModel(modelo);
-        
+
         modelo.addColumn("id Autor");
         modelo.addColumn("Nombre Autor1");
         modelo.addColumn("nombre Autor2");
@@ -386,26 +421,25 @@ public class VistaAutor extends javax.swing.JFrame {
             fila2[4] = listaAU.get(i).getApellido_autor2();
             fila2[5] = listaAU.get(i).getFecha_nacimiento_Autor();
             fila2[6] = listaAU.get(i).getId_PaisAF();
-            
+
             modelo.addRow(fila2);
         }
 
-              
+
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-         int selected = jTable1.rowAtPoint(evt.getPoint());
-         
+        int selected = jTable1.rowAtPoint(evt.getPoint());
+
         idu.setText(String.valueOf(jTable1.getValueAt(selected, 0)));
         nombreAutor1.setText(String.valueOf(jTable1.getValueAt(selected, 1)));
         nombreAutor2.setText(String.valueOf(jTable1.getValueAt(selected, 2)));
         apellidoAutor1.setText(String.valueOf(jTable1.getValueAt(selected, 3)));
         apellidoAutor2.setText(String.valueOf(jTable1.getValueAt(selected, 4)));
         //jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(selected, 5)));
-        jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 6)); 
-        
-          
+        jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 6));
+
         //obtenemos la fecha de dicha fila
         String fecha = jTable1.getValueAt(selected, 5).toString();
         //creamos el formato en el que deseamos mostrar la fecha
@@ -417,13 +451,12 @@ public class VistaAutor extends javax.swing.JFrame {
             fechaN = formatoDelTexto.parse(fecha);
             //seteamos o mostramos la fecha en el JDateChooser
             jDateChooser1.setDate(fechaN);
-            
+
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnEliminarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAutorActionPerformed
@@ -437,13 +470,13 @@ public class VistaAutor extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se elimino el Autor");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnEliminarAutorActionPerformed
 
     private void btnModificarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAutorActionPerformed
         // TODO add your handling code here:
-        
+
         String select = idu.getText();
         String nombre1 = nombreAutor1.getText();
         String nombre2 = nombreAutor2.getText();
@@ -451,17 +484,14 @@ public class VistaAutor extends javax.swing.JFrame {
         String apellido2 = apellidoAutor2.getText();
         //Date fecha_nacimiento = jDateChooser1.getDate();
         String pais = jComboBox2.getSelectedItem().toString();
-        
-        
-        
+
         Date fecha_nacimiento2 = jDateChooser1.getDate();
-    
-         long f=fecha_nacimiento2.getTime();
-    
-         java.sql.Date fecha_nacimiento= new java.sql.Date(f);
-        
-         
-          int idpais =0;
+
+        long f = fecha_nacimiento2.getTime();
+
+        java.sql.Date fecha_nacimiento = new java.sql.Date(f);
+
+        int idpais = 0;
 
         for (int i = 0; i < listapu.size(); i++) {
             Pais_autor paisu = listapu.get(i);
@@ -470,11 +500,9 @@ public class VistaAutor extends javax.swing.JFrame {
 
             }
         }
-         
-         
-        
+
         ControlAutor objmu = new ControlAutor();
-        
+
         boolean t1 = objmu.modificarAutor(select, nombre1, nombre2, apellido, apellido2, fecha_nacimiento, idpais);
 
         if (t1 == true) {
@@ -482,19 +510,69 @@ public class VistaAutor extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el usuario con exito");
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btnModificarAutorActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
-        
+
         VistaMenu vmp = new VistaMenu();
         this.dispose();
         vmp.setVisible(true);
-        
+
     }//GEN-LAST:event_btnmpActionPerformed
+
+    private void nombreAutor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreAutor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreAutor1ActionPerformed
+
+    private void nombreAutor1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreAutor1KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_nombreAutor1KeyTyped
+
+    private void nombreAutor2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreAutor2KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_nombreAutor2KeyTyped
+
+    private void apellidoAutor1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoAutor1KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_apellidoAutor1KeyTyped
+
+    private void apellidoAutor2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoAutor2KeyTyped
+
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+
+    }//GEN-LAST:event_apellidoAutor2KeyTyped
 
     /**
      * @param args the command line arguments

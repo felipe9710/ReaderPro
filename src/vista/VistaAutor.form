@@ -227,6 +227,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nombreAutor1">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreAutor1ActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombreAutor1KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -237,6 +241,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nombreAutor2">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombreAutor2KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -247,8 +254,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="apellidoAutor1">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="apellidoAutor1KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="apellidoAutor2">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="apellidoAutor2KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAgregarAutor">
           <Properties>

@@ -74,6 +74,12 @@ public class VistaCategoria extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Nombre de la Categoria:");
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
         jButtoiNSERTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
         jButtoiNSERTAR.setBorderPainted(false);
         jButtoiNSERTAR.setContentAreaFilled(false);
@@ -253,8 +259,14 @@ public class VistaCategoria extends javax.swing.JFrame {
         ControlCategoria objcu = new ControlCategoria();
 
         boolean t = objcu.insertarCategoria(objC);
+        boolean valido = false;
+        if(nombreCategoria.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco");
+            valido = true;
+        }
 
-        if (t == true) {
+        if (t == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se inserto la categoria del audiolibro");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto la categoria del audiolibro");
@@ -332,6 +344,18 @@ public class VistaCategoria extends javax.swing.JFrame {
     private void idcgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idcgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idcgActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+        
+    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments

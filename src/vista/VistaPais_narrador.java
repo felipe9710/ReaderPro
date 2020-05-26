@@ -72,6 +72,11 @@ public class VistaPais_narrador extends javax.swing.JFrame {
                 txtNombrePaisNarradorActionPerformed(evt);
             }
         });
+        txtNombrePaisNarrador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombrePaisNarradorKeyTyped(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -249,8 +254,16 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         ControlPais_Narrador objcpn = new ControlPais_Narrador();
 
         boolean t = objcpn.insertarPaises_narrador(nombrePaisN);
+        boolean valido = false;
+        
+        if(nombrePaisN.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "no deben haber espacios en blanco");
+            valido = true;
+            
+        }
 
-        if (t == true) {
+        if (t == true && valido == false) {
             JOptionPane.showMessageDialog(this, "Se inserto el pais del narrador");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto el pais del narrador");
@@ -331,6 +344,18 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         vmp.setVisible(true);
         
     }//GEN-LAST:event_btnmpActionPerformed
+
+    private void txtNombrePaisNarradorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombrePaisNarradorKeyTyped
+        
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
+        }
+        
+    }//GEN-LAST:event_txtNombrePaisNarradorKeyTyped
 
     /**
      * @param args the command line arguments
