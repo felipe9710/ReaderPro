@@ -537,6 +537,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
      String titulo = jTextFieldTitulo.getText();
         //String fecha_creacion = jDateChooser1.getText();
          jDateChooser1.setCalendar(Calendar.getInstance());
+         
          Date fecha_creacion2 = jDateChooser1.getDate();
     
         

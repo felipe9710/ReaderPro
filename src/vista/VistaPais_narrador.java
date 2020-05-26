@@ -251,24 +251,24 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombrePaisN = txtNombrePaisNarrador.getText();
 
-        ControlPais_Narrador objcpn = new ControlPais_Narrador();
 
-        boolean t = objcpn.insertarPaises_narrador(nombrePaisN);
-        boolean valido = false;
-        
         if(nombrePaisN.isEmpty()){
             
             JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
-            valido = true;
+          
             
-        }
+        }else{
+        ControlPais_Narrador objcpn = new ControlPais_Narrador();
 
-        if (t == true && valido == false) {
+        boolean t = objcpn.insertarPaises_narrador(nombrePaisN);
+       
+            
+        if (t == true ) {
             JOptionPane.showMessageDialog(this, "Se inserto el pais del narrador");
         } else {
             JOptionPane.showMessageDialog(this, "No se inserto el pais del narrador");
         }
-
+        }
     }//GEN-LAST:event_btnInsertarActionPerformed
     //El metodo btnBuscarActionPerformed es el metodo del boton buscar que
     //se encarga de buscar el pais del narrador en la base de datos
@@ -312,22 +312,21 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         String nombrePaisNa = txtNombrePaisNarrador.getText();
         ControlPais_Narrador objmpn = new ControlPais_Narrador();
         String selected = idpn.getText();
-        boolean t1 = objmpn.modificarPais_narrador(selected, nombrePaisNa);
-        boolean valido = false;
+        
+      
         
         if(nombrePaisNa.isEmpty()){
             
-            JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
-            valido = true;
+            JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
             
-        }
-
-        if (t1 == true && valido == false) {
+        }else{    
+        boolean t1 = objmpn.modificarPais_narrador(selected, nombrePaisNa);
+        if (t1 == true ) {
             JOptionPane.showMessageDialog(this, "Se modifico el pais del narrador");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el pais del narrador");
         }
-
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
     //El metodo btnEliminarActionPerformed es el metodo del botón eliminar, que se encarga
     //de tomar los valores del txtNombrePaisNarrador para posteriormente eliminarlos

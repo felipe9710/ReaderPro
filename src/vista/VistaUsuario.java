@@ -680,7 +680,8 @@ public class VistaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmpActionPerformed
 
     private void btnregistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistActionPerformed
-
+        jDateInscripcion.setCalendar(Calendar.getInstance());
+        jDateNacimiento.setCalendar(Calendar.getInstance());
         String nombre1 = jTextField1.getText();
         String nombre2 = jTextField2.getText();
         String apellido1 = jTextField3.getText();
