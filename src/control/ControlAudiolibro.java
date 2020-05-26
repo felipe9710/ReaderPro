@@ -39,7 +39,7 @@ public class ControlAudiolibro {
 
     }
 
-    public boolean modificarAudioLibro(String select, String titulo, Date fecha_creacion, int num_paginas, int duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
+    public boolean modificarAudioLibro(String select, String titulo, Date fecha_creacion, int num_paginas, double duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
 
         boolean t1 = false;
         Audiolibro objmpa = new Audiolibro();
