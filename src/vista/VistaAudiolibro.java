@@ -20,6 +20,7 @@ import modelo.Narrador;
 import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -155,6 +156,18 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTituloKeyTyped(evt);
+            }
+        });
+
+        jTextFieldNPaginas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNPaginasKeyTyped(evt);
+            }
+        });
+
         btnAgregarAudiolibro.setText("Insertar");
         btnAgregarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,12 +196,14 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldPortada.setEditable(false);
         jTextFieldPortada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPortadaActionPerformed(evt);
             }
         });
 
+        jTextFieldContrportada.setEditable(false);
         jTextFieldContrportada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldContrportadaActionPerformed(evt);
@@ -215,6 +230,11 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         });
 
         jDateChooser1.setDateFormatString("yyyy/MM/d");
+        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseClicked(evt);
+            }
+        });
 
         btSeleccionar.setText("Seleccionar");
         btSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -474,8 +494,12 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             
         String num_paginas = jTextFieldNPaginas.getText();
             int num = Integer.parseInt (num_paginas);
+            
+            
+            
+            
         String duracion_total = jTextFieldDuracion.getText();
-            int dur=Integer.parseInt (duracion_total);
+            double dur= Double.parseDouble(duracion_total);
         
             
         String portada = jTextFieldPortada.getText();
@@ -526,19 +550,55 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
             }
         }
-               
-
             
+             boolean vacio;
+              boolean Fechavacio;
+            //----VALIDAR (VACIO)---------
+            
+            
+            
+
+             
+             
+             
+             
+                    
+             //----VALIDAR (VACIO)---------
+             
+       //Se elimina cualquier espacio en blanco
+         String TituloV = jTextFieldTitulo.getText().trim();
+         String num_paginasV = jTextFieldNPaginas.getText().trim();
+         String duracion_totalV = jTextFieldDuracion.getText().trim();
+         String portadaV = jTextFieldPortada.getText().trim();
+        String contraportadaV = jTextFieldContrportada.getText().trim();
+        String sipnosisV =JSinopsis.getText().trim();
+        String numCapitulosV = jTextFieldnumCap.getText().trim();
+        String idiomaV = jTextFieldIDIOMA.getText().trim();
+        String reproduccionesV = jTextFieldReproducciones.getText().trim();
+        String fecha=jDateChooser1.getDate().toString().trim();
+        
+         
+       //Si no ha escrito nada
+        if( (titulo.isEmpty()) || (num_paginas.isEmpty())  || (duracion_total.isEmpty()) || (portada.length()== 0) || (contraportada.length()== 0) || (sipnosis.length()== 0) || (numCapitulos.length()== 0) || (idioma.length()== 0) || (reproducciones.length()==0) || (fecha.length()==0)) {
+        JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
+        vacio=true;
+        }else{
+        vacio=false;
+        
+        }
+             
+        
         Audiolibro objAL = new Audiolibro(titulo,fecha_creacion,num,dur,portada,contraportada,calificacion,sipnosis,numCapitulos,idioma,repr,idN,idE,idC);
         
         ControlAudiolibro objcu = new ControlAudiolibro();
         boolean t = objcu.insertar_Audiolibro(objAL);
-        if (t == true) {
+        
+        if (t == true && vacio==false  ) {
             JOptionPane.showMessageDialog(rootPane, "Se inserto el AudioLibro con exito");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se Inserto el AudioLibro");
-        }    
-                  
+        }  
+           
     }//GEN-LAST:event_btnAgregarAudiolibroActionPerformed
 
     private void jComboBoxClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClasificacionActionPerformed
@@ -548,8 +608,22 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private void btSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeleccionarActionPerformed
         // TODO add your handling code here:
         
+       //Creamos nuestra variable archivo en la cual podremos usar todos los metodos de la clase jFileChooser
+        JFileChooser archivo = new JFileChooser();
+        //Si deseamos crear filtros para la selecion de archivos
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG)", "jpg","jpeg");
+        //Si deseas que se muestre primero los filtros usa la linea q esta abajo de esta.
+        archivo.setFileFilter(filtro);
+        // Agregamos el Filtro pero cuidado se mostrara despues de todos los archivos
+        archivo.addChoosableFileFilter(filtro);
+       
+        archivo.setDialogTitle("Abrir Archivo");
+        //Si deseamos que muestre una carpeta predetermina usa la siguiente linea
+        //File ruta = new File("D:/productos");
+        //Le implementamos a nuestro ventana de seleccion
+        //archivo.setCurrentDirectory(ruta);
         
-        JFileChooser archivo=new JFileChooser();
+        
         int ventana= archivo.showOpenDialog(null);
         if(ventana==JFileChooser.APPROVE_OPTION){
         
@@ -564,7 +638,18 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private void btSeleccionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeleccionar2ActionPerformed
         // TODO add your handling code here:
         
-        JFileChooser archivo2=new JFileChooser();
+         //Creamos nuestra variable archivo en la cual podremos usar todos los metodos de la clase jFileChooser
+        JFileChooser archivo2 = new JFileChooser();
+        //Si deseamos crear filtros para la selecion de archivos
+        FileNameExtensionFilter filtro2 = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG)", "jpg","jpeg");
+        //Si deseas que se muestre primero los filtros usa la linea q esta abajo de esta.
+        archivo2.setFileFilter(filtro2);
+        // Agregamos el Filtro pero cuidado se mostrara despues de todos los archivos
+        archivo2.addChoosableFileFilter(filtro2);
+       
+        archivo2.setDialogTitle("Abrir Archivo");
+        
+      
         int ventana2= archivo2.showOpenDialog(null);
         if(ventana2==JFileChooser.APPROVE_OPTION){
         
@@ -730,7 +815,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         String num_paginas = jTextFieldNPaginas.getText();
                 int num = Integer.parseInt (num_paginas);
         String duracion_total = jTextFieldDuracion.getText();
-                int dur=Integer.parseInt (duracion_total);
+                double dur= Double.parseDouble(duracion_total);
         String portada = jTextFieldPortada.getText();
         String contraportada = jTextFieldContrportada.getText();
         String calificacion = jComboBoxClasificacion.getSelectedItem().toString();
@@ -802,6 +887,34 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldContrportadaActionPerformed
 
+    private void jTextFieldTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTituloKeyTyped
+        // TODO add your handling code here:
+        
+        
+
+        
+        
+    }//GEN-LAST:event_jTextFieldTituloKeyTyped
+
+    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1MouseClicked
+
+    private void jTextFieldNPaginasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNPaginasKeyTyped
+        // TODO add your handling code here:
+
+        //VALIDAAAA QUE SOLO NUMEROS!!!!
+        char validar=evt.getKeyChar();
+
+        if(Character.isLetter(validar)){
+
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane,"Ingrese un valor valido");
+        }
+    }//GEN-LAST:event_jTextFieldNPaginasKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -835,6 +948,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 new VistaAudiolibro().setVisible(true);
             }
         });
+        
+        
+      
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

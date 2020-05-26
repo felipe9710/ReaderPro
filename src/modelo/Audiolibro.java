@@ -28,7 +28,7 @@ public class Audiolibro {
     private String titulo;
     private Date fecha_creacion;
     private int num_paginas;
-    private int duracion_total;
+    private double duracion_total;
     private String portada;
     private String contraportada;
     private String calificacion;
@@ -44,7 +44,7 @@ public class Audiolibro {
     public Audiolibro() {
     }
 
-    public Audiolibro(int id_audiolibro, String titulo, Date fecha_creacion, int num_paginas, int duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
+    public Audiolibro(int id_audiolibro, String titulo, Date fecha_creacion, int num_paginas, double duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
         this.id_audiolibro = id_audiolibro;
         this.titulo = titulo;
         this.fecha_creacion = fecha_creacion;
@@ -62,7 +62,7 @@ public class Audiolibro {
         this.id_categoriaAF = id_categoriaAF;
     }
 
-    public Audiolibro(String titulo, Date fecha_creacion, int num_paginas, int duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
+    public Audiolibro(String titulo, Date fecha_creacion, int num_paginas, double duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
         this.titulo = titulo;
         this.fecha_creacion = fecha_creacion;
         this.num_paginas = num_paginas;
@@ -111,11 +111,11 @@ public class Audiolibro {
         this.num_paginas = num_paginas;
     }
 
-    public int getDuracion_total() {
+    public double getDuracion_total() {
         return duracion_total;
     }
 
-    public void setDuracion_total(int duracion_total) {
+    public void setDuracion_total(double duracion_total) {
         this.duracion_total = duracion_total;
     }
 
@@ -203,8 +203,7 @@ public class Audiolibro {
     public String toString() {
         return "Audiolibro{" + "id_audiolibro=" + id_audiolibro + ", titulo=" + titulo + ", fecha_creacion=" + fecha_creacion + ", num_paginas=" + num_paginas + ", duracion_total=" + duracion_total + ", portada=" + portada + ", contraportada=" + contraportada + ", calificacion=" + calificacion + ", sipnosis=" + sipnosis + ", numCapitulos=" + numCapitulos + ", idioma=" + idioma + ", reproducciones=" + reproducciones + ", id_narradorAF=" + id_narradorAF + ", id_editorialAF=" + id_editorialAF + ", id_categoriaAF=" + id_categoriaAF + '}';
     }
-    
-    
+
     
     
         public boolean insertarAudiolibro(Audiolibro objAL,String sql){
@@ -221,7 +220,7 @@ public class Audiolibro {
                 ps.setString(1, objAL.getTitulo());
                 ps.setDate(2, objAL.getFecha_creacion());
                 ps.setInt(3, objAL.getNum_paginas());
-                ps.setInt(4, objAL.getDuracion_total());
+                ps.setDouble(4, objAL.getDuracion_total());
                 ps.setString(5, objAL.getPortada());
                 ps.setString(6, objAL.getContraportada());
                 ps.setString(7, objAL.getCalificacion());
@@ -297,7 +296,7 @@ public class Audiolibro {
                     
  
 
-                    lu.add(new Audiolibro(Integer.parseInt(id_audiolibro), titulo, fecha_creacion,Integer.parseInt( num_paginas),Integer.parseInt( duracion_total), portada, contraportada, calificacion, sipnosis, numCapitulos, idioma,Integer.parseInt(reproducciones), Integer.parseInt(id_narradorAF), Integer.parseInt(id_editorialAF),Integer.parseInt(id_categoriaAF)));
+                    lu.add(new Audiolibro(Integer.parseInt(id_audiolibro), titulo, fecha_creacion,Integer.parseInt( num_paginas),Double.parseDouble( duracion_total), portada, contraportada, calificacion, sipnosis, numCapitulos, idioma,Integer.parseInt(reproducciones), Integer.parseInt(id_narradorAF), Integer.parseInt(id_editorialAF),Integer.parseInt(id_categoriaAF)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
