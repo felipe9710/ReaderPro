@@ -65,11 +65,11 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
-        jLabel3.setText("Insertar pais del narrador");
+        jLabel3.setText("Insertar país del narrador");
         jLabel3.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel1.setText("Nombre Pais del Narrador:");
+        jLabel1.setText("Nombre país del narrador:");
 
         txtNombrePaisNarrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        btnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        btnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         btnInsertar.setBorderPainted(false);
         btnInsertar.setContentAreaFilled(false);
         btnInsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
             }
         });
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +128,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         btnBuscar.setBorderPainted(false);
         btnBuscar.setContentAreaFilled(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,12 +144,12 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         jLabel2.setText("Id:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Ir al menu");
+        jLabel4.setText("Ir al menú");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("principal");
 
-        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
+        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
         btnmp.setBorderPainted(false);
         btnmp.setContentAreaFilled(false);
         btnmp.addActionListener(new java.awt.event.ActionListener() {

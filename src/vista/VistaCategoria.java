@@ -65,11 +65,11 @@ public class VistaCategoria extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Insertar categoria de audiolibro");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
+        jLabel1.setText("Insertar categoría de audiolibro");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Nombre de la Categoria:");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setText("Nombre de la categoría:");
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -77,7 +77,7 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        jButtoiNSERTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        jButtoiNSERTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         jButtoiNSERTAR.setBorderPainted(false);
         jButtoiNSERTAR.setContentAreaFilled(false);
         jButtoiNSERTAR.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +86,7 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        jButtonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        jButtonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         jButtonMostrar.setBorderPainted(false);
         jButtonMostrar.setContentAreaFilled(false);
         jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,7 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        jButtonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        jButtonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         jButtonBorrar.setBorderPainted(false);
         jButtonBorrar.setContentAreaFilled(false);
         jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        jButtonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        jButtonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         jButtonActualizar.setBorderPainted(false);
         jButtonActualizar.setContentAreaFilled(false);
         jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Id:");
 
         idcg.setEditable(false);
@@ -145,12 +145,12 @@ public class VistaCategoria extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jScrollPane2);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Ir al menu");
+        jLabel5.setText("Ir al menú");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("principal");
 
-        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
+        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
         btnmp.setBorderPainted(false);
         btnmp.setContentAreaFilled(false);
         btnmp.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +209,7 @@ public class VistaCategoria extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2)

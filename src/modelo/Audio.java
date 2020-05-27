@@ -155,7 +155,7 @@ public class Audio {
                     archivo_Audio = rs.getString("archivo_Audio");
                     id_audiolibroF = rs.getString("id_audiolibroF");
 
-                    lu.add(new Audio(Integer.parseInt(id_Audio), archivo_Audio, Integer.parseInt(id_audiolibroF)));
+                    lu.add(new Audio(Integer.parseInt(id_Audio),archivo_Audio, Integer.parseInt(id_audiolibroF)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();

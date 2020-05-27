@@ -103,7 +103,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel1.setText("Pais del usuario:");
+        jLabel1.setText("País del usuario:");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel2.setText("Registro de usuario");
@@ -151,7 +151,7 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
-        btninsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        btninsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         btninsertar.setBorderPainted(false);
         btninsertar.setContentAreaFilled(false);
         btninsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         btneliminar.setBorderPainted(false);
         btneliminar.setContentAreaFilled(false);
         btneliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +201,7 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         btnmodificar.setBorderPainted(false);
         btnmodificar.setContentAreaFilled(false);
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +210,7 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         btnbuscar.setBorderPainted(false);
         btnbuscar.setContentAreaFilled(false);
         btnbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +234,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         lblprincip.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblprincip.setText("principal");
 
-        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
+        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
         btnmp.setBorderPainted(false);
         btnmp.setContentAreaFilled(false);
         btnmp.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +243,7 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnregist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistrar.png"))); // NOI18N
+        btnregist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistrar1.png"))); // NOI18N
         btnregist.setBorderPainted(false);
         btnregist.setContentAreaFilled(false);
         btnregist.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +325,7 @@ public class VistaUsuario extends javax.swing.JFrame {
                                     .addComponent(btninsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnregist, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,8 +378,7 @@ public class VistaUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(46, 46, 46)
-                                    .addComponent(jLabel10)
-                                    .addGap(97, 97, 97))
+                                    .addComponent(jLabel10))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,7 +409,7 @@ public class VistaUsuario extends javax.swing.JFrame {
                         .addComponent(btninsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnregist, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -428,11 +427,17 @@ public class VistaUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(91, 91, 91))
         );
 
         pack();

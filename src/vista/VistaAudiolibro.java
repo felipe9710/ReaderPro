@@ -100,6 +100,9 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -149,10 +152,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jLabel6.setText("Sinopsis:");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel7.setText("Número de capitulos:");
+        jLabel7.setText("Número de capítulos:");
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel8.setText("Titulo:");
+        jLabel8.setText("Título:");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel9.setText("Fecha creación:");
@@ -207,7 +210,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnAgregarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        btnAgregarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         btnAgregarAudiolibro.setBorderPainted(false);
         btnAgregarAudiolibro.setContentAreaFilled(false);
         btnAgregarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +219,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnEliminarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        btnEliminarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         btnEliminarAudiolibro.setBorderPainted(false);
         btnEliminarAudiolibro.setContentAreaFilled(false);
         btnEliminarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +228,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnModificarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        btnModificarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         btnModificarAudiolibro.setBorderPainted(false);
         btnModificarAudiolibro.setContentAreaFilled(false);
         btnModificarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +237,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnMostrarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        btnMostrarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         btnMostrarAudiolibro.setBorderPainted(false);
         btnMostrarAudiolibro.setContentAreaFilled(false);
         btnMostrarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +292,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar.png"))); // NOI18N
+        btSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar1.png"))); // NOI18N
         btSeleccionar.setBorderPainted(false);
         btSeleccionar.setContentAreaFilled(false);
         btSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +301,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btSeleccionar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar.png"))); // NOI18N
+        btSeleccionar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar1.png"))); // NOI18N
         btSeleccionar2.setBorderPainted(false);
         btSeleccionar2.setContentAreaFilled(false);
         btSeleccionar2.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +327,18 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jTable2);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Ir al menu");
+
+        jLabel18.setText("principal");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -409,6 +424,14 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,8 +522,17 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnModificarAudiolibro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminarAudiolibro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1003,6 +1035,14 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldIDIOMAKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        VistaMenu vmp = new VistaMenu();
+        this.dispose();
+        vmp.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1047,6 +1087,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarAudiolibro;
     private javax.swing.JButton btnModificarAudiolibro;
     private javax.swing.JButton btnMostrarAudiolibro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JComboBox<String> jComboBoxClasificacion;
     private javax.swing.JComboBox<String> jComboBoxEditorial;
@@ -1060,6 +1101,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

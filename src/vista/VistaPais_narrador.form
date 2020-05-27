@@ -136,7 +136,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="30" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Insertar pais del narrador"/>
+            <Property name="text" type="java.lang.String" value="Insertar pa&#xed;s del narrador"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
@@ -145,7 +145,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nombre Pais del Narrador:"/>
+            <Property name="text" type="java.lang.String" value="Nombre pa&#xed;s del narrador:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombrePaisNarrador">
@@ -179,7 +179,7 @@
         <Component class="javax.swing.JButton" name="btnInsertar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnInsertar.png"/>
+              <Image iconType="3" name="/Imagenes/btnInsertar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -191,7 +191,7 @@
         <Component class="javax.swing.JButton" name="btnEliminar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnEliminar.png"/>
+              <Image iconType="3" name="/Imagenes/btnEliminar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -203,7 +203,7 @@
         <Component class="javax.swing.JButton" name="btnModificar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnModificar.png"/>
+              <Image iconType="3" name="/Imagenes/btnModificar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -215,7 +215,7 @@
         <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnMostrar.png"/>
+              <Image iconType="3" name="/Imagenes/btnMostrar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -245,7 +245,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ir al menu"/>
+            <Property name="text" type="java.lang.String" value="Ir al men&#xfa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -259,7 +259,7 @@
         <Component class="javax.swing.JButton" name="btnmp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnHome.png"/>
+              <Image iconType="3" name="/Imagenes/btnHome1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
