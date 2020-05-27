@@ -227,6 +227,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         jDateNacimiento.setDateFormatString("yyyy/MM/d");
 
         jDateInscripcion.setDateFormatString("yyyy/MM/d");
+        jDateInscripcion.setEnabled(false);
 
         lblmenu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblmenu.setText("Ir al menu");
@@ -444,7 +445,8 @@ public class VistaUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+jDateInscripcion.setCalendar(Calendar.getInstance());
+jDateNacimiento.setCalendar(Calendar.getInstance());
         Control_Paises_Usuario objpu = new Control_Paises_Usuario();
         listapu = objpu.consultarPaises_Usuario();
         for (int i = 0; i < listapu.size(); i++) {
@@ -657,7 +659,6 @@ public class VistaUsuario extends javax.swing.JFrame {
         if (nombre1.isEmpty() || apellido.isEmpty() || nombre_usuario.isEmpty() || correo.isEmpty() || contraseña.isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *", "ERROR", JOptionPane.ERROR_MESSAGE);
-            JOptionPane.showMessageDialog(this, "No se modifico el usuario");
 
         } if (t2 == true) {
                 JOptionPane.showMessageDialog(this, "Este correo ya se encuentra registrado","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -675,6 +676,13 @@ public class VistaUsuario extends javax.swing.JFrame {
 
         ControlUsuario objeu = new ControlUsuario();
         String selected = idu.getText();
+        
+                 if(selected.length()==0){
+         JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+           
+        }else{
+        
+        
         boolean t1 = objeu.eliminarPais_narrador(selected);
 
         if (t1 == true) {
@@ -682,7 +690,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se elimino el usuario");
         }
-
+                 }
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed

@@ -315,6 +315,9 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         Autores_Libros objAL = new Autores_Libros(idp, idp2);
         ControlAutores_Libros objcu = new ControlAutores_Libros();
+        
+        
+        
         boolean t = objcu.insertarAutores_Libros(objAL);
         if (t == true) {
             JOptionPane.showMessageDialog(rootPane, "Se inserto el autor del libro con exito");
@@ -355,6 +358,12 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             }
         }
 
+         if(select.length()==0){
+         JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+           
+        }else{
+        
+        
         boolean t1 = objmu.modificarAutoresLibros(select, idAutor2, IdAudioL2);
 
         if (t1 == true) {
@@ -362,7 +371,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el Autor del libro ");
         }
-
+         }
 
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
@@ -407,6 +416,12 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         ControlAutores_Libros objeu = new ControlAutores_Libros();
         String selected = txtID.getText();
+        
+        if(selected.length()==0){
+         JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+           
+        }else{
+        
         boolean t1 = objeu.eliminarAutores_Libro(selected);
 
         if (t1 == true) {
@@ -415,7 +430,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se elimino el Autor-AudioLibro");
         }
 
-
+        }
     }//GEN-LAST:event_jButtonEliminaarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
