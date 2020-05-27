@@ -552,6 +552,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+         jDateChooser1.setCalendar(Calendar.getInstance());
         //-------------------NARADORES-------------------
         ControlNarrador objpu = new ControlNarrador();
         listN = objpu.consultarNarrador();
@@ -929,7 +930,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 }
             }
         }
-
     }//GEN-LAST:event_btnModificarAudiolibroActionPerformed
 
     private void jTextFieldContrportadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContrportadaActionPerformed
