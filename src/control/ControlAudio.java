@@ -53,5 +53,15 @@ public class ControlAudio {
         return t1;
         
     }
+
+    public LinkedList<Audio> consultarAudioBusqueda(String select) {
+        
+        String sql = "Select archivo_Audio from audios where id_audiolibroF ='"+ select +"';";
+        Audio objcu = new Audio();
+        LinkedList<Audio> listaAu = objcu.consultarAudio(sql);
+
+        return listaAu;
+        
+    }
     
 }

@@ -6,6 +6,7 @@
 package vista;
 
 import control.BaseDatos;
+import control.ControlAudio;
 import control.ControlAudiolibro;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -24,6 +25,7 @@ import modelo.Audiolibro;
 public class VistaUmenu extends javax.swing.JFrame {
     
     LinkedList<Audiolibro> listAuL;
+    LinkedList<Audio> listaAud;
 
     /**
      * Creates new form VistaUmenu
@@ -31,6 +33,7 @@ public class VistaUmenu extends javax.swing.JFrame {
     public VistaUmenu() {
         initComponents();
         listAuL = new LinkedList<>();
+        listaAud = new LinkedList<>();
         //txtsettitulo.setVisible(false);
     }
 
@@ -61,11 +64,12 @@ public class VistaUmenu extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtcorreo = new javax.swing.JTextField();
+        txtcontraseña = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         btncs = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -136,8 +140,8 @@ public class VistaUmenu extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnguardar)
-                    .addComponent(txtsettitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                    .addComponent(txtsettitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,6 +218,8 @@ public class VistaUmenu extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel7.setText("ACTUALIZAR DATOS");
 
+        jButton1.setText("ACTUALIZAR");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -228,9 +234,12 @@ public class VistaUmenu extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(40, 40, 40)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(245, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)
+                                .addComponent(jButton1))
+                            .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,11 +249,16 @@ public class VistaUmenu extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton1)))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
 
@@ -356,58 +370,31 @@ public class VistaUmenu extends javax.swing.JFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
         String select = txtsettitulo.getText();
-        ControlAudiolibro obju = new ControlAudiolibro();
+        ControlAudio objcaud = new ControlAudio();
         int ncolu;
         Object[] fila2;
-        listAuL = obju.consultarAudioLibroBusquedaxtitulo(select);
         
+        listaAud = objcaud.consultarAudioBusqueda(select);
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable1.setModel(modelo);
-        modelo.addColumn("id_audiolibro");
-        modelo.addColumn("titulo");
-        modelo.addColumn("fecha_creacion");
-        modelo.addColumn("num_paginas");
-        modelo.addColumn("duracion_total");
-        modelo.addColumn("portada");
-        modelo.addColumn("contraportada");
-        modelo.addColumn("calificacion");
-        modelo.addColumn("sipnosis");
-        modelo.addColumn("numCapitulos");
-        modelo.addColumn("idioma");
-        modelo.addColumn("reproducciones");
-        modelo.addColumn("id_narradorAF");
-        modelo.addColumn("id_editorialAF");
-        modelo.addColumn("id_categoriaAF");
+        modelo.addColumn("archivo");
+        modelo.addColumn("id audiolibroF");
         ncolu = modelo.getColumnCount();
-
-        for (int i = 0; i < listAuL.size(); i++) {
-
-            fila2 = new Object[ncolu];
-            fila2[0] = listAuL.get(i).getId_audiolibro();
-            fila2[1] = listAuL.get(i).getTitulo();
-            fila2[2] = listAuL.get(i).getFecha_creacion();
-            fila2[3] = listAuL.get(i).getNum_paginas();
-            fila2[4] = listAuL.get(i).getDuracion_total();
-            fila2[5] = listAuL.get(i).getPortada();
-            fila2[6] = listAuL.get(i).getContraportada();
-            fila2[7] = listAuL.get(i).getCalificacion();
-            fila2[8] = listAuL.get(i).getSipnosis();
-            fila2[9] = listAuL.get(i).getNumCapitulos();
-            fila2[10] = listAuL.get(i).getIdioma();
-            fila2[11] = listAuL.get(i).getReproducciones();
-            fila2[12] = listAuL.get(i).getId_narradorAF();
-            fila2[13] = listAuL.get(i).getId_editorialAF();
-            fila2[14] = listAuL.get(i).getId_categoriaAF();
-
-            modelo.addRow(fila2);
         
+        for (int j = 0; j<listaAud.size();j++){
+            
+            fila2 = new Object[ncolu];
+            fila2[0] = listaAud.get(j).getArchivo_Audio();
+            fila2[1] = listaAud.get(j).getId_audiolibroF();
+            modelo.addRow(fila2);
+            
         }
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         
         int selected = jTable2.rowAtPoint(evt.getPoint());
-        txtsettitulo.setText(String.valueOf(jTable2.getValueAt(selected, 1)));
+        txtsettitulo.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
         
     }//GEN-LAST:event_jTable2MouseClicked
 
@@ -450,6 +437,7 @@ public class VistaUmenu extends javax.swing.JFrame {
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btncs;
     private javax.swing.JButton btnguardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -467,11 +455,11 @@ public class VistaUmenu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtcontraseña;
+    private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtsettitulo;
     // End of variables declaration//GEN-END:variables
 }
