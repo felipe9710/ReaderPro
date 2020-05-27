@@ -336,8 +336,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setText("Ir al menu");
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel17.setText("Ir al menú");
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("principal");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -552,6 +554,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+         jDateChooser1.setCalendar(Calendar.getInstance());
         //-------------------NARADORES-------------------
         ControlNarrador objpu = new ControlNarrador();
         listN = objpu.consultarNarrador();
@@ -929,7 +932,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 }
             }
         }
-
     }//GEN-LAST:event_btnModificarAudiolibroActionPerformed
 
     private void jTextFieldContrportadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContrportadaActionPerformed

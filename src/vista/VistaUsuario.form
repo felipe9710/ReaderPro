@@ -522,6 +522,7 @@
         <Component class="com.toedter.calendar.JDateChooser" name="jDateInscripcion">
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/d"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblmenu">
