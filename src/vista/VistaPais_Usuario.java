@@ -17,14 +17,14 @@ import modelo.Pais_Usuario;
  */
 public class VistaPais_Usuario extends javax.swing.JFrame {
 
-     LinkedList<Pais_Usuario> listaPais_Usuario;
-    
+    LinkedList<Pais_Usuario> listaPais_Usuario;
+
     /**
      * Creates new form VistaPais_Usuario
      */
     public VistaPais_Usuario() {
         initComponents();
-         listaPais_Usuario = new LinkedList<>();
+        listaPais_Usuario = new LinkedList<>();
     }
 
     /**
@@ -240,26 +240,24 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
 
         Control_Paises_Usuario objcpa = new Control_Paises_Usuario();
 
-        boolean t = objcpa.insertarPaises_Usuario(nombrePaisU);
-        boolean valido = false;
-        
-        if(nombrePaisU.isEmpty()){
-            
-            JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
-            valido = true;
-            
-        }
+        if (nombrePaisU.isEmpty()) {
 
-        if (t == true && valido == false) {
-            JOptionPane.showMessageDialog(this, "Se inserto el pais del usuario");
-        } else {
+            JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
             JOptionPane.showMessageDialog(this, "No se inserto el pais del usuario");
+        } else {
+
+            boolean t = objcpa.insertarPaises_Usuario(nombrePaisU);
+
+            if (t == true) {
+                JOptionPane.showMessageDialog(this, "Se inserto el pais del usuario");
+            }
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         // TODO add your handling code here:
-        
+
         Control_Paises_Usuario objepn = new Control_Paises_Usuario();
         String select = IdUsu.getText();
         boolean t1 = objepn.eliminarPais_Usuario(select);
@@ -269,38 +267,33 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se elimino el pais del Usuario");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-        
+
         String nombrePaisU = jTextFieldPaisUsuario.getText();
         Control_Paises_Usuario objmpn = new Control_Paises_Usuario();
         String selected = IdUsu.getText();
-        boolean t1 = objmpn.modificarPais_Usuario(selected, nombrePaisU);
-        boolean valido = false;
-        
-        if(nombrePaisU.isEmpty()){
-            
+
+        if (nombrePaisU.isEmpty()) {
             JOptionPane.showMessageDialog(this, "no deben haber campos vacios");
-            valido = true;
-            
+            JOptionPane.showMessageDialog(this, "No se modifico el pais del usuario");
+        } else {
+            boolean t1 = objmpn.modificarPais_Usuario(selected, nombrePaisU);
+
+            if (t1 == true) {
+                JOptionPane.showMessageDialog(this, "Se modifico el pais del usuario");
+            }
         }
 
-        if (t1 == true && valido == false) {
-            JOptionPane.showMessageDialog(this, "Se modifico el pais del usuario");
-        } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el pais del usuario");
-        }
-        
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
         // TODO add your handling code here:
-        
+
         Control_Paises_Usuario objpn = new Control_Paises_Usuario();
         int ncol;
         Object[] fila;
@@ -322,30 +315,29 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
             modelo.addRow(fila);
 
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-         int seleccion = jTable1.rowAtPoint(evt.getPoint());
+        int seleccion = jTable1.rowAtPoint(evt.getPoint());
         jTextFieldPaisUsuario.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
         IdUsu.setText(String.valueOf(jTable1.getValueAt(seleccion, 0)));
-        
-        
+
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
-      
+
         VistaMenu vmp = new VistaMenu();
         this.dispose();
         vmp.setVisible(true);
-        
+
     }//GEN-LAST:event_btnmpActionPerformed
 
     private void jTextFieldPaisUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPaisUsuarioKeyTyped
-        
+
         char validar = evt.getKeyChar();
         if (Character.isDigit(validar)) {
 
@@ -353,7 +345,7 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo letras");
         }
-        
+
     }//GEN-LAST:event_jTextFieldPaisUsuarioKeyTyped
 
     /**

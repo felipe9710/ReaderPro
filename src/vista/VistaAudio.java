@@ -11,6 +11,7 @@ import java.io.File;
 import java.util.LinkedList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import modelo.Audio;
 import modelo.Audiolibro;
@@ -151,6 +152,8 @@ public class VistaAudio extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("principal");
 
+        txtachivo.setEditable(false);
+
         btnseleccionar.setText("Seleccionar");
         btnseleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +175,6 @@ public class VistaAudio extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAgregarAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -207,7 +209,8 @@ public class VistaAudio extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(28, 28, 28)
                                                 .addComponent(btnseleccionar))))
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(231, 231, 231)
                         .addComponent(jLabel1)))
@@ -299,9 +302,7 @@ public class VistaAudio extends javax.swing.JFrame {
             if (idAL.equals(audL.getTitulo())) {
                 idAl = audL.getId_audiolibro();
             }
-
         }
-
         Audio objau = new Audio(archivo, idAl);
         ControlAudio objca = new ControlAudio();
         boolean t = objca.insertarAudio(objau);
@@ -381,6 +382,14 @@ public class VistaAudio extends javax.swing.JFrame {
     private void btnseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseleccionarActionPerformed
 
         JFileChooser archivo = new JFileChooser();
+        //Si deseamos crear filtros para la selecion de archivos
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos (*.MP3,*.WAV,*.WMA)", "mp3", "waz","wma");
+        //Si deseas que se muestre primero los filtros usa la linea q esta abajo de esta.
+        archivo.setFileFilter(filtro);
+        // Agregamos el Filtro pero cuidado se mostrara despues de todos los archivos
+        archivo.addChoosableFileFilter(filtro);
+
+        archivo.setDialogTitle("Abrir Archivo");
         int ventana = archivo.showOpenDialog(null);
         if (ventana == JFileChooser.APPROVE_OPTION) {
 
