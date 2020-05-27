@@ -361,7 +361,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
            }
            if((PaisUsado==false)){
              t1 = objepn.eliminarPais_narrador(select);
-           }else{t1=false;JOptionPane.showMessageDialog(this, "no eliminó el pais del narrador");
+           }else{t1=false;
 }
                   
         if (t1 == true && PaisUsado==false) {

@@ -287,7 +287,7 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
            }
            if((PaisUsado==false)){
              t1 = objepn.eliminarPais_Usuario(select);
-           }else{t1=false;JOptionPane.showMessageDialog(this, "no eliminó el pais del usuario");
+           }else{t1=false;
 }
                   
         if (t1 == true && PaisUsado==false) {
