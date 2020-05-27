@@ -382,8 +382,9 @@ public class VistaUmenu extends javax.swing.JFrame {
         listaAud = objcaud.consultarAudioBusqueda(select);
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable1.setModel(modelo);
-        modelo.addColumn("archivo");
-        modelo.addColumn("id audiolibroF");
+        //modelo.addColumn("id_audio");
+        modelo.addColumn("archivo de audio");
+        modelo.addColumn("id del audiolibro");
         ncolu = modelo.getColumnCount();
         
         for (int j = 0; j<listaAud.size();j++){
