@@ -13,27 +13,28 @@ import modelo.Categoria;
  * @author usuario
  */
 public class ControlCategoria {
-    
-        public boolean insertarCategoria(Categoria objC) {
-        
+
+    public boolean insertarCategoria(Categoria objC) {
+
         boolean t = false;
         Categoria objpc = new Categoria();
-        
+
         String sql = "insert into categorias(categoria) value (?)";
-        
-        t = objpc.insertarCategoria(objC,sql);
+
+        t = objpc.insertarCategoria(objC, sql);
         return t;
-     
+
     }
-        
+
     public LinkedList<Categoria> consultarCategoria() {
-        String sql="Select * from categorias;";
-        Categoria objc=new Categoria();
-        LinkedList<Categoria> listc=objc.consultarCategoria(sql);
-        
+        String sql = "Select * from categorias;";
+        Categoria objc = new Categoria();
+        LinkedList<Categoria> listc = objc.consultarCategoria(sql);
+
         return listc;
     }
-        public boolean modificarCategoria(String selected, String categoria) {
+
+    public boolean modificarCategoria(String selected, String categoria) {
 
         boolean t1 = false;
         Categoria objmpa = new Categoria();
@@ -41,8 +42,8 @@ public class ControlCategoria {
         t1 = objmpa.modificarCategoria(sql);
         return t1;
     }
-        
-        public boolean eliminarCategoria(String selected) {
+
+    public boolean eliminarCategoria(String selected) {
 
         boolean t2 = false;
         Categoria objepa = new Categoria();
@@ -51,5 +52,15 @@ public class ControlCategoria {
         return t2;
 
     }
-    
+
+    public LinkedList<Categoria> consultarAudioLibroPorcategoria(String categoria) {
+
+        String sql = "Select * from categorias where categoria ='"+categoria+"';";
+        Categoria objc = new Categoria();
+        LinkedList<Categoria> listc = objc.consultarCategoria(sql);
+
+        return listc;
+
+    }
+
 }

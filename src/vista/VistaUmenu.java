@@ -8,6 +8,7 @@ package vista;
 import control.BaseDatos;
 import control.ControlAudio;
 import control.ControlAudiolibro;
+import control.ControlCategoria;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Audio;
 import modelo.Audiolibro;
+import modelo.Categoria;
 
 
 /**
@@ -27,6 +29,7 @@ public class VistaUmenu extends javax.swing.JFrame {
     
     LinkedList<Audiolibro> listAuL;
     LinkedList<Audio> listaAud;
+    LinkedList<Categoria> listaC;
 
     /**
      * Creates new form VistaUmenu
@@ -35,6 +38,7 @@ public class VistaUmenu extends javax.swing.JFrame {
         initComponents();
         listAuL = new LinkedList<>();
         listaAud = new LinkedList<>();
+        listaC = new LinkedList<>();
         txtsettitulo.setVisible(false);
     }
 
@@ -421,15 +425,31 @@ public class VistaUmenu extends javax.swing.JFrame {
 
     private void btnbuscarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarCActionPerformed
         
-        ControlAudiolibro obju = new ControlAudiolibro();
+        ControlCategoria obju = new ControlCategoria();
+        ControlAudiolibro objca = new ControlAudiolibro();
         int ncolu;
         Object[] fila2;
         String categoria=txtNombre.getText();
-        if(categoria.equals("")){
+        if(categoria.isEmpty()){
             JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
         }
-
-        listAuL = obju.consultarAudioLibroBusquedaPorcategoria(categoria);
+        
+        listaC = obju.consultarAudioLibroPorcategoria(categoria);
+        
+        int idCategoria = 0;
+        
+        for (int i = 0; i < listaC.size(); i++) {
+            Categoria category = listaC.get(i);
+            
+            if (categoria.equals(category.getCategoria())) {
+                idCategoria = category.getId_categoria();
+            }
+        }
+        listAuL = objca.consultarAudioLibroxCategoria(idCategoria);
+        
+        if(idCategoria == 0){
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
         
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable2.setModel(modelo);
