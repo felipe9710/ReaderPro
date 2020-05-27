@@ -5,11 +5,13 @@
  */
 package vista;
 
+import control.ControlUsuario;
 import control.Control_Paises_Usuario;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pais_Usuario;
+import modelo.Usuario;
 
 /**
  *
@@ -18,6 +20,7 @@ import modelo.Pais_Usuario;
 public class VistaPais_Usuario extends javax.swing.JFrame {
 
     LinkedList<Pais_Usuario> listaPais_Usuario;
+    LinkedList<Usuario>listaU;
 
     /**
      * Creates new form VistaPais_Usuario
@@ -25,6 +28,7 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
     public VistaPais_Usuario() {
         initComponents();
         listaPais_Usuario = new LinkedList<>();
+        listaU = new LinkedList<>();
     }
 
     /**
@@ -258,17 +262,41 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         // TODO add your handling code here:
 
+   ControlUsuario obju = new ControlUsuario();
+         listaU = obju.consultarUsuario();
+        boolean PaisUsado = false;
+        Object[] fila2=null;
+        boolean t1=false;
+        boolean vacio=true;
+         String select = IdUsu.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
+
+              if(select.length()==0){ vacio=true;}else{vacio=false;}
+              
         Control_Paises_Usuario objepn = new Control_Paises_Usuario();
-        String select = IdUsu.getText();
-        boolean t1 = objepn.eliminarPais_Usuario(select);
-
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el pais del Usuario");
+           for (int i = 0; i < listaU.size(); i++) {
+         r=listaU.get(i).getId_PaisUF();
+         if(r==select2){
+        
+         PaisUsado=true;
+         break;
+         }else{
+          PaisUsado=false;
+         }
+           }
+           if((PaisUsado==false)){
+             t1 = objepn.eliminarPais_Usuario(select);
+           }else{t1=false;JOptionPane.showMessageDialog(this, "no eliminó el pais del usuario");
+}
+                  
+        if (t1 == true && PaisUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el pais del usuario");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el pais del Usuario");
-        }
-
-
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
