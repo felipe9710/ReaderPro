@@ -329,8 +329,8 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String select = txtID.getText();
-        String IdAutor = jComboBox1.getSelectedItem().toString();
-        String IdAudioL = jComboBox2.getSelectedItem().toString();
+        String nombreA = jComboBox1.getSelectedItem().toString();
+        String tituloA = jComboBox2.getSelectedItem().toString();
 
         ControlAutores_Libros objmu = new ControlAutores_Libros();
 
@@ -338,7 +338,8 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         for (int i = 0; i < listaA.size(); i++) {
             Autor paisu = listaA.get(i);
-            if (IdAutor.equals(paisu.getNombre_autor1())) {
+            
+            if (nombreA.equals((paisu.getNombre_autor1() +" "+ paisu.getApellido_autor1()))) {
                 idAutor2 = paisu.getId_autor();
 
             }
@@ -348,7 +349,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         for (int i = 0; i < listaAL.size(); i++) {
             Audiolibro paisu2 = listaAL.get(i);
-            if (IdAudioL.equals(paisu2.getTitulo())) {
+            if (tituloA.equals(paisu2.getTitulo())) {
                 IdAudioL2 = paisu2.getId_audiolibro();
 
             }

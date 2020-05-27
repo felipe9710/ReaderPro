@@ -38,6 +38,28 @@ public class ControlAudiolibro {
         return listau;
 
     }
+        
+public LinkedList<Audiolibro> consultarAudioLibroBusqueda(String busqueda) {
+
+        String sql = "Select * from audiolibros where id_audiolibro="+busqueda;
+        Audiolibro objcu = new Audiolibro();
+        LinkedList<Audiolibro> listau = objcu.consultarAudioLibro(sql);
+
+        return listau;
+
+    }
+
+        
+public LinkedList<Audiolibro> consultarAudioLibroBusqueda2(int[] variables) {
+
+        String sql = "Select * from audiolibros where id_audiolibro="+variables;
+        Audiolibro objcu = new Audiolibro();
+        LinkedList<Audiolibro> listau = objcu.consultarAudioLibro(sql);
+
+        return listau;
+
+    }
+        
 
     public boolean modificarAudioLibro(String select, String titulo, Date fecha_creacion, int num_paginas, double duracion_total, String portada, String contraportada, String calificacion, String sipnosis, String numCapitulos, String idioma, int reproducciones, int id_narradorAF, int id_editorialAF, int id_categoriaAF) {
 
