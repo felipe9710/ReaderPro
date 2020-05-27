@@ -69,6 +69,26 @@ public class ControlAudiolibro {
         return t3;
         
     }
+
+    public LinkedList<Audiolibro> consultarAudioLibroBusqueda(String titulo) {
+        
+        String sql = "Select * from audiolibros where titulo ='"+titulo+"';";
+        Audiolibro objau = new Audiolibro();
+        LinkedList<Audiolibro> listau = objau.consultarAudioLibro(sql);
+
+        return listau;
+        
+    }
+
+    public LinkedList<Audiolibro> consultarAudioLibroBusquedaxtitulo(String select) {
+        
+        String sql = "Select * from audiolibros where titulo ='"+select+"';";
+        Audiolibro objau = new Audiolibro();
+        LinkedList<Audiolibro> listau = objau.consultarAudioLibro(sql);
+
+        return listau;
+        
+    }
     
     
     
