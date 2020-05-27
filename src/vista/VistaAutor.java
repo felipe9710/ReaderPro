@@ -371,7 +371,7 @@ public class VistaAutor extends javax.swing.JFrame {
         } else {
             Autor objAutor = new Autor(nombre_autor1, nombre_autor2, apellido_autor1, apellido_autor2, fecha_nacimiento_Autor, idp);
             ControlAutor objcu = new ControlAutor();
-            boolean t = objcu.insertar_Autor(objAutor);
+            boolean t = objcu.insertar_Autorx(objAutor);
             if (t == true) {
                 JOptionPane.showMessageDialog(this, "Se inserto el autor");
             }

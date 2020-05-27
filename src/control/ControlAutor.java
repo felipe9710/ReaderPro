@@ -33,7 +33,7 @@ public class ControlAutor {
         boolean t = false;
         Autor objpE = new Autor();
         String sql="";
-        sql = "call readerpro.autoresx(?,?,?,?,?,?,?,'nuevo');";
+        sql = "call readerpro.autoresx(1,?,?,?,?,?,?,'nuevo');";
         t = objpE.insertarAutor(objAutor,sql);//Name of Model
         return t;
         
