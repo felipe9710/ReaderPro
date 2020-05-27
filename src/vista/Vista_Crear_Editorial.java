@@ -66,8 +66,18 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         idpn.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
+        jPanel1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jPanel1MouseWheelMoved(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Correo de la editorial:");
@@ -341,7 +351,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         
         if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
             JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
-            JOptionPane.showMessageDialog(this, "No se inserto la Editorial");
+           
         } else {
             boolean t = objcE.insertar_Editorial(nombre_editorial,telefono_E,direccion_E,correo_E, Fecha_Creacion_Editorial );
 
@@ -356,6 +366,12 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         
                 Control_Editorial objeu = new Control_Editorial();
         String selected = idE.getText();
+        
+        if(selected.length()==0){
+        JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+        
+        }else{
+        
         boolean t1 = objeu.eliminarEditorial(selected);
 
         if (t1 == true) {
@@ -365,7 +381,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         }
 
    
-        
+        }
     }//GEN-LAST:event_jButtoNBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
@@ -516,6 +532,15 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jTextNombreEKeyTyped
+
+    private void jPanel1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jPanel1MouseWheelMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseWheelMoved
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+         jDateChooser1.setCalendar(Calendar.getInstance());
+    }//GEN-LAST:event_formWindowOpened
                                     
 
 
