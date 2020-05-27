@@ -34,7 +34,7 @@ public class VistaUmenu extends javax.swing.JFrame {
         initComponents();
         listAuL = new LinkedList<>();
         listaAud = new LinkedList<>();
-        //txtsettitulo.setVisible(false);
+        txtsettitulo.setVisible(false);
     }
 
     /**
@@ -382,7 +382,7 @@ public class VistaUmenu extends javax.swing.JFrame {
         listaAud = objcaud.consultarAudioBusqueda(select);
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable1.setModel(modelo);
-        //modelo.addColumn("id_audio");
+        
         modelo.addColumn("archivo de audio");
         modelo.addColumn("id del audiolibro");
         ncolu = modelo.getColumnCount();
