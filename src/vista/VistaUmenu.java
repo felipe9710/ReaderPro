@@ -388,7 +388,6 @@ public class VistaUmenu extends javax.swing.JFrame {
         ncolu = modelo.getColumnCount();
         
         for (int j = 0; j<listaAud.size();j++){
-            
             fila2 = new Object[ncolu];
             fila2[0] = listaAud.get(j).getArchivo_Audio();
             fila2[1] = listaAud.get(j).getId_audiolibroF();
