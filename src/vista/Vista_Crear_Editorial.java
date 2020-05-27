@@ -79,13 +79,13 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jLabel8.setText("Nombre editorial:");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel9.setText("Telefono editorial:");
+        jLabel9.setText("Teléfono editorial:");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel1.setText("Insertar editorial");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel2.setText("Direccion de la editorial:");
+        jLabel2.setText("Dirección de la editorial:");
 
         jTextTelefonoE.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -110,7 +110,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
             }
         });
 
-        jButtonInsertEditorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        jButtonInsertEditorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         jButtonInsertEditorial.setBorderPainted(false);
         jButtonInsertEditorial.setContentAreaFilled(false);
         jButtonInsertEditorial.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
 
         jDateChooser1.setDateFormatString("yyyy/MM/d");
 
-        jButtoNBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        jButtoNBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         jButtoNBorrar.setBorderPainted(false);
         jButtoNBorrar.setContentAreaFilled(false);
         jButtoNBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
             }
         });
 
-        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         jButtonModificar.setBorderPainted(false);
         jButtonModificar.setContentAreaFilled(false);
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +139,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
             }
         });
 
-        jButtonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        jButtonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         jButtonMostrar.setBorderPainted(false);
         jButtonMostrar.setContentAreaFilled(false);
         jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -179,12 +179,12 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jScrollPane1);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Ir al menu");
+        jLabel6.setText("Ir al menú");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("principal");
 
-        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
+        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
         btnmp.setBorderPainted(false);
         btnmp.setContentAreaFilled(false);
         btnmp.addActionListener(new java.awt.event.ActionListener() {
@@ -225,11 +225,10 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                                     .addComponent(jTextDireccionE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(57, 57, 57)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel7)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnmp, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButtonInsertEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -284,8 +283,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addComponent(jLabel8)
                                                         .addGap(10, 10, 10)))
-                                                .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                                .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
                                                 .addGap(7, 7, 7)))

@@ -188,7 +188,7 @@
         <Component class="javax.swing.JButton" name="jButtonMostrar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnMostrar.png"/>
+              <Image iconType="3" name="/Imagenes/btnMostrar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -200,7 +200,7 @@
         <Component class="javax.swing.JButton" name="jButtonInsertar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnInsertar.png"/>
+              <Image iconType="3" name="/Imagenes/btnInsertar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -212,7 +212,7 @@
         <Component class="javax.swing.JButton" name="jButtonModificar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnModificar.png"/>
+              <Image iconType="3" name="/Imagenes/btnModificar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -236,7 +236,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ir al menu"/>
+            <Property name="text" type="java.lang.String" value="Ir al men&#xfa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -250,7 +250,7 @@
         <Component class="javax.swing.JButton" name="btnmp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnHome.png"/>
+              <Image iconType="3" name="/Imagenes/btnHome1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -262,7 +262,7 @@
         <Component class="javax.swing.JButton" name="jButtonEliminaar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/btnEliminar.png"/>
+              <Image iconType="3" name="/Imagenes/btnEliminar1.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>

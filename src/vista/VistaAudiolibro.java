@@ -149,10 +149,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jLabel6.setText("Sinopsis:");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel7.setText("Número de capitulos:");
+        jLabel7.setText("Número de capítulos:");
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel8.setText("Titulo:");
+        jLabel8.setText("Título:");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel9.setText("Fecha creación:");
@@ -207,7 +207,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnAgregarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        btnAgregarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         btnAgregarAudiolibro.setBorderPainted(false);
         btnAgregarAudiolibro.setContentAreaFilled(false);
         btnAgregarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +216,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnEliminarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        btnEliminarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         btnEliminarAudiolibro.setBorderPainted(false);
         btnEliminarAudiolibro.setContentAreaFilled(false);
         btnEliminarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +225,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnModificarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        btnModificarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         btnModificarAudiolibro.setBorderPainted(false);
         btnModificarAudiolibro.setContentAreaFilled(false);
         btnModificarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +234,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btnMostrarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        btnMostrarAudiolibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         btnMostrarAudiolibro.setBorderPainted(false);
         btnMostrarAudiolibro.setContentAreaFilled(false);
         btnMostrarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +289,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar.png"))); // NOI18N
+        btSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar1.png"))); // NOI18N
         btSeleccionar.setBorderPainted(false);
         btSeleccionar.setContentAreaFilled(false);
         btSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +298,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             }
         });
 
-        btSeleccionar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar.png"))); // NOI18N
+        btSeleccionar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnSeleccionar1.png"))); // NOI18N
         btSeleccionar2.setBorderPainted(false);
         btSeleccionar2.setContentAreaFilled(false);
         btSeleccionar2.addActionListener(new java.awt.event.ActionListener() {

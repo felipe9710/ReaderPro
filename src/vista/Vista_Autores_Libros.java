@@ -83,7 +83,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Autor:");
 
-        jButtonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        jButtonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         jButtonMostrar.setBorderPainted(false);
         jButtonMostrar.setContentAreaFilled(false);
         jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             }
         });
 
-        jButtonInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        jButtonInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         jButtonInsertar.setBorderPainted(false);
         jButtonInsertar.setContentAreaFilled(false);
         jButtonInsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             }
         });
 
-        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         jButtonModificar.setBorderPainted(false);
         jButtonModificar.setContentAreaFilled(false);
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,12 +111,12 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Ir al menu");
+        jLabel1.setText("Ir al menú");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("principal");
 
-        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
+        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
         btnmp.setBorderPainted(false);
         btnmp.setContentAreaFilled(false);
         btnmp.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
             }
         });
 
-        jButtonEliminaar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        jButtonEliminaar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         jButtonEliminaar.setBorderPainted(false);
         jButtonEliminaar.setContentAreaFilled(false);
         jButtonEliminaar.addActionListener(new java.awt.event.ActionListener() {

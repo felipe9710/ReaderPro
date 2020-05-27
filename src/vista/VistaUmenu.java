@@ -219,6 +219,11 @@ public class VistaUmenu extends javax.swing.JFrame {
         jLabel7.setText("ACTUALIZAR DATOS");
 
         jButton1.setText("ACTUALIZAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -397,6 +402,10 @@ public class VistaUmenu extends javax.swing.JFrame {
         txtsettitulo.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
         
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

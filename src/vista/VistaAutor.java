@@ -129,7 +129,7 @@ public class VistaAutor extends javax.swing.JFrame {
             }
         });
 
-        btnAgregarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar.png"))); // NOI18N
+        btnAgregarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInsertar1.png"))); // NOI18N
         btnAgregarAutor.setBorderPainted(false);
         btnAgregarAutor.setContentAreaFilled(false);
         btnAgregarAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +138,7 @@ public class VistaAutor extends javax.swing.JFrame {
             }
         });
 
-        btnEliminarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar.png"))); // NOI18N
+        btnEliminarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEliminar1.png"))); // NOI18N
         btnEliminarAutor.setBorderPainted(false);
         btnEliminarAutor.setContentAreaFilled(false);
         btnEliminarAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +147,7 @@ public class VistaAutor extends javax.swing.JFrame {
             }
         });
 
-        btnModificarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar.png"))); // NOI18N
+        btnModificarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnModificar1.png"))); // NOI18N
         btnModificarAutor.setBorderPainted(false);
         btnModificarAutor.setContentAreaFilled(false);
         btnModificarAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,7 @@ public class VistaAutor extends javax.swing.JFrame {
             }
         });
 
-        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar.png"))); // NOI18N
+        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnMostrar1.png"))); // NOI18N
         btnMostrar.setBorderPainted(false);
         btnMostrar.setContentAreaFilled(false);
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +168,7 @@ public class VistaAutor extends javax.swing.JFrame {
         jDateChooser1.setDateFormatString("yyyy/MM/dd");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel11.setText("Pais autor:");
+        jLabel11.setText("País autor:");
 
         idu.setEditable(false);
 
@@ -199,7 +199,7 @@ public class VistaAutor extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("principal");
 
-        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome.png"))); // NOI18N
+        btnmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnHome1.png"))); // NOI18N
         btnmp.setBorderPainted(false);
         btnmp.setContentAreaFilled(false);
         btnmp.addActionListener(new java.awt.event.ActionListener() {
