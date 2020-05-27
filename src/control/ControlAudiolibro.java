@@ -103,6 +103,16 @@ public LinkedList<Audiolibro> consultarAudioLibroBusqueda2(int[] variables) {
         return listau;
         
     }
+
+    public LinkedList<Audiolibro> consultarAudioLibroBusquedaPorcategoria(String categoria) {
+        
+        String sql = "Select * from audiolibros where id_categoriaAF ='"+categoria+"';";
+        Audiolibro objau = new Audiolibro();
+        LinkedList<Audiolibro> listau = objau.consultarAudioLibro(sql);
+
+        return listau;
+        
+    }
     
     
     
