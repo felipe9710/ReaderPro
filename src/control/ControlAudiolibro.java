@@ -39,15 +39,7 @@ public class ControlAudiolibro {
 
     }
         
-public LinkedList<Audiolibro> consultarAudioLibroBusqueda(String busqueda) {
 
-        String sql = "Select * from audiolibros where id_audiolibro="+busqueda;
-        Audiolibro objcu = new Audiolibro();
-        LinkedList<Audiolibro> listau = objcu.consultarAudioLibro(sql);
-
-        return listau;
-
-    }
 
         
 public LinkedList<Audiolibro> consultarAudioLibroBusqueda2(int[] variables) {
