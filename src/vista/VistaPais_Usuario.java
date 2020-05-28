@@ -265,9 +265,9 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
    ControlUsuario obju = new ControlUsuario();
          listaU = obju.consultarUsuario();
         boolean PaisUsado = false;
-        Object[] fila2=null;
+       
         boolean t1=false;
-        boolean vacio=true;
+        
          String select = IdUsu.getText();//id
          
          int select2=0;
@@ -286,6 +286,7 @@ public class VistaPais_Usuario extends javax.swing.JFrame {
               
         Control_Paises_Usuario objepn = new Control_Paises_Usuario();
            for (int i = 0; i < listaU.size(); i++) {
+               
          r=listaU.get(i).getId_PaisUF();
          if(r==select2){
         

@@ -251,6 +251,7 @@ public class VistaLogin extends javax.swing.JFrame {
             vu.btnmp.setVisible(false);
 //            vu.lblmenu.setVisible(false);
 //            vu.lblprincip.setVisible(false);
+
         } else if(objLogin.getUsuario().equals("") || objLogin.getContraseña().equals("")) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese sus credenciales completas");
         
