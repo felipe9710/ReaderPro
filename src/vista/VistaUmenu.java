@@ -99,6 +99,11 @@ public class VistaUmenu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -207,6 +212,7 @@ public class VistaUmenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
         txtNombre.setBackground(new java.awt.Color(73, 181, 172));
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,6 +342,8 @@ public class VistaUmenu extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -347,11 +355,12 @@ public class VistaUmenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(11, 11, 11)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,17 +461,33 @@ public class VistaUmenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btncsActionPerformed
 
-    private void btnbuscartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscartActionPerformed
+    private void btnbuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarNActionPerformed
 
-        ControlAudiolibro obju = new ControlAudiolibro();
+        ControlNarrador objce = new ControlNarrador();
+        ControlAudiolibro objca = new ControlAudiolibro();
         int ncolu;
         Object[] fila2;
-        String titulo = txtNombre.getText();
-        if (titulo.equals("")) {
+        String narrador = txtNombre.getText();
+        if (narrador.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
         }
 
-        listAuL = obju.consultarAudioLibroBusqueda(titulo);
+        listaN = objce.consultarAudioLibroPorNarrador(narrador);
+
+        int idNarrador = 0;
+
+        for (int i = 0; i < listaN.size(); i++) {
+            Narrador narraty = listaN.get(i);
+
+            if (narrador.equals(narraty.getNombre_narrador1())) {
+                idNarrador = narraty.getId_narrador();
+            }
+        }
+        listAuL = objca.consultarAudioLibroxNarrador(idNarrador);
+
+        if (idNarrador == 0) {
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
 
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable2.setModel(modelo);
@@ -504,43 +529,160 @@ public class VistaUmenu extends javax.swing.JFrame {
 
             modelo.addRow(fila2);
         }
+    }//GEN-LAST:event_btnbuscarNActionPerformed
 
-    }//GEN-LAST:event_btnbuscartActionPerformed
+    private void btnbuscarxEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarxEActionPerformed
 
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-
-        String select = txtsettitulo.getText();
-        ControlAudio objcaud = new ControlAudio();
+        Control_Editorial objce = new Control_Editorial();
+        ControlAudiolibro objca = new ControlAudiolibro();
         int ncolu;
         Object[] fila2;
+        String editorial = txtNombre.getText();
+        if (editorial.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
+        }
 
-        listaAud = objcaud.consultarAudioBusqueda(select);
+        listaE = objce.consultarAudioLibroPorEditorial(editorial);
+
+        int idEditorial = 0;
+
+        for (int i = 0; i < listaE.size(); i++) {
+            Editorial editory = listaE.get(i);
+
+            if (editorial.equals(editory.getNombre_editorial())) {
+                idEditorial = editory.getId_editorial();
+            }
+        }
+        listAuL = objca.consultarAudioLibroxEditorial(idEditorial);
+
+        if (idEditorial == 0) {
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
+
         DefaultTableModel modelo = new DefaultTableModel();
-        this.jTable1.setModel(modelo);
-
-        modelo.addColumn("archivo de audio");
-        modelo.addColumn("id del audiolibro");
+        this.jTable2.setModel(modelo);
+        modelo.addColumn("id_audiolibro");
+        modelo.addColumn("titulo");
+        modelo.addColumn("fecha_creacion");
+        modelo.addColumn("num_paginas");
+        modelo.addColumn("duracion_total");
+        modelo.addColumn("portada");
+        modelo.addColumn("contraportada");
+        modelo.addColumn("calificacion");
+        modelo.addColumn("sipnosis");
+        modelo.addColumn("numCapitulos");
+        modelo.addColumn("idioma");
+        modelo.addColumn("reproducciones");
+        modelo.addColumn("id_narradorAF");
+        modelo.addColumn("id_editorialAF");
+        modelo.addColumn("id_categoriaAF");
         ncolu = modelo.getColumnCount();
 
-        for (int j = 0; j < listaAud.size(); j++) {
+        for (int i = 0; i < listAuL.size(); i++) {
+
             fila2 = new Object[ncolu];
-            fila2[0] = listaAud.get(j).getArchivo_Audio();
-            fila2[1] = listaAud.get(j).getId_audiolibroF();
+            fila2[0] = listAuL.get(i).getId_audiolibro();
+            fila2[1] = listAuL.get(i).getTitulo();
+            fila2[2] = listAuL.get(i).getFecha_creacion();
+            fila2[3] = listAuL.get(i).getNum_paginas();
+            fila2[4] = listAuL.get(i).getDuracion_total();
+            fila2[5] = listAuL.get(i).getPortada();
+            fila2[6] = listAuL.get(i).getContraportada();
+            fila2[7] = listAuL.get(i).getCalificacion();
+            fila2[8] = listAuL.get(i).getSipnosis();
+            fila2[9] = listAuL.get(i).getNumCapitulos();
+            fila2[10] = listAuL.get(i).getIdioma();
+            fila2[11] = listAuL.get(i).getReproducciones();
+            fila2[12] = listAuL.get(i).getId_narradorAF();
+            fila2[13] = listAuL.get(i).getId_editorialAF();
+            fila2[14] = listAuL.get(i).getId_categoriaAF();
+
             modelo.addRow(fila2);
-
         }
-    }//GEN-LAST:event_btnguardarActionPerformed
+    }//GEN-LAST:event_btnbuscarxEActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+    private void btnbuscxAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscxAutorActionPerformed
 
-        int selected = jTable2.rowAtPoint(evt.getPoint());
-        txtsettitulo.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
+        ControlAutor objcA = new ControlAutor();
+        ControlAutores_Libros objca = new ControlAutores_Libros();
+        ControlAudiolibro objcAud = new ControlAudiolibro();
+        int ncolu;
+        Object[] fila2;
+        String autor = txtNombre.getText();
+        if (autor.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
+        }
 
-    }//GEN-LAST:event_jTable2MouseClicked
+        listaA = objcA.consultarAudioLibroPorAutor(autor);
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int idAutor = 0;
+
+        for (int i = 0; i < listaA.size(); i++) {
+            Autor author = listaA.get(i);
+
+            if (autor.equals(author.getNombre_autor1())) {
+                idAutor = author.getId_autor();
+            }
+        }
+        listAuLibros = objca.consultarAudioLibroxAutor(idAutor);
+
+        int idaudiolibro = 0;
+
+        for (int i = 0; i < listAuLibros.size(); i++) {
+            Autores_Libros authores = listAuLibros.get(i);
+
+            if (idAutor == authores.getId_autorAF()) {
+                idaudiolibro = authores.getId_audiolibroAF();
+            }
+        }
+
+        listAuL = objcAud.consultarAudioLibroxAutor(idaudiolibro);
+
+        if (idaudiolibro == 0) {
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable2.setModel(modelo);
+        modelo.addColumn("id_audiolibro");
+        modelo.addColumn("titulo");
+        modelo.addColumn("fecha_creacion");
+        modelo.addColumn("num_paginas");
+        modelo.addColumn("duracion_total");
+        modelo.addColumn("portada");
+        modelo.addColumn("contraportada");
+        modelo.addColumn("calificacion");
+        modelo.addColumn("sipnosis");
+        modelo.addColumn("numCapitulos");
+        modelo.addColumn("idioma");
+        modelo.addColumn("reproducciones");
+        modelo.addColumn("id_narradorAF");
+        modelo.addColumn("id_editorialAF");
+        modelo.addColumn("id_categoriaAF");
+        ncolu = modelo.getColumnCount();
+
+        for (int i = 0; i < listAuL.size(); i++) {
+
+            fila2 = new Object[ncolu];
+            fila2[0] = listAuL.get(i).getId_audiolibro();
+            fila2[1] = listAuL.get(i).getTitulo();
+            fila2[2] = listAuL.get(i).getFecha_creacion();
+            fila2[3] = listAuL.get(i).getNum_paginas();
+            fila2[4] = listAuL.get(i).getDuracion_total();
+            fila2[5] = listAuL.get(i).getPortada();
+            fila2[6] = listAuL.get(i).getContraportada();
+            fila2[7] = listAuL.get(i).getCalificacion();
+            fila2[8] = listAuL.get(i).getSipnosis();
+            fila2[9] = listAuL.get(i).getNumCapitulos();
+            fila2[10] = listAuL.get(i).getIdioma();
+            fila2[11] = listAuL.get(i).getReproducciones();
+            fila2[12] = listAuL.get(i).getId_narradorAF();
+            fila2[13] = listAuL.get(i).getId_editorialAF();
+            fila2[14] = listAuL.get(i).getId_categoriaAF();
+
+            modelo.addRow(fila2);
+        }
+    }//GEN-LAST:event_btnbuscxAutorActionPerformed
 
     private void btnbuscarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarCActionPerformed
 
@@ -610,50 +752,19 @@ public class VistaUmenu extends javax.swing.JFrame {
 
             modelo.addRow(fila2);
         }
-
     }//GEN-LAST:event_btnbuscarCActionPerformed
 
-    private void btnbuscxAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscxAutorActionPerformed
+    private void btnbuscartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscartActionPerformed
 
-        ControlAutor objcA = new ControlAutor();
-        ControlAutores_Libros objca = new ControlAutores_Libros();
-        ControlAudiolibro objcAud = new ControlAudiolibro();
+        ControlAudiolibro obju = new ControlAudiolibro();
         int ncolu;
         Object[] fila2;
-        String autor = txtNombre.getText();
-        if (autor.isEmpty()) {
+        String titulo = txtNombre.getText();
+        if (titulo.equals("")) {
             JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
         }
 
-        listaA = objcA.consultarAudioLibroPorAutor(autor);
-
-        int idAutor = 0;
-
-        for (int i = 0; i < listaA.size(); i++) {
-            Autor author = listaA.get(i);
-
-            if (autor.equals(author.getNombre_autor1())) {
-                idAutor = author.getId_autor();
-            }
-        }
-        listAuLibros = objca.consultarAudioLibroxAutor(idAutor);
-
-        int idaudiolibro = 0;
-
-        for (int i = 0; i < listAuLibros.size(); i++) {
-            Autores_Libros authores = listAuLibros.get(i);
-
-            if (idAutor == authores.getId_autorAF()) {
-                idaudiolibro = authores.getId_audiolibroAF();
-            }
-        }
-        
-        listAuL = objcAud.consultarAudioLibroxAutor(idaudiolibro);
-        
-
-        if (idaudiolibro == 0) {
-            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
-        }
+        listAuL = obju.consultarAudioLibroBusqueda(titulo);
 
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable2.setModel(modelo);
@@ -695,158 +806,61 @@ public class VistaUmenu extends javax.swing.JFrame {
 
             modelo.addRow(fila2);
         }
+    }//GEN-LAST:event_btnbuscartActionPerformed
 
-    }//GEN-LAST:event_btnbuscxAutorActionPerformed
+    private void txtsettituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsettituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsettituloActionPerformed
 
-    private void btnbuscarxEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarxEActionPerformed
-        
-        Control_Editorial objce = new Control_Editorial();
-        ControlAudiolibro objca = new ControlAudiolibro();
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+
+        String select = txtsettitulo.getText();
+        ControlAudio objcaud = new ControlAudio();
         int ncolu;
         Object[] fila2;
-        String editorial = txtNombre.getText();
-        if (editorial.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
-        }
 
-        listaE = objce.consultarAudioLibroPorEditorial(editorial);
-
-        int idEditorial = 0;
-
-        for (int i = 0; i < listaE.size(); i++) {
-            Editorial editory = listaE.get(i);
-
-            if (editorial.equals(editory.getNombre_editorial())) {
-                idEditorial = editory.getId_editorial();
-            }
-        }
-        listAuL = objca.consultarAudioLibroxEditorial(idEditorial);
-
-        if (idEditorial == 0) {
-            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
-        }
-
+        listaAud = objcaud.consultarAudioBusqueda(select);
         DefaultTableModel modelo = new DefaultTableModel();
-        this.jTable2.setModel(modelo);
-        modelo.addColumn("id_audiolibro");
-        modelo.addColumn("titulo");
-        modelo.addColumn("fecha_creacion");
-        modelo.addColumn("num_paginas");
-        modelo.addColumn("duracion_total");
-        modelo.addColumn("portada");
-        modelo.addColumn("contraportada");
-        modelo.addColumn("calificacion");
-        modelo.addColumn("sipnosis");
-        modelo.addColumn("numCapitulos");
-        modelo.addColumn("idioma");
-        modelo.addColumn("reproducciones");
-        modelo.addColumn("id_narradorAF");
-        modelo.addColumn("id_editorialAF");
-        modelo.addColumn("id_categoriaAF");
+        this.jTable1.setModel(modelo);
+
+        modelo.addColumn("archivo de audio");
+        modelo.addColumn("id del audiolibro");
         ncolu = modelo.getColumnCount();
 
-        for (int i = 0; i < listAuL.size(); i++) {
-
+        for (int j = 0; j < listaAud.size(); j++) {
             fila2 = new Object[ncolu];
-            fila2[0] = listAuL.get(i).getId_audiolibro();
-            fila2[1] = listAuL.get(i).getTitulo();
-            fila2[2] = listAuL.get(i).getFecha_creacion();
-            fila2[3] = listAuL.get(i).getNum_paginas();
-            fila2[4] = listAuL.get(i).getDuracion_total();
-            fila2[5] = listAuL.get(i).getPortada();
-            fila2[6] = listAuL.get(i).getContraportada();
-            fila2[7] = listAuL.get(i).getCalificacion();
-            fila2[8] = listAuL.get(i).getSipnosis();
-            fila2[9] = listAuL.get(i).getNumCapitulos();
-            fila2[10] = listAuL.get(i).getIdioma();
-            fila2[11] = listAuL.get(i).getReproducciones();
-            fila2[12] = listAuL.get(i).getId_narradorAF();
-            fila2[13] = listAuL.get(i).getId_editorialAF();
-            fila2[14] = listAuL.get(i).getId_categoriaAF();
-
+            fila2[0] = listaAud.get(j).getArchivo_Audio();
+            fila2[1] = listaAud.get(j).getId_audiolibroF();
             modelo.addRow(fila2);
+
         }
-        
-    }//GEN-LAST:event_btnbuscarxEActionPerformed
+    }//GEN-LAST:event_btnguardarActionPerformed
 
-    private void btnbuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarNActionPerformed
-        
-        ControlNarrador objce = new ControlNarrador();
-        ControlAudiolibro objca = new ControlAudiolibro();
-        int ncolu;
-        Object[] fila2;
-        String narrador = txtNombre.getText();
-        if (narrador.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
-        }
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
 
-        listaN = objce.consultarAudioLibroPorNarrador(narrador);
-
-        int idNarrador = 0;
-
-        for (int i = 0; i < listaN.size(); i++) {
-            Narrador narraty = listaN.get(i);
-
-            if (narrador.equals(narraty.getNombre_narrador1())) {
-                idNarrador = narraty.getId_narrador();
-            }
-        }
-        listAuL = objca.consultarAudioLibroxNarrador(idNarrador);
-
-        if (idNarrador == 0) {
-            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
-        }
-
-        DefaultTableModel modelo = new DefaultTableModel();
-        this.jTable2.setModel(modelo);
-        modelo.addColumn("id_audiolibro");
-        modelo.addColumn("titulo");
-        modelo.addColumn("fecha_creacion");
-        modelo.addColumn("num_paginas");
-        modelo.addColumn("duracion_total");
-        modelo.addColumn("portada");
-        modelo.addColumn("contraportada");
-        modelo.addColumn("calificacion");
-        modelo.addColumn("sipnosis");
-        modelo.addColumn("numCapitulos");
-        modelo.addColumn("idioma");
-        modelo.addColumn("reproducciones");
-        modelo.addColumn("id_narradorAF");
-        modelo.addColumn("id_editorialAF");
-        modelo.addColumn("id_categoriaAF");
-        ncolu = modelo.getColumnCount();
-
-        for (int i = 0; i < listAuL.size(); i++) {
-
-            fila2 = new Object[ncolu];
-            fila2[0] = listAuL.get(i).getId_audiolibro();
-            fila2[1] = listAuL.get(i).getTitulo();
-            fila2[2] = listAuL.get(i).getFecha_creacion();
-            fila2[3] = listAuL.get(i).getNum_paginas();
-            fila2[4] = listAuL.get(i).getDuracion_total();
-            fila2[5] = listAuL.get(i).getPortada();
-            fila2[6] = listAuL.get(i).getContraportada();
-            fila2[7] = listAuL.get(i).getCalificacion();
-            fila2[8] = listAuL.get(i).getSipnosis();
-            fila2[9] = listAuL.get(i).getNumCapitulos();
-            fila2[10] = listAuL.get(i).getIdioma();
-            fila2[11] = listAuL.get(i).getReproducciones();
-            fila2[12] = listAuL.get(i).getId_narradorAF();
-            fila2[13] = listAuL.get(i).getId_editorialAF();
-            fila2[14] = listAuL.get(i).getId_categoriaAF();
-
-            modelo.addRow(fila2);
-        }
-        
-    }//GEN-LAST:event_btnbuscarNActionPerformed
+        int selected = jTable2.rowAtPoint(evt.getPoint());
+        txtsettitulo.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
+    }//GEN-LAST:event_jTable2MouseClicked
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void txtsettituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsettituloActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtsettituloActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
