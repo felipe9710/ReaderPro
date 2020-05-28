@@ -122,6 +122,7 @@ public class Editorial {
     }
 
     public LinkedList<Editorial> buscar_Editorial(String sql) {
+        
         ResultSet rs = null;
         LinkedList<Editorial> lpn = new LinkedList<>();
         BaseDatos objCon = new BaseDatos();

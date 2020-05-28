@@ -339,7 +339,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         ControlNarrador obju = new ControlNarrador();
          listaN = obju.consultarNarrador();
         boolean PaisUsado = false;
-        Object[] fila2=null;
+        
         boolean t1=false;
         boolean vacio=true;
          String select = idpn.getText();//id

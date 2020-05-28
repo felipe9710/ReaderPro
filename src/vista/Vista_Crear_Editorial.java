@@ -6,6 +6,7 @@
 package vista;
 
 
+import control.ControlPais_Narrador;
 import control.Control_Editorial;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,7 @@ import modelo.Editorial;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
+import modelo.Audiolibro;
 /**
  *
  * @author Home
@@ -23,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class Vista_Crear_Editorial extends javax.swing.JFrame {
 
     LinkedList<Editorial> listaE;
+    LinkedList<Audiolibro>ListaUD;
     
     public Vista_Crear_Editorial() {
         initComponents();
@@ -336,6 +339,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
       
         //------------BOTON-------------------
     jDateChooser1.setCalendar(Calendar.getInstance());
+    
     Control_Editorial objcE=new Control_Editorial();
         
     String nombre_editorial=jTextNombreE.getText();
@@ -349,10 +353,13 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     
     java.sql.Date Fecha_Creacion_Editorial= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time   
         
+    
+    
         if (nombre_editorial.isEmpty() || telefono_E.isEmpty() || direccion_E.isEmpty() || correo_E.isEmpty()){
             JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
            
         } else {
+            
             boolean t = objcE.insertar_Editorial(nombre_editorial,telefono_E,direccion_E,correo_E, Fecha_Creacion_Editorial );
 
         if (t == true) {
@@ -363,25 +370,56 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
 
     private void jButtoNBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoNBorrarActionPerformed
         // TODO add your handling code here:
+                boolean t1=false;
+        Control_Editorial objepn = new Control_Editorial();
         
-                Control_Editorial objeu = new Control_Editorial();
         String selected = idE.getText();
-        
-        if(selected.length()==0){
-        JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
-        
-        }else{
-        
-        boolean t1 = objeu.eliminarEditorial(selected);
+          boolean EditorialUsado = false;      
+         String select = idpn.getText();//id
+         int select2=0;
+         
+         if(idpn.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+         
+          select2 =Integer.parseInt(select);//id
+              int r = 0; 
+              boolean b=false;
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino la editorial con exito");
+              if(select2==0){b=true;}else{b=false;}
+              
+              if(b==false){
+
+       
+           for (int i = 0; i < ListaUD.size(); i++) {
+         r=ListaUD.get(i).getId_editorialAF();
+         if(r==select2){
+        
+         EditorialUsado=true;
+         break;
+         }else{
+          EditorialUsado=false;
+         }
+           }
+     
+  if(idpn.getText().length()==0){
+           JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+              
+           }else{
+           
+           if((EditorialUsado==false)){
+               
+             t1 = objepn.eliminarEditorial(select);
+             
+           }else{t1=false;
+}                  
+        if (t1 == true && EditorialUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el pais del narrador");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino la editorial");
-        }
-
-   
-        }
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           }}
+    }      
     }//GEN-LAST:event_jButtoNBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
