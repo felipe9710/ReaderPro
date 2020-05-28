@@ -5,10 +5,12 @@
  */
 package vista;
 
+import control.ControlAutor;
 import control.ControlPais_autor;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Autor;
 import modelo.Pais_autor;
 
 /**
@@ -18,7 +20,7 @@ import modelo.Pais_autor;
 public class VistaPais_autorI extends javax.swing.JFrame {
 
     LinkedList<Pais_autor> listaPais_autores;
-
+    LinkedList<Autor>listaA;
     /**
      * Creates new form VistaPais_autorI
      */
@@ -28,6 +30,7 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         listaPais_autores = new LinkedList<>();
+        listaA = new LinkedList<>();
     }
 
     /**
@@ -295,15 +298,42 @@ public class VistaPais_autorI extends javax.swing.JFrame {
     //de tomar los valores del jTextField1 para posteriormente eliminarlos
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         // TODO add your handling code here:
-        ControlPais_autor objepa = new ControlPais_autor();
-        String select = jlbIdPaisAutor.getText();
-        boolean t1 = objepa.eliminarPais_autor(select);
+ 
+   ControlAutor obju = new ControlAutor();
+         listaA = obju.consultarAutor();
+        boolean PaisUsado = false;
+        Object[] fila2=null;
+        boolean t1=false;
+        boolean vacio=true;
+         String select = jlbIdPaisAutor.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el pais del autor");
+              if(select.length()==0){ vacio=true;}else{vacio=false;}
+              
+        ControlPais_autor objepn = new ControlPais_autor();
+           for (int i = 0; i < listaA.size(); i++) {
+         r=listaA.get(i).getId_PaisAF();
+         if(r==select2){
+        
+         PaisUsado=true;
+         break;
+         }else{
+          PaisUsado=false;
+         }
+           }
+           if((PaisUsado==false)){
+             t1 = objepn.eliminarPais_autor(select);
+           }else{t1=false;
+}
+                  
+        if (t1 == true && PaisUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el pais del autor");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el pais del autor");
-        }
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           
     }//GEN-LAST:event_btneliminarActionPerformed
     //El metodo btnModificarActionPerformed es el metodo del boton modificar, que se encarga
     //de tomar lo valores del txtNombrePaisNarrador y los cambia

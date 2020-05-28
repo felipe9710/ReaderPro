@@ -338,33 +338,37 @@ public class VistaPais_narrador extends javax.swing.JFrame {
 
         ControlNarrador obju = new ControlNarrador();
          listaN = obju.consultarNarrador();
-        boolean oj = false;
+        boolean PaisUsado = false;
         Object[] fila2=null;
         boolean t1=false;
+        boolean vacio=true;
          String select = idpn.getText();//id
          int select2 =Integer.parseInt(select);//id
               int r = 0; 
 
+              if(select.length()==0){ vacio=true;}else{vacio=false;}
+              
         ControlPais_Narrador objepn = new ControlPais_Narrador();
            for (int i = 0; i < listaN.size(); i++) {
          r=listaN.get(i).getId_PaisNF();
          if(r==select2){
         
-         oj=true;
+         PaisUsado=true;
          break;
          }else{
-          oj=false;
+          PaisUsado=false;
          }
            }
-           if(oj==false){
+           if((PaisUsado==false)){
              t1 = objepn.eliminarPais_narrador(select);
-           }
+           }else{t1=false;
+}
                   
-        if (t1 == true && oj==false) {
+        if (t1 == true && PaisUsado==false) {
             JOptionPane.showMessageDialog(this, "Se eliminó el pais del narrador");
                         
         } else {
-            JOptionPane.showMessageDialog(this, "No se eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
         }  
 
     }//GEN-LAST:event_btnEliminarActionPerformed

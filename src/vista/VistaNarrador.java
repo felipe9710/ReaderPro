@@ -381,12 +381,20 @@ public class VistaNarrador extends javax.swing.JFrame {
     private void btnLimpiarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarNarradorActionPerformed
         ControlNarrador objeu = new ControlNarrador();
         String selected = idn.getText();
+        
+        
+        if(selected.length()==0){
+        JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+        
+        }else{
+        
         boolean t1 = objeu.eliminarNarrador(selected);
 
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se elimino el narrador");
         } else {
             JOptionPane.showMessageDialog(this, "No se elimino el narrador");
+        }
         }
     }//GEN-LAST:event_btnLimpiarNarradorActionPerformed
 
@@ -402,12 +410,12 @@ public class VistaNarrador extends javax.swing.JFrame {
 
         java.sql.Date fecha_nacimiento_narrador = new java.sql.Date(f);
 
-        if (nombreNarrador1.getText().isEmpty() || nombreNarrador2.getText().isEmpty() || apellidoNarrador1.getText().isEmpty() || apellidoNarrador2.getText().isEmpty()) {
+        ControlNarrador objmpn = new ControlNarrador();
+        String selected = idn.getText();
+        if (nombre_narrador1.isEmpty() || nombre_narrado2.isEmpty() || apellido_narrado1.isEmpty() || apellido_narrado2.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            ControlNarrador objmpn = new ControlNarrador();
-            String selected = idn.getText();
-
+//            ControlNarrador objmpn = new ControlNarrador();
             boolean t1 = objmpn.modificarNarrador(selected, nombre_narrador1, nombre_narrado2, apellido_narrado1, apellido_narrado2, fecha_nacimiento_narrador);
 
             if (t1 == true) {
@@ -452,6 +460,7 @@ public class VistaNarrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarNarradorActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jDateChooser1.setCalendar(Calendar.getInstance());
         ControlPais_Narrador objpu = new ControlPais_Narrador();
         listapu = objpu.consultarpaisnarrador();
         for (int i = 0; i < listapu.size(); i++) {
