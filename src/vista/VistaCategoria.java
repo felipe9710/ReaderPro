@@ -6,6 +6,7 @@
 package vista;
 
 import control.BaseDatos;
+import control.ControlAudiolibro;
 import control.ControlCategoria;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +17,7 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import javax.swing.table.DefaultTableModel;
+import modelo.Audiolibro;
 
 /**
  *
@@ -24,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class VistaCategoria extends javax.swing.JFrame {
 
     LinkedList<Categoria> listaCategorias;
+    LinkedList<Audiolibro>listaAU;
 
     public VistaCategoria() {
         initComponents();
@@ -296,22 +299,47 @@ public class VistaCategoria extends javax.swing.JFrame {
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
 
-        ControlCategoria objeu = new ControlCategoria();
-        String selected = idcg.getText();
+        ControlAudiolibro obju = new ControlAudiolibro();
+         listaAU = obju.consultarAudioLibro();
+        boolean NarradorUsado = false;
         
-        if(selected.length()==0){
-        JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
-        
-        }else{
-        
-        boolean t1 = objeu.eliminarCategoria(selected);
+        boolean t1=false;
+        boolean vacio=true;
+         String select = idcg.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino la Categoria");
+            
+              
+        ControlCategoria objepn = new ControlCategoria();
+        
+           for (int i = 0; i < listaAU.size(); i++) {
+         r=listaAU.get(i).getId_narradorAF();
+         if(r==select2){
+        
+         NarradorUsado=true;
+         break;
+         }else{
+          NarradorUsado=false;
+         }
+           }
+           if(idcg.getText().length()==0){
+           JOptionPane.showMessageDialog(this, "No se puede eliminar esta categoria", "Error", JOptionPane.ERROR_MESSAGE);
+    
+           }else{
+           
+           if((NarradorUsado==false)){
+             t1 = objepn.eliminarCategoria(select);
+           }else{t1=false;
+}
+                  
+        if (t1 == true && NarradorUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó la categoria");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se la Categoria");
-        }
-        }
+            JOptionPane.showMessageDialog(this, "No se puede eliminar esta categoria", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           }
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed

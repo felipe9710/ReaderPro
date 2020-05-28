@@ -492,7 +492,7 @@ public class VistaAutor extends javax.swing.JFrame {
          }
            }
            if(idu.getText().length()==0){
-           JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(this, "No se puede eliminar este autor", "Error", JOptionPane.ERROR_MESSAGE);
     
            }else{
            
@@ -502,10 +502,10 @@ public class VistaAutor extends javax.swing.JFrame {
 }
                   
         if (t1 == true && AutorUsado==false) {
-            JOptionPane.showMessageDialog(this, "Se eliminó el narrador");
+            JOptionPane.showMessageDialog(this, "Se eliminó el autor");
                         
         } else {
-            JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este autor", "Error", JOptionPane.ERROR_MESSAGE);
         }  
            }
 
