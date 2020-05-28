@@ -62,6 +62,11 @@ public class VistaCategoria extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
@@ -293,6 +298,12 @@ public class VistaCategoria extends javax.swing.JFrame {
 
         ControlCategoria objeu = new ControlCategoria();
         String selected = idcg.getText();
+        
+        if(selected.length()==0){
+        JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
+        
+        }else{
+        
         boolean t1 = objeu.eliminarCategoria(selected);
 
         if (t1 == true) {
@@ -300,8 +311,7 @@ public class VistaCategoria extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se la Categoria");
         }
-
-
+        }
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
@@ -353,6 +363,10 @@ public class VistaCategoria extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package vista;
 
+import control.ControlAudiolibro;
 import control.ControlNarrador;
 import control.ControlPais_Narrador;
 import java.text.ParseException;
@@ -16,6 +17,7 @@ import modelo.Pais_Narrador;
 import modelo.Narrador;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import modelo.Audiolibro;
 
 /**
  *
@@ -25,6 +27,7 @@ public class VistaNarrador extends javax.swing.JFrame {
 
     LinkedList<Pais_Narrador> listapu;
     LinkedList<Narrador> listaN;
+    LinkedList<Audiolibro>listaAU;
 
     /**
      * Creates new form VistaNarrador
@@ -33,6 +36,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         initComponents();
         listapu = new LinkedList<>();
         listaN = new LinkedList<>();
+        listaAU = new LinkedList<>();
         jDateChooser1.getDateEditor().setEnabled(false);
 
     }
@@ -379,15 +383,47 @@ public class VistaNarrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarNarradorActionPerformed
 
     private void btnLimpiarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarNarradorActionPerformed
-        ControlNarrador objeu = new ControlNarrador();
-        String selected = idn.getText();
-        boolean t1 = objeu.eliminarNarrador(selected);
+          ControlAudiolibro obju = new ControlAudiolibro();
+         listaAU = obju.consultarAudioLibro();
+        boolean NarradorUsado = false;
+        Object[] fila2=null;
+        boolean t1=false;
+        boolean vacio=true;
+         String select = idn.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el narrador");
+              if(select.length()==0){ vacio=true;}else{vacio=false;}
+              
+        ControlNarrador objepn = new ControlNarrador();
+        
+           for (int i = 0; i < listaAU.size(); i++) {
+         r=listaAU.get(i).getId_narradorAF();
+         if(r==select2){
+        
+         NarradorUsado=true;
+         break;
+         }else{
+          NarradorUsado=false;
+         }
+           }
+           if(idn.getText().length()==0){
+           JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+    
+           }else{
+           
+           if((NarradorUsado==false)){
+             t1 = objepn.eliminarNarrador(select);
+           }else{t1=false;
+}
+                  
+        if (t1 == true && NarradorUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el narrador");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el narrador");
-        }
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           }
     }//GEN-LAST:event_btnLimpiarNarradorActionPerformed
 
     private void btnModificarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarNarradorActionPerformed
@@ -402,12 +438,12 @@ public class VistaNarrador extends javax.swing.JFrame {
 
         java.sql.Date fecha_nacimiento_narrador = new java.sql.Date(f);
 
-        if (nombreNarrador1.getText().isEmpty() || nombreNarrador2.getText().isEmpty() || apellidoNarrador1.getText().isEmpty() || apellidoNarrador2.getText().isEmpty()) {
+        ControlNarrador objmpn = new ControlNarrador();
+        String selected = idn.getText();
+        if (nombre_narrador1.isEmpty() || nombre_narrado2.isEmpty() || apellido_narrado1.isEmpty() || apellido_narrado2.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            ControlNarrador objmpn = new ControlNarrador();
-            String selected = idn.getText();
-
+//            ControlNarrador objmpn = new ControlNarrador();
             boolean t1 = objmpn.modificarNarrador(selected, nombre_narrador1, nombre_narrado2, apellido_narrado1, apellido_narrado2, fecha_nacimiento_narrador);
 
             if (t1 == true) {
@@ -452,6 +488,7 @@ public class VistaNarrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarNarradorActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jDateChooser1.setCalendar(Calendar.getInstance());
         ControlPais_Narrador objpu = new ControlPais_Narrador();
         listapu = objpu.consultarpaisnarrador();
         for (int i = 0; i < listapu.size(); i++) {
