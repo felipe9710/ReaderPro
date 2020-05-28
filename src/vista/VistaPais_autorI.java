@@ -301,7 +301,7 @@ public class VistaPais_autorI extends javax.swing.JFrame {
    ControlAutor obju = new ControlAutor();
          listaA = obju.consultarAutor();
         boolean PaisUsado = false;
-        Object[] fila2=null;
+      
         boolean t1=false;
         boolean vacio=true;
          String select = jlbIdPaisAutor.getText();//id

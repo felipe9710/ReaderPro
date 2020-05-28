@@ -6,6 +6,8 @@
 package vista;
 
 import control.ControlAudiolibro;
+import control.ControlAutor;
+import control.ControlAutores_Libros;
 import control.ControlCategoria;
 import control.ControlNarrador;
 import control.Control_Editorial;
@@ -23,6 +25,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import modelo.Autores_Libros;
 
 /**
  *
@@ -35,6 +38,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     LinkedList<Narrador> listN;
     LinkedList<Editorial> listaE;
     LinkedList<Categoria> listaC;
+    LinkedList<Autores_Libros> listaAL;
 
     /**
      * Creates new form VistaAudiolibro
@@ -47,6 +51,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         listN = new LinkedList<>();
         listaE = new LinkedList<>();
         listaC = new LinkedList<>();
+        listaAL=new LinkedList<>();
         jDateChooser1.getDateEditor().setEnabled(false);
     }
 
@@ -741,17 +746,53 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxEditorialActionPerformed
 
     private void btnEliminarAudiolibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAudiolibroActionPerformed
-        // TODO add your handling code here:
+      
+        ControlAutores_Libros obju = new ControlAutores_Libros();
+        
+         listaAL = obju.consultarAutores_Libros();
+        boolean PaisUsado = false;
+      
+        boolean t1=false;
+        boolean vacio=true;
+         String select = jTextField1.getText();//id
+            int select2=0;
+         
+         if(jTextField1.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+         
+          select2 =Integer.parseInt(select);//id
+              int r = 0; 
+              boolean b=false;
 
-        ControlAudiolibro objeu = new ControlAudiolibro();
-        String selected = jTextField1.getText();
-        boolean t1 = objeu.eliminarAudioLibro(selected);
+              if(select2==0){b=true;}else{b=false;}
+              
+              if(b==false){
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el Audiio Libro");
+              
+        ControlAudiolibro objepn = new ControlAudiolibro();
+           for (int i = 0; i < listaAL.size(); i++) {
+         r=listaAL.get(i).getId_audiolibroAF();
+         if(r==select2){
+        
+         PaisUsado=true;
+         break;
+         }else{
+          PaisUsado=false;
+         }
+           }
+           if((PaisUsado==false)){
+             t1 = objepn.eliminarAudioLibro(select);
+           }else{t1=false;
+           
+}
+                  
+        if (t1 == true && PaisUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el pais del autor");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el Audiio Libro");
-        }
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+        }  }}
+           
 
 
     }//GEN-LAST:event_btnEliminarAudiolibroActionPerformed
