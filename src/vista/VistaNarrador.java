@@ -386,14 +386,14 @@ public class VistaNarrador extends javax.swing.JFrame {
           ControlAudiolibro obju = new ControlAudiolibro();
          listaAU = obju.consultarAudioLibro();
         boolean NarradorUsado = false;
-        Object[] fila2=null;
+        
         boolean t1=false;
         boolean vacio=true;
          String select = idn.getText();//id
          int select2 =Integer.parseInt(select);//id
               int r = 0; 
 
-              if(select.length()==0){ vacio=true;}else{vacio=false;}
+            
               
         ControlNarrador objepn = new ControlNarrador();
         

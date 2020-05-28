@@ -5,7 +5,9 @@
  */
 package vista;
 
+import control.ControlAudiolibro;
 import control.ControlAutor;
+import control.ControlAutores_Libros;
 import control.ControlPais_autor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,8 @@ import modelo.Pais_autor;
 import modelo.Autor;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import modelo.Audiolibro;
+import modelo.Autores_Libros;
 
 /**
  *
@@ -25,6 +29,7 @@ public class VistaAutor extends javax.swing.JFrame {
 
     LinkedList<Pais_autor> listapu;
     LinkedList<Autor> listaAU;
+    LinkedList<Autores_Libros>listaAUL;
 
     /**
      * Creates new form VistaAutor
@@ -462,24 +467,47 @@ public class VistaAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnEliminarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAutorActionPerformed
-        // TODO add your handling code here:
-        ControlAutor objeu = new ControlAutor();
-        String selected = idu.getText();
+        ControlAutores_Libros obju = new ControlAutores_Libros();
+         listaAUL = obju.consultarAutores_Libros();
+        boolean AutorUsado = false;
+        
+        boolean t1=false;
+        boolean vacio=true;
+         String select = idu.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
 
-        if (selected.length() == 0) {
-            JOptionPane.showMessageDialog(this, "No deben haber campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
-
+              
+              
+        ControlAutor objepn = new ControlAutor();
+        
+           for (int i = 0; i < listaAUL.size(); i++) {
+         r=listaAUL.get(i).getId_autorAF();
+         if(r==select2){
+        
+         AutorUsado=true;
+         break;
+         }else{
+          AutorUsado=false;
+         }
+           }
+           if(idu.getText().length()==0){
+           JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+    
+           }else{
+           
+           if((AutorUsado==false)){
+             t1 = objepn.eliminarAutor(select);
+           }else{t1=false;
+}
+                  
+        if (t1 == true && AutorUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el narrador");
+                        
         } else {
-
-            boolean t1 = objeu.eliminarAutor(selected);
-
-            if (t1 == true) {
-                JOptionPane.showMessageDialog(this, "Se elimino el Autor con exito");
-            } else {
-                JOptionPane.showMessageDialog(this, "No se elimino el Autor");
-            }
-        }
-
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           }
 
     }//GEN-LAST:event_btnEliminarAutorActionPerformed
 
