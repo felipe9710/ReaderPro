@@ -11,6 +11,8 @@ import control.ControlAudiolibro;
 import control.ControlAutor;
 import control.ControlAutores_Libros;
 import control.ControlCategoria;
+import control.ControlNarrador;
+import control.Control_Editorial;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -23,6 +25,8 @@ import modelo.Audiolibro;
 import modelo.Autor;
 import modelo.Autores_Libros;
 import modelo.Categoria;
+import modelo.Editorial;
+import modelo.Narrador;
 
 /**
  *
@@ -35,6 +39,8 @@ public class VistaUmenu extends javax.swing.JFrame {
     LinkedList<Categoria> listaC;
     LinkedList<Autor> listaA;
     LinkedList<Autores_Libros> listAuLibros;
+    LinkedList<Editorial> listaE;
+    LinkedList<Narrador> listaN;
 
     /**
      * Creates new form VistaUmenu
@@ -46,6 +52,9 @@ public class VistaUmenu extends javax.swing.JFrame {
         listaC = new LinkedList<>();
         listaA = new LinkedList<>();
         listAuLibros = new LinkedList<>();
+        listaE = new LinkedList<>();
+        listaN = new LinkedList<>();
+        
         txtsettitulo.setVisible(false);
     }
 
@@ -68,8 +77,8 @@ public class VistaUmenu extends javax.swing.JFrame {
         txtsettitulo = new javax.swing.JTextField();
         btnbuscarC = new javax.swing.JButton();
         btnbuscxAutor = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnbuscarxE = new javax.swing.JButton();
+        btnbuscarN = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -134,9 +143,19 @@ public class VistaUmenu extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Buscar por editorial");
+        btnbuscarxE.setText("Buscar por editorial");
+        btnbuscarxE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarxEActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Buscar por narrador");
+        btnbuscarN.setText("Buscar por narrador");
+        btnbuscarN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,9 +184,9 @@ public class VistaUmenu extends javax.swing.JFrame {
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(jButton4)
+                        .addComponent(btnbuscarxE)
                         .addGap(162, 162, 162)
-                        .addComponent(jButton5)))
+                        .addComponent(btnbuscarN)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,8 +202,8 @@ public class VistaUmenu extends javax.swing.JFrame {
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnbuscarxE)
+                    .addComponent(btnbuscarN))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -591,6 +610,148 @@ public class VistaUmenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnbuscxAutorActionPerformed
 
+    private void btnbuscarxEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarxEActionPerformed
+        
+        Control_Editorial objce = new Control_Editorial();
+        ControlAudiolibro objca = new ControlAudiolibro();
+        int ncolu;
+        Object[] fila2;
+        String editorial = txtNombre.getText();
+        if (editorial.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
+        }
+
+        listaE = objce.consultarAudioLibroPorEditorial(editorial);
+
+        int idEditorial = 0;
+
+        for (int i = 0; i < listaE.size(); i++) {
+            Editorial editory = listaE.get(i);
+
+            if (editorial.equals(editory.getNombre_editorial())) {
+                idEditorial = editory.getId_editorial();
+            }
+        }
+        listAuL = objca.consultarAudioLibroxEditorial(idEditorial);
+
+        if (idEditorial == 0) {
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable2.setModel(modelo);
+        modelo.addColumn("id_audiolibro");
+        modelo.addColumn("titulo");
+        modelo.addColumn("fecha_creacion");
+        modelo.addColumn("num_paginas");
+        modelo.addColumn("duracion_total");
+        modelo.addColumn("portada");
+        modelo.addColumn("contraportada");
+        modelo.addColumn("calificacion");
+        modelo.addColumn("sipnosis");
+        modelo.addColumn("numCapitulos");
+        modelo.addColumn("idioma");
+        modelo.addColumn("reproducciones");
+        modelo.addColumn("id_narradorAF");
+        modelo.addColumn("id_editorialAF");
+        modelo.addColumn("id_categoriaAF");
+        ncolu = modelo.getColumnCount();
+
+        for (int i = 0; i < listAuL.size(); i++) {
+
+            fila2 = new Object[ncolu];
+            fila2[0] = listAuL.get(i).getId_audiolibro();
+            fila2[1] = listAuL.get(i).getTitulo();
+            fila2[2] = listAuL.get(i).getFecha_creacion();
+            fila2[3] = listAuL.get(i).getNum_paginas();
+            fila2[4] = listAuL.get(i).getDuracion_total();
+            fila2[5] = listAuL.get(i).getPortada();
+            fila2[6] = listAuL.get(i).getContraportada();
+            fila2[7] = listAuL.get(i).getCalificacion();
+            fila2[8] = listAuL.get(i).getSipnosis();
+            fila2[9] = listAuL.get(i).getNumCapitulos();
+            fila2[10] = listAuL.get(i).getIdioma();
+            fila2[11] = listAuL.get(i).getReproducciones();
+            fila2[12] = listAuL.get(i).getId_narradorAF();
+            fila2[13] = listAuL.get(i).getId_editorialAF();
+            fila2[14] = listAuL.get(i).getId_categoriaAF();
+
+            modelo.addRow(fila2);
+        }
+        
+    }//GEN-LAST:event_btnbuscarxEActionPerformed
+
+    private void btnbuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarNActionPerformed
+        
+        ControlNarrador objce = new ControlNarrador();
+        ControlAudiolibro objca = new ControlAudiolibro();
+        int ncolu;
+        Object[] fila2;
+        String narrador = txtNombre.getText();
+        if (narrador.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
+        }
+
+        listaN = objce.consultarAudioLibroPorNarrador(narrador);
+
+        int idNarrador = 0;
+
+        for (int i = 0; i < listaN.size(); i++) {
+            Narrador narraty = listaN.get(i);
+
+            if (narrador.equals(narraty.getNombre_narrador1())) {
+                idNarrador = narraty.getId_narrador();
+            }
+        }
+        listAuL = objca.consultarAudioLibroxNarrador(idNarrador);
+
+        if (idNarrador == 0) {
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable2.setModel(modelo);
+        modelo.addColumn("id_audiolibro");
+        modelo.addColumn("titulo");
+        modelo.addColumn("fecha_creacion");
+        modelo.addColumn("num_paginas");
+        modelo.addColumn("duracion_total");
+        modelo.addColumn("portada");
+        modelo.addColumn("contraportada");
+        modelo.addColumn("calificacion");
+        modelo.addColumn("sipnosis");
+        modelo.addColumn("numCapitulos");
+        modelo.addColumn("idioma");
+        modelo.addColumn("reproducciones");
+        modelo.addColumn("id_narradorAF");
+        modelo.addColumn("id_editorialAF");
+        modelo.addColumn("id_categoriaAF");
+        ncolu = modelo.getColumnCount();
+
+        for (int i = 0; i < listAuL.size(); i++) {
+
+            fila2 = new Object[ncolu];
+            fila2[0] = listAuL.get(i).getId_audiolibro();
+            fila2[1] = listAuL.get(i).getTitulo();
+            fila2[2] = listAuL.get(i).getFecha_creacion();
+            fila2[3] = listAuL.get(i).getNum_paginas();
+            fila2[4] = listAuL.get(i).getDuracion_total();
+            fila2[5] = listAuL.get(i).getPortada();
+            fila2[6] = listAuL.get(i).getContraportada();
+            fila2[7] = listAuL.get(i).getCalificacion();
+            fila2[8] = listAuL.get(i).getSipnosis();
+            fila2[9] = listAuL.get(i).getNumCapitulos();
+            fila2[10] = listAuL.get(i).getIdioma();
+            fila2[11] = listAuL.get(i).getReproducciones();
+            fila2[12] = listAuL.get(i).getId_narradorAF();
+            fila2[13] = listAuL.get(i).getId_editorialAF();
+            fila2[14] = listAuL.get(i).getId_categoriaAF();
+
+            modelo.addRow(fila2);
+        }
+        
+    }//GEN-LAST:event_btnbuscarNActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -628,13 +789,13 @@ public class VistaUmenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscarC;
+    private javax.swing.JButton btnbuscarN;
     private javax.swing.JButton btnbuscart;
+    private javax.swing.JButton btnbuscarxE;
     private javax.swing.JButton btnbuscxAutor;
     private javax.swing.JButton btncs;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
