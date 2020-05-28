@@ -339,21 +339,23 @@ public class VistaPais_autorI extends javax.swing.JFrame {
     //de tomar lo valores del txtNombrePaisNarrador y los cambia
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
         // TODO add your handling code here:
-        String nombrePaisA = jTextField1.getText();
-        ControlPais_autor objmpa = new ControlPais_autor();
+      String nombrePaisNa = jTextField1.getText();
+        ControlPais_autor objmpn = new ControlPais_autor();
         String selected = jlbIdPaisAutor.getText();
-        boolean t1 = objmpa.modificarPais_autor(selected, nombrePaisA);
-        boolean valido = false;
         
-        if(nombrePaisA.isEmpty()){
-            JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
-            valido = true;
-        }
-
-        if (t1 == true && valido == false) {
-            JOptionPane.showMessageDialog(this, "Se modifico el pais del autor");
+      
+        
+        if(nombrePaisNa.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this,"No puede haber campos vacios","Error",JOptionPane.ERROR_MESSAGE);
+            
+        }else{    
+        boolean t1 = objmpn.modificarPais_autor(selected, nombrePaisNa);
+        if (t1 == true ) {
+            JOptionPane.showMessageDialog(this, "Se modifico el pais del narrador");
         } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el pais del autor");
+            JOptionPane.showMessageDialog(this, "No se modifico el pais del narrador");
+        }
         }
 
     }//GEN-LAST:event_btnmodificarActionPerformed
