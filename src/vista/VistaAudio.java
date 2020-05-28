@@ -26,7 +26,7 @@ public class VistaAudio extends javax.swing.JFrame {
 
     LinkedList<Audiolibro> listaAL;
     LinkedList<Audio> listaAud;
-    LinkedList<Autores_Libros>listaAL2;
+    LinkedList<Autores_Libros> listaAL2;
 
     /**
      * Creates new form VistaAudio
@@ -297,7 +297,6 @@ public class VistaAudio extends javax.swing.JFrame {
         String archivo = txtachivo.getText();
         String idAL = jComboBox1.getSelectedItem().toString();
         int idAl = 0;
-Audio objau = new Audio(archivo, idAl);
         ControlAudio objca = new ControlAudio();
         for (int i = 0; i < listaAL.size(); i++) {
 
@@ -306,66 +305,76 @@ Audio objau = new Audio(archivo, idAl);
                 idAl = audL.getId_audiolibro();
             }
         }
-         if(archivo.length()==0){JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-   }else{
-        
-        boolean t = objca.insertarAudio(objau);
-        if (t == true) {
-            JOptionPane.showMessageDialog(rootPane, "Se inserto el Audio con exito");
+        Audio objau = new Audio(archivo, idAl);
+        if (archivo.length() == 0) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "No se Inserto el Audio");
+
+            boolean t = objca.insertarAudio(objau);
+            if (t == true) {
+                JOptionPane.showMessageDialog(rootPane, "Se inserto el Audio con exito");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "No se Inserto el Audio");
+            }
         }
-         }
     }//GEN-LAST:event_btnAgregarAudioActionPerformed
 
     private void btnEliminarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAudioActionPerformed
 
-         ControlAutores_Libros obju = new ControlAutores_Libros();
-        
-         listaAL2 = obju.consultarAutores_Libros();
+        ControlAutores_Libros obju = new ControlAutores_Libros();
+
+        listaAL2 = obju.consultarAutores_Libros();
         boolean PaisUsado = false;
-      
-        boolean t1=false;
-        boolean vacio=true;
-         String select = txtId.getText();//id
-            int select2=0;
-         
-         if(txtId.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-    }else{
-         
-          select2 =Integer.parseInt(select);//id
-              int r = 0; 
-              boolean b=false;
 
-              if(select2==0){b=true;}else{b=false;}
-              
-              if(b==false){
+        boolean t1 = false;
+        boolean vacio = true;
+        String select = txtId.getText();//id
+        int select2 = 0;
 
-              
-        ControlAudiolibro objepn = new ControlAudiolibro();
-           for (int i = 0; i < listaAL2.size(); i++) {
-         r=listaAL2.get(i).getId_audiolibroAF();
-         if(r==select2){
-        
-         PaisUsado=true;
-         break;
-         }else{
-          PaisUsado=false;
-         }
-           }
-           if((PaisUsado==false)){
-             t1 = objepn.eliminarAudioLibro(select);
-           }else{t1=false;
-           
-}
-                  
-        if (t1 == true && PaisUsado==false) {
-            JOptionPane.showMessageDialog(this, "Se eliminó el pais del autor");
-                        
+        if (txtId.getText().length() == 0) {
+            select2 = 0;
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
-        }  }}
-           
+
+            select2 = Integer.parseInt(select);//id
+            int r = 0;
+            boolean b = false;
+
+            if (select2 == 0) {
+                b = true;
+            } else {
+                b = false;
+            }
+
+            if (b == false) {
+
+                ControlAudiolibro objepn = new ControlAudiolibro();
+                for (int i = 0; i < listaAL2.size(); i++) {
+                    r = listaAL2.get(i).getId_audiolibroAF();
+                    if (r == select2) {
+
+                        PaisUsado = true;
+                        break;
+                    } else {
+                        PaisUsado = false;
+                    }
+                }
+                if ((PaisUsado == false)) {
+                    t1 = objepn.eliminarAudioLibro(select);
+                } else {
+                    t1 = false;
+
+                }
+
+                if (t1 == true && PaisUsado == false) {
+                    JOptionPane.showMessageDialog(this, "Se eliminó el pais del autor");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
     }//GEN-LAST:event_btnEliminarAudioActionPerformed
 
     private void btnModificarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAudioActionPerformed
@@ -375,7 +384,7 @@ Audio objau = new Audio(archivo, idAl);
         String id_audiolibro = jComboBox1.getSelectedItem().toString();
         int idAL = 0;
         ControlAudio objca = new ControlAudio();
-        
+
         for (int x = 0; x < listaAL.size(); x++) {
             Audiolibro audiolibro = listaAL.get(x);
             if (id_audiolibro.equals(audiolibro.getTitulo())) {
@@ -383,15 +392,16 @@ Audio objau = new Audio(archivo, idAl);
 
             }
         }
-         if(select.length()==0){JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-   }else{
-        boolean t1 = objca.modificarAudio(select,archivo,idAL);
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se modifico el Audio con exito");
+        if (select.length() == 0) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el Audio");
+            boolean t1 = objca.modificarAudio(select, archivo, idAL);
+            if (t1 == true) {
+                JOptionPane.showMessageDialog(this, "Se modifico el Audio con exito");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se modifico el Audio");
+            }
         }
-         }
     }//GEN-LAST:event_btnModificarAudioActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -399,7 +409,7 @@ Audio objau = new Audio(archivo, idAl);
         ControlAudio objcaud = new ControlAudio();
         int ncolu;
         Object[] fila2;
-        
+
         listaAud = objcaud.consultarAudio();
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable1.setModel(modelo);
@@ -407,15 +417,15 @@ Audio objau = new Audio(archivo, idAl);
         modelo.addColumn("archivo");
         modelo.addColumn("id audiolibroF");
         ncolu = modelo.getColumnCount();
-        
-        for (int j = 0; j<listaAud.size();j++){
-            
+
+        for (int j = 0; j < listaAud.size(); j++) {
+
             fila2 = new Object[ncolu];
             fila2[0] = listaAud.get(j).getId_Audio();
             fila2[1] = listaAud.get(j).getArchivo_Audio();
             fila2[2] = listaAud.get(j).getId_audiolibroF();
             modelo.addRow(fila2);
-            
+
         }
 
     }//GEN-LAST:event_btnMostrarActionPerformed
@@ -424,7 +434,7 @@ Audio objau = new Audio(archivo, idAl);
 
         JFileChooser archivo = new JFileChooser();
         //Si deseamos crear filtros para la selecion de archivos
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos (*.MP3,*.WAV,*.WMA)", "mp3", "waz","wma");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos (*.MP3,*.WAV,*.WMA)", "mp3", "waz", "wma");
         //Si deseas que se muestre primero los filtros usa la linea q esta abajo de esta.
         archivo.setFileFilter(filtro);
         // Agregamos el Filtro pero cuidado se mostrara despues de todos los archivos
@@ -442,13 +452,13 @@ Audio objau = new Audio(archivo, idAl);
     }//GEN-LAST:event_btnseleccionarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+
         int selected = jTable1.rowAtPoint(evt.getPoint());
-        
+
         txtId.setText(String.valueOf(jTable1.getValueAt(selected, 0)));
         txtachivo.setText(String.valueOf(jTable1.getValueAt(selected, 1)));
         jComboBox1.setSelectedItem(String.valueOf(jTable1.getValueAt(selected, 2)));
-        
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

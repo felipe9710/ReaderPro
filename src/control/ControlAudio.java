@@ -19,7 +19,7 @@ public class ControlAudio {
         boolean t = false;
         Audio objaud = new Audio();
         String sql = "";
-        sql = "insert into audios (archivo_Audio,id_audiolibroF) values (?,?)"; 
+        sql = "insert into audios (archivo_audio,id_audiolibroF) values (?,?)"; 
         t = objaud.insertarAudio(objau,sql);
         return t;
     }
