@@ -5,6 +5,7 @@
  */
 package vista;
 
+import control.ControlAudiolibro;
 import control.ControlNarrador;
 import control.ControlPais_Narrador;
 import java.text.ParseException;
@@ -16,6 +17,7 @@ import modelo.Pais_Narrador;
 import modelo.Narrador;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import modelo.Audiolibro;
 
 /**
  *
@@ -25,6 +27,7 @@ public class VistaNarrador extends javax.swing.JFrame {
 
     LinkedList<Pais_Narrador> listapu;
     LinkedList<Narrador> listaN;
+    LinkedList<Audiolibro>listaAU;
 
     /**
      * Creates new form VistaNarrador
@@ -33,6 +36,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         initComponents();
         listapu = new LinkedList<>();
         listaN = new LinkedList<>();
+        listaAU = new LinkedList<>();
         jDateChooser1.getDateEditor().setEnabled(false);
 
     }
@@ -379,23 +383,47 @@ public class VistaNarrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarNarradorActionPerformed
 
     private void btnLimpiarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarNarradorActionPerformed
-        ControlNarrador objeu = new ControlNarrador();
-        String selected = idn.getText();
+          ControlAudiolibro obju = new ControlAudiolibro();
+         listaAU = obju.consultarAudioLibro();
+        boolean NarradorUsado = false;
         
-        
-        if(selected.length()==0){
-        JOptionPane.showMessageDialog(this, "No deben haber campos vacios","ERROR",JOptionPane.ERROR_MESSAGE);
-        
-        }else{
-        
-        boolean t1 = objeu.eliminarNarrador(selected);
+        boolean t1=false;
+        boolean vacio=true;
+         String select = idn.getText();//id
+         int select2 =Integer.parseInt(select);//id
+              int r = 0; 
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el narrador");
+            
+              
+        ControlNarrador objepn = new ControlNarrador();
+        
+           for (int i = 0; i < listaAU.size(); i++) {
+         r=listaAU.get(i).getId_narradorAF();
+         if(r==select2){
+        
+         NarradorUsado=true;
+         break;
+         }else{
+          NarradorUsado=false;
+         }
+           }
+           if(idn.getText().length()==0){
+           JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+    
+           }else{
+           
+           if((NarradorUsado==false)){
+             t1 = objepn.eliminarNarrador(select);
+           }else{t1=false;
+}
+                  
+        if (t1 == true && NarradorUsado==false) {
+            JOptionPane.showMessageDialog(this, "Se eliminó el narrador");
+                        
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el narrador");
-        }
-        }
+            JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+           }
     }//GEN-LAST:event_btnLimpiarNarradorActionPerformed
 
     private void btnModificarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarNarradorActionPerformed
