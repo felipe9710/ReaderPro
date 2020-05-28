@@ -787,10 +787,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 }
                   
         if (t1 == true && PaisUsado==false) {
-            JOptionPane.showMessageDialog(this, "Se eliminó el pais del autor");
+            JOptionPane.showMessageDialog(this, "Se eliminó el AudioLibro");
                         
         } else {
-            JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se puede eliminar AudioLibro", "Error", JOptionPane.ERROR_MESSAGE);
         }  }}
            
 

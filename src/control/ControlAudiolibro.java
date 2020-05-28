@@ -21,7 +21,7 @@ public class ControlAudiolibro {
         boolean t = false;
         Audiolibro objpE = new Audiolibro();
        
-        String sql = "insert into audiolibros(titulo, fecha_creacion,num_paginas, duracion_total, portada, contraportada,calificacion, sipnosis, numCapitulos, idioma, reproducciones, id_narradorAF, id_editorialAF,id_categoriaAF) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into audiolibros(titulo, fecha_creacion,num_paginas, duracion_total, portada, contraportada,calificacion, sinposis, numCapitulos, idioma, reproducciones, id_narradorAF, id_editorialAF,id_categoriaAF) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         t = objpE.insertarAudiolibro(objAL,sql);//Name of Model
         return t;
@@ -57,7 +57,7 @@ public LinkedList<Audiolibro> consultarAudioLibroBusqueda2(int[] variables) {
 
         boolean t1 = false;
         Audiolibro objmpa = new Audiolibro();
-        String sql = "update audiolibros set titulo = '" + titulo + "',fecha_creacion = '"+fecha_creacion+ "',num_paginas = '"+num_paginas+ "',duracion_total = '"+duracion_total+ "',portada = '"+portada+ "',contraportada = '"+contraportada+ "',calificacion = '"+calificacion+ "',sipnosis = '"+sipnosis+"',numCapitulos = '"+numCapitulos+"',idioma = '"+idioma+"',reproducciones = '"+ reproducciones +"',id_narradorAF = '"+ id_narradorAF +"',id_editorialAF = '"+ id_editorialAF +"',id_categoriaAF = '"+ id_categoriaAF +"'where id_audiolibro =" + select;
+        String sql = "update audiolibros set titulo = '" + titulo + "',fecha_creacion = '"+fecha_creacion+ "',num_paginas = '"+num_paginas+ "',duracion_total = '"+duracion_total+ "',portada = '"+portada+ "',contraportada = '"+contraportada+ "',calificacion = '"+calificacion+ "',sinopsis = '"+sipnosis+"',numCapitulos = '"+numCapitulos+"',idioma = '"+idioma+"',reproducciones = '"+ reproducciones +"',id_narradorAF = '"+ id_narradorAF +"',id_editorialAF = '"+ id_editorialAF +"',id_categoriaAF = '"+ id_categoriaAF +"'where id_audiolibro =" + select;
         t1 = objmpa.modificarAudioLibro(sql);
         return t1;
 

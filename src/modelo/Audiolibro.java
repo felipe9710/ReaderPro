@@ -288,7 +288,7 @@ public class Audiolibro {
                          portada=rs.getString("portada");
                          contraportada=rs.getString("contraportada");
                          calificacion=rs.getString("calificacion");
-                         sipnosis=rs.getString("sipnosis");
+                         sipnosis=rs.getString("sinopsis");
                          numCapitulos=rs.getString("numCapitulos");
                          idioma=rs.getString("idioma");
                          reproducciones=rs.getString("reproducciones");
