@@ -390,10 +390,17 @@ public class VistaNarrador extends javax.swing.JFrame {
         boolean t1=false;
         boolean vacio=true;
          String select = idn.getText();//id
-         int select2 =Integer.parseInt(select);//id
+         int select2=0;
+            if(idn.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+         
+          select2 =Integer.parseInt(select);//id
               int r = 0; 
+              boolean b=false;
 
-            
+              if(select2==0){b=true;}else{b=false;}
+              
+              if(b==false){
               
         ControlNarrador objepn = new ControlNarrador();
         
@@ -423,7 +430,7 @@ public class VistaNarrador extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se puede eliminar este narrador", "Error", JOptionPane.ERROR_MESSAGE);
         }  
-           }
+           }}}
     }//GEN-LAST:event_btnLimpiarNarradorActionPerformed
 
     private void btnModificarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarNarradorActionPerformed

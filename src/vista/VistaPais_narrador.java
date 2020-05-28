@@ -343,11 +343,19 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         boolean t1=false;
         boolean vacio=true;
          String select = idpn.getText();//id
-         int select2 =Integer.parseInt(select);//id
+         int select2=0;
+         
+         if(idpn.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+         
+          select2 =Integer.parseInt(select);//id
               int r = 0; 
+              boolean b=false;
 
-              if(select.length()==0){ vacio=true;}else{vacio=false;}
+              if(select2==0){b=true;}else{b=false;}
               
+              if(b==false){
+
         ControlPais_Narrador objepn = new ControlPais_Narrador();
            for (int i = 0; i < listaN.size(); i++) {
          r=listaN.get(i).getId_PaisNF();
@@ -376,7 +384,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
         }  
-           }
+           }}}
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed

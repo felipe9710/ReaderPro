@@ -133,7 +133,6 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         jLabel3.setText("Id:");
 
         jlbIdPaisAutor.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jlbIdPaisAutor.setText("...");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Ir al menú");
@@ -306,10 +305,19 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         boolean t1=false;
         boolean vacio=true;
          String select = jlbIdPaisAutor.getText();//id
-         int select2 =Integer.parseInt(select);//id
+            int select2=0;
+         
+         if(jlbIdPaisAutor.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+         
+          select2 =Integer.parseInt(select);//id
               int r = 0; 
+              boolean b=false;
 
-              if(select.length()==0){ vacio=true;}else{vacio=false;}
+              if(select2==0){b=true;}else{b=false;}
+              
+              if(b==false){
+
               
         ControlPais_autor objepn = new ControlPais_autor();
            for (int i = 0; i < listaA.size(); i++) {
@@ -332,7 +340,7 @@ public class VistaPais_autorI extends javax.swing.JFrame {
                         
         } else {
             JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
-        }  
+        }  }}
            
     }//GEN-LAST:event_btneliminarActionPerformed
     //El metodo btnModificarActionPerformed es el metodo del boton modificar, que se encarga

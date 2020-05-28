@@ -294,7 +294,8 @@ public class VistaAudio extends javax.swing.JFrame {
         String archivo = txtachivo.getText();
         String idAL = jComboBox1.getSelectedItem().toString();
         int idAl = 0;
-
+Audio objau = new Audio(archivo, idAl);
+        ControlAudio objca = new ControlAudio();
         for (int i = 0; i < listaAL.size(); i++) {
 
             Audiolibro audL = listaAL.get(i);
@@ -302,21 +303,25 @@ public class VistaAudio extends javax.swing.JFrame {
                 idAl = audL.getId_audiolibro();
             }
         }
-        Audio objau = new Audio(archivo, idAl);
-        ControlAudio objca = new ControlAudio();
+         if(archivo.length()==0){JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+   }else{
+        
         boolean t = objca.insertarAudio(objau);
         if (t == true) {
             JOptionPane.showMessageDialog(rootPane, "Se inserto el Audio con exito");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se Inserto el Audio");
         }
-
+         }
     }//GEN-LAST:event_btnAgregarAudioActionPerformed
 
     private void btnEliminarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAudioActionPerformed
 
         ControlAudio objca = new ControlAudio();
         String select = txtId.getText();
+        
+        if(select.length()==0){JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+   }else{
         boolean t1 = objca.eliminarAudio(select);
         
         if (t1 == true) {
@@ -324,7 +329,7 @@ public class VistaAudio extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se elimino el Audio");
         }
-
+        }
     }//GEN-LAST:event_btnEliminarAudioActionPerformed
 
     private void btnModificarAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAudioActionPerformed
@@ -342,14 +347,15 @@ public class VistaAudio extends javax.swing.JFrame {
 
             }
         }
-        
+         if(select.length()==0){JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+   }else{
         boolean t1 = objca.modificarAudio(select,archivo,idAL);
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se modifico el Audio con exito");
         } else {
             JOptionPane.showMessageDialog(this, "No se modifico el Audio");
         }
-        
+         }
     }//GEN-LAST:event_btnModificarAudioActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed

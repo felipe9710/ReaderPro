@@ -474,11 +474,18 @@ public class VistaAutor extends javax.swing.JFrame {
         boolean t1=false;
         boolean vacio=true;
          String select = idu.getText();//id
-         int select2 =Integer.parseInt(select);//id
+         int select2=0;
+         
+         if(idu.getText().length()==0){select2=0;JOptionPane.showMessageDialog(this, "No puede haber campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+         
+          select2 =Integer.parseInt(select);//id
               int r = 0; 
+              boolean b=false;
 
+              if(select2==0){b=true;}else{b=false;}
               
-              
+              if(b==false){
         ControlAutor objepn = new ControlAutor();
         
            for (int i = 0; i < listaAUL.size(); i++) {
@@ -508,7 +515,8 @@ public class VistaAutor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se puede eliminar este autor", "Error", JOptionPane.ERROR_MESSAGE);
         }  
            }
-
+              }
+              }
     }//GEN-LAST:event_btnEliminarAutorActionPerformed
 
     private void btnModificarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAutorActionPerformed
