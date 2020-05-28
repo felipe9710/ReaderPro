@@ -51,4 +51,15 @@ public class ControlNarrador {
         return t2;
 
     }
+
+    public LinkedList<Narrador> consultarAudioLibroPorNarrador(String narrador) {
+        
+        LinkedList<Narrador> lpu = new LinkedList<>();
+        String sql = "select * from narradores where nombre_narrador1 ='"+narrador+"';";
+        Narrador objpu= new Narrador();
+        lpu = objpu.consultarNarrador(sql);
+    
+        return lpu;
+        
+    }
 }

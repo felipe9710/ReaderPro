@@ -660,7 +660,7 @@ jDateNacimiento.setCalendar(Calendar.getInstance());
 
             JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *", "ERROR", JOptionPane.ERROR_MESSAGE);
 
-        } if (t2 == true) {
+        } else if (t2 == true) {
                 JOptionPane.showMessageDialog(this, "Este correo ya se encuentra registrado","ERROR",JOptionPane.ERROR_MESSAGE);
             }else {
             boolean t1 = objmu.modificarUsuario(select, nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, idpais);
@@ -745,7 +745,7 @@ jDateNacimiento.setCalendar(Calendar.getInstance());
             JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios", "ERROR", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(rootPane, "Registro no completado");
 
-        } if (t1 == true) {
+        } else if (t1 == true) {
                 JOptionPane.showMessageDialog(this, "Este correo ya se encuentra registrado","ERROR",JOptionPane.ERROR_MESSAGE);
             }else {
             Usuario objUsuario = new Usuario(nombre1, nombre2, apellido1, apellido2, genero, nombre_usuario, correo_usuario, contraseña_usuario, fecha_nacimiento, fecha_inscripcion, idp);

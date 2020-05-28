@@ -123,5 +123,25 @@ public LinkedList<Audiolibro> consultarAudioLibroBusqueda2(int[] variables) {
         return listau;
         
     }
+
+    public LinkedList<Audiolibro> consultarAudioLibroxEditorial(int idEditorial) {
+        
+        String sql = "Select * from audiolibros where id_editorialAF ='"+idEditorial+"';";
+        Audiolibro objau = new Audiolibro();
+        LinkedList<Audiolibro> listau = objau.consultarAudioLibro(sql);
+
+        return listau;
+        
+    }
+
+    public LinkedList<Audiolibro> consultarAudioLibroxNarrador(int idNarrador) {
+        
+        String sql = "Select * from audiolibros where id_narradorAF ='"+idNarrador+"';";
+        Audiolibro objau = new Audiolibro();
+        LinkedList<Audiolibro> listau = objau.consultarAudioLibro(sql);
+
+        return listau;
+        
+    }
         
 }

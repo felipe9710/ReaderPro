@@ -54,4 +54,14 @@ public class Control_Editorial {
 
     }
 
+    public LinkedList<Editorial> consultarAudioLibroPorEditorial(String editorial) {
+        
+        String sql = "Select * from editoriales where nombre_editorial ='"+ editorial+"';";
+        Editorial objc = new Editorial();
+        LinkedList<Editorial> listpn = objc.buscar_Editorial(sql);
+
+        return listpn;
+        
+    }
+
 }
