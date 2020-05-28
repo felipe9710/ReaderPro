@@ -43,13 +43,14 @@ public class VistaMenu extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(73, 181, 172));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
-        jLabel1.setText("Menu principal administrador");
+        jLabel1.setText("Menú principal administrador");
 
         Btnusuario.setBackground(new java.awt.Color(33, 45, 62));
         Btnusuario.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -97,7 +98,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btncategoria.setBackground(new java.awt.Color(33, 45, 62));
         btncategoria.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btncategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnCategoria.png"))); // NOI18N
+        btncategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnCategoria1.png"))); // NOI18N
         btncategoria.setBorderPainted(false);
         btncategoria.setContentAreaFilled(false);
         btncategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +120,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btnpaisu.setBackground(new java.awt.Color(33, 45, 62));
         btnpaisu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnpaisu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisUsuario.png"))); // NOI18N
+        btnpaisu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisusuario1.png"))); // NOI18N
         btnpaisu.setBorderPainted(false);
         btnpaisu.setContentAreaFilled(false);
         btnpaisu.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +131,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btnpaisAutor.setBackground(new java.awt.Color(33, 45, 62));
         btnpaisAutor.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnpaisAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisAutor.png"))); // NOI18N
+        btnpaisAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisautor1.png"))); // NOI18N
         btnpaisAutor.setBorderPainted(false);
         btnpaisAutor.setContentAreaFilled(false);
         btnpaisAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +142,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btnPaisNa.setBackground(new java.awt.Color(33, 45, 62));
         btnPaisNa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnPaisNa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisNarrador.png"))); // NOI18N
+        btnPaisNa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPaisnarrador1.png"))); // NOI18N
         btnPaisNa.setBorderPainted(false);
         btnPaisNa.setContentAreaFilled(false);
         btnPaisNa.addActionListener(new java.awt.event.ActionListener() {
@@ -211,11 +212,13 @@ public class VistaMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator2))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -227,7 +230,9 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -412,5 +417,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
