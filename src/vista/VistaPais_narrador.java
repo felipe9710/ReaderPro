@@ -359,6 +359,12 @@ public class VistaPais_narrador extends javax.swing.JFrame {
           PaisUsado=false;
          }
            }
+           if(idpn.getText().length()==0){
+           JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
+    
+           
+           }else{
+           
            if((PaisUsado==false)){
              t1 = objepn.eliminarPais_narrador(select);
            }else{t1=false;
@@ -370,7 +376,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se puede eliminar este pais", "Error", JOptionPane.ERROR_MESSAGE);
         }  
-
+           }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
