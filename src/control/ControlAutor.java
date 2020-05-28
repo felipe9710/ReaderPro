@@ -66,4 +66,15 @@ public class ControlAutor {
 
     }
 
+    public LinkedList<Autor> consultarAudioLibroPorAutor(String autor) {
+        
+        LinkedList<Autor> lpu = new LinkedList<>();
+        String sql = "select * from autores where nombre_autor1 ='"+ autor +"';";
+        Autor objpu= new Autor();
+        lpu = objpu.consultarAutores(sql);
+    
+        return lpu;
+        
+    }
+
 }

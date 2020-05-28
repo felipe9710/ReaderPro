@@ -5,6 +5,7 @@
  */
 package control;
 import java.util.LinkedList;
+import modelo.Audiolibro;
 import modelo.Autor;
 import modelo.Autores_Libros;/**
  *
@@ -50,6 +51,17 @@ public class ControlAutores_Libros {
         String sql = "delete from autores_libros where id_AutorL =" + selected;
         t2 = objepa.eliminarAutoresLibros(sql);
         return t2;
+        
+    }
+
+    public LinkedList<Autores_Libros> consultarAudioLibroxAutor(int idAutor) {
+        
+        LinkedList<Autores_Libros> lpu = new LinkedList<>();
+        String sql = "select * from autores_libros where id_autorAF ="+idAutor;
+        Autores_Libros objpu= new Autores_Libros();
+        lpu = objpu.consultarAutoresLibros(sql);
+    
+        return lpu;
         
     }
 

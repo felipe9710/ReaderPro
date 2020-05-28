@@ -8,6 +8,8 @@ package vista;
 import control.BaseDatos;
 import control.ControlAudio;
 import control.ControlAudiolibro;
+import control.ControlAutor;
+import control.ControlAutores_Libros;
 import control.ControlCategoria;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -18,18 +20,21 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Audio;
 import modelo.Audiolibro;
+import modelo.Autor;
+import modelo.Autores_Libros;
 import modelo.Categoria;
-
 
 /**
  *
  * @author felipe
  */
 public class VistaUmenu extends javax.swing.JFrame {
-    
+
     LinkedList<Audiolibro> listAuL;
     LinkedList<Audio> listaAud;
     LinkedList<Categoria> listaC;
+    LinkedList<Autor> listaA;
+    LinkedList<Autores_Libros> listAuLibros;
 
     /**
      * Creates new form VistaUmenu
@@ -39,6 +44,8 @@ public class VistaUmenu extends javax.swing.JFrame {
         listAuL = new LinkedList<>();
         listaAud = new LinkedList<>();
         listaC = new LinkedList<>();
+        listaA = new LinkedList<>();
+        listAuLibros = new LinkedList<>();
         txtsettitulo.setVisible(false);
     }
 
@@ -60,7 +67,7 @@ public class VistaUmenu extends javax.swing.JFrame {
         btnguardar = new javax.swing.JButton();
         txtsettitulo = new javax.swing.JTextField();
         btnbuscarC = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnbuscxAutor = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -120,7 +127,12 @@ public class VistaUmenu extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Buscar por Autor");
+        btnbuscxAutor.setText("Buscar por Autor");
+        btnbuscxAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscxAutorActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Buscar por editorial");
 
@@ -143,7 +155,7 @@ public class VistaUmenu extends javax.swing.JFrame {
                                 .addGap(48, 48, 48)
                                 .addComponent(btnbuscarC)
                                 .addGap(63, 63, 63)
-                                .addComponent(jButton3)))
+                                .addComponent(btnbuscxAutor)))
                         .addGap(72, 72, 72)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnguardar)
@@ -166,7 +178,7 @@ public class VistaUmenu extends javax.swing.JFrame {
                     .addComponent(btnbuscart)
                     .addComponent(txtsettitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbuscarC)
-                    .addComponent(jButton3))
+                    .addComponent(btnbuscxAutor))
                 .addGap(27, 27, 27)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -326,11 +338,11 @@ public class VistaUmenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncsActionPerformed
-        
+
         VistaLogin vcs = new VistaLogin();
         this.dispose();
         vcs.setVisible(true);
-        
+
     }//GEN-LAST:event_btncsActionPerformed
 
     private void btnbuscartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscartActionPerformed
@@ -338,13 +350,13 @@ public class VistaUmenu extends javax.swing.JFrame {
         ControlAudiolibro obju = new ControlAudiolibro();
         int ncolu;
         Object[] fila2;
-        String titulo=txtNombre.getText();
-        if(titulo.equals("")){
+        String titulo = txtNombre.getText();
+        if (titulo.equals("")) {
             JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
         }
 
         listAuL = obju.consultarAudioLibroBusqueda(titulo);
-        
+
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable2.setModel(modelo);
         modelo.addColumn("id_audiolibro");
@@ -385,7 +397,7 @@ public class VistaUmenu extends javax.swing.JFrame {
 
             modelo.addRow(fila2);
         }
-        
+
     }//GEN-LAST:event_btnbuscartActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -394,29 +406,29 @@ public class VistaUmenu extends javax.swing.JFrame {
         ControlAudio objcaud = new ControlAudio();
         int ncolu;
         Object[] fila2;
-        
+
         listaAud = objcaud.consultarAudioBusqueda(select);
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable1.setModel(modelo);
-        
+
         modelo.addColumn("archivo de audio");
         modelo.addColumn("id del audiolibro");
         ncolu = modelo.getColumnCount();
-        
-        for (int j = 0; j<listaAud.size();j++){
+
+        for (int j = 0; j < listaAud.size(); j++) {
             fila2 = new Object[ncolu];
             fila2[0] = listaAud.get(j).getArchivo_Audio();
             fila2[1] = listaAud.get(j).getId_audiolibroF();
             modelo.addRow(fila2);
-            
+
         }
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        
+
         int selected = jTable2.rowAtPoint(evt.getPoint());
         txtsettitulo.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
-        
+
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -424,33 +436,33 @@ public class VistaUmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnbuscarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarCActionPerformed
-        
+
         ControlCategoria obju = new ControlCategoria();
         ControlAudiolibro objca = new ControlAudiolibro();
         int ncolu;
         Object[] fila2;
-        String categoria=txtNombre.getText();
-        if(categoria.isEmpty()){
+        String categoria = txtNombre.getText();
+        if (categoria.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
         }
-        
+
         listaC = obju.consultarAudioLibroPorcategoria(categoria);
-        
+
         int idCategoria = 0;
-        
+
         for (int i = 0; i < listaC.size(); i++) {
             Categoria category = listaC.get(i);
-            
+
             if (categoria.equals(category.getCategoria())) {
                 idCategoria = category.getId_categoria();
             }
         }
         listAuL = objca.consultarAudioLibroxCategoria(idCategoria);
-        
-        if(idCategoria == 0){
+
+        if (idCategoria == 0) {
             JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
         }
-        
+
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable2.setModel(modelo);
         modelo.addColumn("id_audiolibro");
@@ -491,8 +503,93 @@ public class VistaUmenu extends javax.swing.JFrame {
 
             modelo.addRow(fila2);
         }
-        
+
     }//GEN-LAST:event_btnbuscarCActionPerformed
+
+    private void btnbuscxAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscxAutorActionPerformed
+
+        ControlAutor objcA = new ControlAutor();
+        ControlAutores_Libros objca = new ControlAutores_Libros();
+        ControlAudiolibro objcAud = new ControlAudiolibro();
+        int ncolu;
+        Object[] fila2;
+        String autor = txtNombre.getText();
+        if (autor.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor escribe algo para buscar");
+        }
+
+        listaA = objcA.consultarAudioLibroPorAutor(autor);
+
+        int idAutor = 0;
+
+        for (int i = 0; i < listaA.size(); i++) {
+            Autor author = listaA.get(i);
+
+            if (autor.equals(author.getNombre_autor1())) {
+                idAutor = author.getId_autor();
+            }
+        }
+        listAuLibros = objca.consultarAudioLibroxAutor(idAutor);
+
+        int idaudiolibro = 0;
+
+        for (int i = 0; i < listAuLibros.size(); i++) {
+            Autores_Libros authores = listAuLibros.get(i);
+
+            if (idAutor == authores.getId_autorAF()) {
+                idaudiolibro = authores.getId_audiolibroAF();
+            }
+        }
+        
+        listAuL = objcAud.consultarAudioLibroxAutor(idaudiolibro);
+        
+
+        if (idaudiolibro == 0) {
+            JOptionPane.showMessageDialog(this, "No hay audiolibros en esta categoria");
+        }
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable2.setModel(modelo);
+        modelo.addColumn("id_audiolibro");
+        modelo.addColumn("titulo");
+        modelo.addColumn("fecha_creacion");
+        modelo.addColumn("num_paginas");
+        modelo.addColumn("duracion_total");
+        modelo.addColumn("portada");
+        modelo.addColumn("contraportada");
+        modelo.addColumn("calificacion");
+        modelo.addColumn("sipnosis");
+        modelo.addColumn("numCapitulos");
+        modelo.addColumn("idioma");
+        modelo.addColumn("reproducciones");
+        modelo.addColumn("id_narradorAF");
+        modelo.addColumn("id_editorialAF");
+        modelo.addColumn("id_categoriaAF");
+        ncolu = modelo.getColumnCount();
+
+        for (int i = 0; i < listAuL.size(); i++) {
+
+            fila2 = new Object[ncolu];
+            fila2[0] = listAuL.get(i).getId_audiolibro();
+            fila2[1] = listAuL.get(i).getTitulo();
+            fila2[2] = listAuL.get(i).getFecha_creacion();
+            fila2[3] = listAuL.get(i).getNum_paginas();
+            fila2[4] = listAuL.get(i).getDuracion_total();
+            fila2[5] = listAuL.get(i).getPortada();
+            fila2[6] = listAuL.get(i).getContraportada();
+            fila2[7] = listAuL.get(i).getCalificacion();
+            fila2[8] = listAuL.get(i).getSipnosis();
+            fila2[9] = listAuL.get(i).getNumCapitulos();
+            fila2[10] = listAuL.get(i).getIdioma();
+            fila2[11] = listAuL.get(i).getReproducciones();
+            fila2[12] = listAuL.get(i).getId_narradorAF();
+            fila2[13] = listAuL.get(i).getId_editorialAF();
+            fila2[14] = listAuL.get(i).getId_categoriaAF();
+
+            modelo.addRow(fila2);
+        }
+
+    }//GEN-LAST:event_btnbuscxAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -532,10 +629,10 @@ public class VistaUmenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscarC;
     private javax.swing.JButton btnbuscart;
+    private javax.swing.JButton btnbuscxAutor;
     private javax.swing.JButton btncs;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
