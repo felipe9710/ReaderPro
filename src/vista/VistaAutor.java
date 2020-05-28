@@ -382,7 +382,7 @@ public class VistaAutor extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-
+        jDateChooser1.setCalendar(Calendar.getInstance());
         ControlPais_autor objpu = new ControlPais_autor();
         listapu = objpu.consultarpaisautor();
         for (int i = 0; i < listapu.size(); i++) {
@@ -465,12 +465,19 @@ public class VistaAutor extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControlAutor objeu = new ControlAutor();
         String selected = idu.getText();
-        boolean t1 = objeu.eliminarAutor(selected);
 
-        if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino el Autor con exito");
+        if (selected.length() == 0) {
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
+
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino el Autor");
+
+            boolean t1 = objeu.eliminarAutor(selected);
+
+            if (t1 == true) {
+                JOptionPane.showMessageDialog(this, "Se elimino el Autor con exito");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se elimino el Autor");
+            }
         }
 
 
@@ -506,7 +513,7 @@ public class VistaAutor extends javax.swing.JFrame {
         ControlAutor objmu = new ControlAutor();
 
         if (nombre1.isEmpty() || apellido.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los campos obligatorios *", "ERROR", JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(this, "No se modifico el usuario");
         } else {
             boolean t1 = objmu.modificarAutor(select, nombre1, nombre2, apellido, apellido2, fecha_nacimiento, idpais);
